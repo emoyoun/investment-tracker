@@ -287,6 +287,9 @@ window.Store = (function () {
     });
     state.items.forEach(i => { if (!seen[i.id]) rows.push(rowFor(null, i)); });
 
+    // Pass through the FRED-owned indicators block (see scripts/update-from-fred.mjs)
+    // so a browser export round-trip doesn't drop it.
+    if (raw.indicators) out.indicators = raw.indicators;
     out.rows = rows;
     return out;
   }
