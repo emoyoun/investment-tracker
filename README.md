@@ -110,6 +110,30 @@ Scripts load in that order and are plain scripts (not modules) so nothing depend
 
 ---
 
+## Automated daily update (FRED)
+
+The five FRED daily-rate rows in the *Rates & fiscal-dominance* panel (`DGS2`,
+`DGS30`, `DGS10`, `DFII10`, `DFF`) can be refreshed from the
+[FRED API](https://fred.stlouisfed.org/docs/api/fred/) with:
+
+```bash
+FRED_API_KEY=your_key npm run update:data     # add --dry-run to preview
+```
+
+`scripts/update-from-fred.mjs` fetches the latest observation for each mapped
+series and writes only the readings the file owns (`value`, `as_of`, `citation`,
+`source`); it leaves `status` alone so the console still derives it
+deterministically. It skips FRED's `"."` (holiday) readings, exits non-zero if
+the key is missing or every fetch fails, and only touches `data.json`. Extend the
+`MAPPINGS` array at the top of the script to bring more single-series rows under
+the refresh. Get a free key at <https://fredaccount.stlouisfed.org/apikeys>.
+
+Run it on a schedule with a **Cursor automation** (a scheduled agent): add
+`FRED_API_KEY` as an environment secret, then point the automation's prompt at
+`npm run update:data` and have it commit `data.json` when the diff looks right.
+A commit to `master` triggers the Pages deploy below, so the live dashboard
+follows. The script has no dependencies beyond Node 18+ (`fetch` is built in).
+
 ## Deploying
 
 Any static host works. A GitHub Pages workflow is included at
