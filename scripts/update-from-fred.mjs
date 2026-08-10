@@ -8,8 +8,13 @@
  * status of live rows deterministically from the reading (see assets/js/derive.js),
  * so the reading is the only input this job needs to supply.
  *
+ * Designed to be run on a schedule by a Cursor automation (scheduled agent):
+ * the agent runs the script, reviews the diff, and commits data.json. It can
+ * also be run by hand or from any other scheduler.
+ *
  * Usage:
  *   FRED_API_KEY=xxxx node scripts/update-from-fred.mjs [--dry-run]
+ *   FRED_API_KEY=xxxx npm run update:data
  *
  * Env:
  *   FRED_API_KEY   required — https://fredaccount.stlouisfed.org/apikeys
