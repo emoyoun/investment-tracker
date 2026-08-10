@@ -1,0 +1,11 @@
+{
+  "name": "Tripwire Console",
+  "install": "npx --yes serve@14 --version",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "npx --yes serve@14 . -l 8080 --no-clipboard"
+    }
+  ],
+  "ports": [8080]
+}
