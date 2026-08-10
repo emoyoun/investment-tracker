@@ -128,6 +128,26 @@ the key is missing or every fetch fails, and only touches `data.json`. Extend th
 `MAPPINGS` array at the top of the script to bring more single-series rows under
 the refresh. Get a free key at <https://fredaccount.stlouisfed.org/apikeys>.
 
+The same run also publishes a top-level **`indicators`** block: the other
+FRED series that feed the composite tripwires — `PCEPILFE` (with a computed
+`yoy_pct`) for `tw3`, `VIXCLS` and `DEXJPUS` for `tw6`, and `WALCL` for `tw7`.
+These rows carry an analytic reading rather than a single number, so the script
+does **not** overwrite their `value`; it just surfaces fresh raw FRED numbers for
+a downstream agent to judge against. The console ignores the block; add a series
+to the `CONTEXT` array to publish more. Example shape:
+
+```json
+"indicators": {
+  "as_of": "2026-08-10",
+  "series": {
+    "PCEPILFE": { "label": "…", "value": "124.5", "yoy_pct": "2.6%", "as_of": "2026-06-01", "citation": "https://fred.stlouisfed.org/series/PCEPILFE" },
+    "VIXCLS":   { "label": "…", "value": "15.20", "as_of": "2026-08-08", "citation": "…" },
+    "DEXJPUS":  { "label": "…", "value": "148.34", "as_of": "2026-08-08", "citation": "…" },
+    "WALCL":    { "label": "…", "value": "6800000", "display": "$6.80T", "as_of": "2026-08-06", "citation": "…" }
+  }
+}
+```
+
 Run it on a schedule with a **Cursor automation** (a scheduled agent): add
 `FRED_API_KEY` as an environment secret, then point the automation's prompt at
 `npm run update:data` and have it commit `data.json` when the diff looks right.
