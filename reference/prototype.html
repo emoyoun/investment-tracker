@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tripwire Console — Cautious Barbell &amp; Bottleneck Regime</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1418; --panel:#101E24; --panel-2:#13242B;
+    --line:#1E3540; --line-soft:#182B32;
+    --ink:#E8EEF0; --muted:#7C97A0; --faint:#556D75;
+    --amber:#E8A33D; --red:#E45B54; --green:#5FB98E; --cyan:#4FB3C9; --blue:#6C8FE0;
+    --radius:3px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;background-image:radial-gradient(circle at 88% -8%, rgba(232,163,61,.05), transparent 42%)}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:26px 20px 90px}
+
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--faint)}
+  .masthead{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}
+  h1{font-size:23px;font-weight:700;letter-spacing:-.01em;margin:6px 0 0}
+  .clock{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+  .clock b{color:var(--ink);font-weight:600}
+
+  .discipline{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint);margin-top:14px;letter-spacing:.02em}
+  .discipline b{color:var(--amber);font-weight:500}
+
+  .posture{margin-top:14px;border:1px solid var(--line);border-left:3px solid var(--amber);background:linear-gradient(90deg,rgba(232,163,61,.06),transparent 60%);border-radius:var(--radius);padding:15px 18px}
+  .posture .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+  .posture .txt{font-size:15.5px;font-weight:600;margin-top:5px;line-height:1.4}
+
+  .tallies{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .tally{flex:1 1 110px;border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--panel);padding:11px 13px}
+  .tally .n{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;line-height:1}
+  .tally .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+  /* Action queue */
+  .queue{margin-top:20px;border:1px solid rgba(228,91,84,.4);border-radius:var(--radius);background:rgba(228,91,84,.05);padding:15px 17px}
+  .queue.empty{border-color:var(--line-soft);background:var(--panel);}
+  .queue h2{font-size:13px;font-weight:600;margin:0 0 3px;display:flex;align-items:center;gap:8px}
+  .queue .warn{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--red);border:1px solid rgba(228,91,84,.4);padding:2px 6px;border-radius:2px}
+  .queue .sub{font-size:12px;color:var(--muted);margin:0 0 10px}
+  .qrow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line-soft)}
+  .qrow .qbody{flex:1}
+  .qrow .qname{font-weight:600;font-size:13.5px}
+  .qrow .qmove{font-family:"IBM Plex Mono",monospace;font-size:11px;margin:3px 0}
+  .qrow .qrat{font-size:12px;color:var(--muted);line-height:1.4}
+  .qrow .qcite{font-family:"IBM Plex Mono",monospace;font-size:10.5px;margin-top:3px}
+  .qbtns{display:flex;gap:6px;flex-shrink:0}
+  .qbtns button{font-size:10px;padding:5px 11px}
+
+  section{margin-top:38px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line-soft);padding-bottom:9px}
+  .sec-title{font-size:15px;font-weight:600}
+  .sec-sub{font-size:12px;color:var(--faint);margin-left:auto;font-family:"IBM Plex Mono",monospace}
+  .tier-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-top:30px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:14px;margin-top:16px}
+
+  .panel{border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--panel);padding:16px 17px 13px;position:relative;transition:border-color .15s}
+  .panel:hover{border-color:var(--line)}
+  .panel.flagged{border-color:rgba(228,91,84,.4)}
+  .panel .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .panel .idx{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint);font-weight:500}
+  .panel .name{font-weight:700;font-size:15.5px;line-height:1.2;margin-top:2px}
+  .panel .sleeve{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:5px;letter-spacing:.02em;line-height:1.4}
+  .panel .sleeve b{color:var(--cyan);font-weight:500}
+  .chiprow{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+
+  .cond{display:flex;gap:9px;margin-top:11px;align-items:flex-start}
+  .tier{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap;margin-top:1px;font-weight:600}
+  .tier-amber{color:var(--amber);background:rgba(232,163,61,.1);border:1px solid rgba(232,163,61,.35)}
+  .tier-red{color:var(--red);background:rgba(228,91,84,.1);border:1px solid rgba(228,91,84,.4)}
+  .cond .body{flex:1}
+  .cond-txt{font-size:13px;line-height:1.42}
+  .cond-txt b{font-weight:600}
+  .cond-act{font-size:12px;line-height:1.4;color:var(--muted);margin-top:3px}
+
+  .guardrail{font-size:12px;color:var(--faint);margin-top:11px;line-height:1.42;border-top:1px dashed var(--line-soft);padding-top:9px}
+  .guardrail b{color:var(--muted);font-weight:600}
+  .ballast{margin-top:11px;border:1px solid rgba(95,185,142,.3);background:rgba(95,185,142,.06);border-radius:var(--radius);padding:9px 11px;font-size:12.5px;line-height:1.45}
+  .ballast b{color:var(--green)}
+
+  .readout{display:flex;align-items:baseline;gap:9px;margin-top:12px;border-top:1px solid var(--line-soft);padding-top:10px;flex-wrap:wrap}
+  .readout .rk{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .val{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;cursor:text;border-bottom:1px dashed transparent;padding-bottom:1px}
+  .val:hover,.val:focus{border-bottom-color:var(--faint);outline:none}
+  .pnote{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+  .pnote .val{font-size:12px;font-weight:400}
+
+  .srcline{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);margin-top:10px;line-height:1.6;letter-spacing:.02em;border-top:1px solid var(--line-soft);padding-top:8px}
+  .srcline .badge{display:inline-block;padding:1px 5px;border-radius:2px;font-weight:600;letter-spacing:.08em;margin-right:6px}
+  .b-live{color:var(--green);background:rgba(95,185,142,.1);border:1px solid rgba(95,185,142,.3)}
+  .b-filing{color:var(--blue);background:rgba(108,143,224,.1);border:1px solid rgba(108,143,224,.3)}
+  .b-event{color:var(--amber);background:rgba(232,163,61,.1);border:1px solid rgba(232,163,61,.3)}
+  .srcline a{color:var(--cyan);text-decoration:none}
+  .srcline a:hover{text-decoration:underline}
+  .srcline .stale{color:var(--red)}
+  .srcline .conf{color:var(--muted)}
+  .srcline .nocite{color:var(--red)}
+
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;border:1px solid;white-space:nowrap;cursor:pointer;user-select:none;font-weight:600}
+  .st-clear{color:var(--cyan);border-color:rgba(79,179,201,.4);background:rgba(79,179,201,.08)}
+  .st-amber{color:var(--amber);border-color:rgba(232,163,61,.45);background:rgba(232,163,61,.09)}
+  .st-red{color:var(--red);border-color:rgba(228,91,84,.5);background:rgba(228,91,84,.1)}
+  .st-watch{color:var(--blue);border-color:rgba(108,143,224,.42);background:rgba(108,143,224,.09)}
+  .prop{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.08em;color:var(--red);border:1px dashed rgba(228,91,84,.5);padding:2px 5px;border-radius:2px}
+
+  /* Rates table */
+  .rates{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+  .rrow{display:grid;grid-template-columns:1.4fr 1fr 2fr auto;gap:12px;padding:11px 15px;align-items:center;border-top:1px solid var(--line-soft)}
+  .rrow:first-child{border-top:none;background:var(--panel-2)}
+  .rrow .rname{font-weight:600;font-size:13.5px}
+  .rrow .rname span{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);display:block;margin-top:2px}
+  .rrow .rval{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600}
+  .rrow .rtrig{font-size:12px;color:var(--muted);line-height:1.35}
+  .rhead{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600}
+
+  /* Ladder */
+  .ladder{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--panel);padding:16px 17px}
+  .ladder .lhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+  .ladder .lname{font-weight:600;font-size:14px}
+  .ladder .lcur{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
+  .rungs{margin-top:14px;display:flex;flex-direction:column;gap:2px}
+  .rung{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:9px 11px;border-radius:var(--radius);border:1px solid var(--line-soft)}
+  .rung .rpct{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:14px;width:52px}
+  .rung .rprice{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+  .rung .rlabel{font-size:12px;color:var(--muted)}
+  .rung .rstate{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600}
+  .rs-fired{color:var(--red);background:rgba(228,91,84,.1);border:1px solid rgba(228,91,84,.4)}
+  .rs-armed{color:var(--cyan);background:rgba(79,179,201,.08);border:1px solid rgba(79,179,201,.35)}
+
+  /* Scorecard + compliance rows */
+  .rows{margin-top:16px;display:flex;flex-direction:column;gap:2px}
+  .lrow{display:grid;grid-template-columns:1.1fr 2.4fr auto;gap:14px;align-items:center;padding:11px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--panel)}
+  .lrow .ln{font-weight:600;font-size:13.5px}
+  .lrow .ln span{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);display:block;margin-top:2px}
+  .lrow .lm{font-size:12.5px;color:var(--muted);line-height:1.4}
+
+  .console{margin-top:44px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel-2);padding:18px}
+  .console h2{font-size:14px;font-weight:600;margin:0 0 4px}
+  .console p{font-size:12.5px;color:var(--muted);margin:0 0 12px;line-height:1.5;max-width:680px}
+  textarea{width:100%;min-height:120px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.55;resize:vertical}
+  textarea:focus{outline:none;border-color:var(--amber)}
+  .btns{display:flex;gap:9px;flex-wrap:wrap;margin-top:11px}
+  button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;cursor:pointer;transition:.15s;font-weight:500}
+  button:hover{border-color:var(--amber);color:var(--amber)}
+  button.primary{background:var(--amber);color:#0B1418;border-color:var(--amber);font-weight:600}
+  button.primary:hover{background:#f0b355}
+  button.accept:hover{border-color:var(--green);color:var(--green)}
+  .flash{font-family:"IBM Plex Mono",monospace;font-size:11px;margin-top:10px;min-height:15px}
+  .flash.ok{color:var(--green)} .flash.err{color:var(--red)}
+  .persist-note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);margin-top:14px;letter-spacing:.04em}
+
+  footer{margin-top:40px;border-top:1px solid var(--line-soft);padding-top:14px;font-size:11px;color:var(--faint);line-height:1.7}
+  footer b{font-weight:600}
+
+  @media (max-width:600px){h1{font-size:19px}.rrow{grid-template-columns:1fr auto;row-gap:6px}.rrow .rtrig{grid-column:1/-1}.lrow{grid-template-columns:1fr auto}.lrow .lm{grid-column:1/-1}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div>
+      <div class="eyebrow">Cautious Barbell · Bottleneck Regime</div>
+      <h1>Tripwire Console</h1>
+      <div class="discipline">DISCIPLINE — <b>a fire means evaluate against the rule, not act.</b> Every reading traces to a source.</div>
+    </div>
+    <div class="clock">
+      <div>SESSION <b id="now"></b></div>
+      <div>DATA AS OF <b id="asOf">—</b></div>
+    </div>
+  </div>
+
+  <div class="posture">
+    <div class="lbl">Regime posture</div>
+    <div class="txt" id="posture">Loading…</div>
+  </div>
+
+  <div class="tallies" id="tallies"></div>
+
+  <div id="queue"></div>
+
+  <div id="sections"></div>
+
+  <div class="console">
+    <h2>Morning update</h2>
+    <p>Paste the agent's <b>data.json</b> payload and apply it. Live/Filing rows update deterministically from their series. Event rows may self-promote to amber with a citation; any red escalation or de-escalation lands in the action queue above for your confirm. A status change on an Event/Filing row without a citation is rejected — no citation, no change.</p>
+    <textarea id="importBox" placeholder='{ "asOf": "2026-08-10", "posture": "…", "rows": [ { "id": "r-dgs2", "value": "4.31%", "status": "amber", "as_of": "2026-08-10", "citation": "https://fred.stlouisfed.org/series/DGS2" } ] }'></textarea>
+    <div class="btns">
+      <button class="primary" id="applyBtn">Apply update</button>
+      <button id="exportBtn">Export current state</button>
+      <button id="resetBtn">Reset to seed</button>
+    </div>
+    <div class="flash" id="flash"></div>
+    <div class="persist-note" id="persistNote"></div>
+  </div>
+
+  <footer>
+    Status — <b style="color:var(--cyan)">CLEAR</b> · <b style="color:var(--amber)">AMBER</b> early warning · <b style="color:var(--red)">RED</b> trip, re-underwrite · <b style="color:var(--blue)">WATCH</b>.
+    Class — <b style="color:var(--green)">LIVE</b> API series, deterministic · <b style="color:var(--blue)">FILING</b> published number on a calendar · <b style="color:var(--amber)">EVENT</b> agent-researched, needs a citation and your confirm before it trips red.
+    Tripwires 1–8 command a sleeve action; context panels are read to interpret them. Holding-level names live on a separate tab. Monitoring instrument, not investment advice.
+  </footer>
+
+</div>
+
+<script>
+"use strict";
+const CYCLE=["clear","amber","red","watch"];
+const SOX_PEAK=656;
+const rung=p=>(SOX_PEAK*(1-p)).toFixed(2);
+
+const SEED={
+  asOf:"2026-07-31 (seed)",
+  posture:"Tier-1 tripwires CLEAR except Correlation-regime AMBER (stock–bond break) · 30Y at fiscal-dominance confirmation edge (~5.20) · SOX ladder −20/−25 fired, Bucket C armed at −30% ($459.20) · GLW resolved, clears all screens.",
+  sections:[
+    {kind:"tier",label:"Tier 1 — Action Tripwires",title:"Action Tripwires",sub:"trip → re-underwrite &amp; trim that sleeve",items:[
+      {id:"tw1",idx:"01",name:"AI / compute-bottleneck",cls:"event",sleeve:"watches <b>TSM ASML AMAT LRCX KLAC AMD MU SKHY AVGO ANET CEG GEV FN STRL GLW</b> · ~22% of book",
+        amber:{cond:"AI credit stress (hyperscaler/neocloud CDS or bond spreads widening) <b>and</b> compute/memory pricing rolling over together. Sub-signals: CoWoS availability opening, circular/vendor financing expanding, token-cost deflation accelerating.",act:"Stop adding to semis; biweekly watch."},
+        red:{cond:"Two or more of <b>MSFT / GOOGL / AMZN / META</b> guide capex <b>down year-over-year</b> — an actual cut.",act:"Confirm structural, cross-check, trim proportionally. Never a full exit on one print."},
+        guardrail:"Not a trip: slower growth, digestion, one soft print.",
+        status:"clear",value:"capex guides up; pricing firm",note:"Hyperscaler capex still rising; HBM/DRAM tight.",source:"Hyperscaler earnings · Reuters/BBG/FT",confidence:"medium",citation:"",as_of:"2026-07-31 (seed)",next_release:"quarterly earnings"},
+      {id:"tw2",idx:"02",name:"Gold / hard-asset floor",cls:"filing",sleeve:"watches <b>physical gold</b> · scarcity thesis",
+        red:{cond:"Central banks shift from net buying to <b>sustained net selling</b> of gold.",act:"Re-underwrite the hard-asset floor."},
+        guardrail:"Not a trip: ETF outflows, a falling price, or a strong-dollar month. Watch official-sector <b>buying</b>, not flows or price.",
+        status:"clear",value:"official sector net buyer",note:"Central-bank demand remains the structural bid.",source:"World Gold Council",series_id:"WGC net purchases",confidence:"medium",citation:"",as_of:"2026-Q2 (seed)",next_release:"2026-Q3 WGC report"},
+      {id:"tw3",idx:"03",name:"Structural-inflation / regime",cls:"live",sleeve:"watches the assumption under the whole scarcity leg",
+        red:{cond:"Core PCE <b>≤ ~2% for 2–3 consecutive quarters</b> while real policy rates positive <b>and</b> real yields falling.",act:"Re-underwrite the scarcity leg; barbell tilts back to productivity."},
+        guardrail:"Not a trip: one cool print; oil-driven disinflation; inflation falling <b>with</b> rate cuts (that's debasement, supports the thesis).",
+        status:"clear",value:"Core PCE YoY > 2%",note:"Regime intact; debasement path base case.",source:"FRED · BEA",series_id:"PCEPILFE + DFII10",confidence:"high",citation:"",as_of:"2026-07-31 (seed)",next_release:"monthly (BEA PCE)"},
+      {id:"tw4",idx:"04",name:"Software / compounder moat",cls:"event",sleeve:"watches <b>CSU NOW CRM SAP TOI SNOW SHOP</b>",
+        red:{cond:"Sustained organic growth <b>below ~10–12%</b> across core compounders, <b>or</b> a structural fall in net revenue retention.",act:"Re-underwrite the software sleeve; separate moat erosion from cyclicality."},
+        guardrail:"Not a trip: a de-rated multiple on stable fundamentals; one soft quarter.",
+        status:"clear",value:"organic growth & NRR holding",note:"Evidence AI agents compressing seat economics = the thing to watch.",source:"Company earnings · secondary",confidence:"medium",citation:"",as_of:"2026-07-31 (seed)",next_release:"quarterly earnings"},
+      {id:"tw5",idx:"05",name:"Speculative / digital-scarcity",cls:"event",sleeve:"watches <b>BTDR IREN KEEL BITB ETHQ SOLQ</b>",
+        red:{cond:"Forced/systemic selling in the crypto-treasury/miner complex, <b>or</b> a held miner needing <b>serial equity dilution beyond a set pace</b>.",act:"Trim; the 9% cap bounds the damage. Watch IREN financing mix closest."},
+        guardrail:"Not a trip: normal Bitcoin volatility; a single capital raise.",
+        status:"clear",value:"no forced selling",note:"BTDR held as named leverage exception; IREN dilution sized for.",source:"Filings · secondary",confidence:"medium",citation:"",as_of:"2026-07-31 (seed)",next_release:"event-driven"},
+      {id:"tw6",idx:"06",name:"Correlation regime → Bucket C signal",cls:"live",sleeve:"<b>cross-portfolio</b> — protects the whole book",
+        amber:{cond:"Index vol uncompressing off a pinned regime; single-name dispersion collapsing toward correlation; credit/liquidity stress broadening across sectors; disorderly USD/JPY spike.",act:"Raise alertness; do not chase."},
+        guardrail:"Action is inverted from every other tripwire — see below. Bucket C deploy trigger: correlation event, or SOXX −30% ($"+rung(0.30)+").",
+        ballast:"<b>Protect the ballast.</b> Do NOT deploy cash or trim gold into the transition. A genuine correlated crash is the signal to <b>deploy Bucket C</b>, not to have pre-spent it.",
+        status:"amber",value:"stock–bond correlation breaking; VIX low",note:"Treasuries selling with equities — Nemeth regime signal. Ballast intact.",source:"VIX · DGS10 vs SPX · USDJPY",series_id:"VIXCLS, DGS10, DEXJPUS",confidence:"high",citation:"",as_of:"2026-07-31 (seed)",next_release:"daily"},
+      {id:"tw7",idx:"07",name:"Monetization / yield-cap regime",cls:"filing",sleeve:"fires here → <b>gold-weight on the table</b>",
+        amber:{cond:"<b>Tier 1 (any one):</b> explicit YCC/yield target · non-crisis QE (WALCL expands while core PCE &gt; target, no crisis) · SLR exemption / captive-demand rule. <b>Tier 2 (need 2+):</b> bill share &gt; ~25% of marketable debt · stablecoin bill demand scaling.",act:"Put gold-weight on the table."},
+        guardrail:"Falsifiers: DFII10 durably positive · fiscal consolidation (primary deficit) · Volcker-style hike into weakness · active 3-dissent hawk bloc.",
+        status:"clear",value:"no Tier-1 fire; hawk bloc active",note:"9-3 hold with 3 dissents argues against fiscal dominance for now.",source:"FOMC · H.4.1/WALCL · QRA/MSPD · GENIUS",series_id:"WALCL",confidence:"medium",citation:"",as_of:"2026-07-31 (seed)",next_release:"FOMC + quarterly QRA"},
+      {id:"tw8",idx:"08",name:"China semicap moat",cls:"event",sleeve:"structural, multi-year — watches <b>ASML AMAT LRCX KLAC MU</b>",
+        red:{cond:"<b>ASML:</b> credible Chinese EUV &gt;80–90% yield in volume pre-2030. <b>AMAT/LRCX:</b> China etch/dep share crosses ~60%, or tool-of-record at a leading-edge fab. <b>KLA (canary):</b> China process-control share crosses ~20%. <b>MU:</b> CXMT ships HBM3E/4 to a major vendor, or China HBM &gt;10% of global bits.",act:"Re-underwrite the exposed name; KLA metrology share is the leading tell."},
+        guardrail:"Event-driven, no daily feed — confirmed from filings & industry reports when it happens.",
+        status:"clear",value:"no displacement confirmed; EUV moat intact",note:"NAURA/AMEC share gains: AMAT most exposed, LRCX moderate, ASML intact through early 2030s.",source:"Filings · industry reports · secondary",confidence:"medium",citation:"",as_of:"2026-07-31 (seed)",next_release:"event-driven"}
+    ]},
+
+    {kind:"rates",label:"Tier 2 — Context Panels",title:"Rates & fiscal-dominance",sub:"read to interpret · all FRED daily",items:[
+      {id:"r-dgs2",name:"2-yr yield",series_id:"DGS2",value:"~4.20%",trigger:"Sustained > 4.25% → Donnelly falsified (structural repricing)",status:"clear",cls:"live",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"r-dgs30",name:"30-yr yield",series_id:"DGS30",value:"~5.20%",trigger:"> 5.2% confirm (fiscal dominance) · > 6% disorderly (vigilante tail)",status:"amber",cls:"live",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"r-dgs10",name:"10-yr yield",series_id:"DGS10",value:"~4.64%",trigger:"Context / term-premium reference",status:"clear",cls:"live",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"r-dfii10",name:"10-yr real yield",series_id:"DFII10",value:"positive / elevated",trigger:"Turns negative → repression live · sharp spike → gold headwind",status:"clear",cls:"live",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"r-dff",name:"Fed funds",series_id:"DFF",value:"3.50–3.75%",trigger:"Actual Sept hike → hawkish tail live (semis/spec pressure)",status:"clear",cls:"live",citation:"",as_of:"2026-07-31 (seed)"}
+    ]},
+
+    {kind:"ladder",title:"Deployment ladder",sub:"buy mechanism · SOX vs pinned peak $656",items:[
+      {id:"ladder-sox",name:"SOX drawdown vs peak",cls:"live",series_id:"^SOX / SOXX",value:"≈ −25% (seed)",as_of:"2026-07-31 (seed)",citation:"",
+        rungs:[
+          {pct:"−20%",price:rung(0.20),label:"Bucket B rung 1",state:"fired"},
+          {pct:"−25%",price:rung(0.25),label:"Bucket B rung 2 — deploy pre-set tranche",state:"fired"},
+          {pct:"−30%",price:rung(0.30),label:"Bucket C — broad dislocation",state:"armed"},
+          {pct:"−40%",price:rung(0.40),label:"Deep-dislocation reference",state:"armed"}
+        ]}
+    ]},
+
+    {kind:"scorecard",title:"Macro-thinker scorecard",sub:"falsifiable frameworks · cross-refs the tripwires",items:[
+      {id:"sc-donnelly",name:"Donnelly",tag:"peak-hawkishness / peak-USD",marker:"2Y sustained > 4.25% + USD breaking higher, not lower",status:"amber",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"sc-karsan",name:"Karsan",tag:"structural debasement",marker:"Fed tightens into disinflation & holds; real yields break out with no repression",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"sc-nemeth",name:"Nemeth",tag:"correlation-to-one",marker:"Diversification holds through a deleveraging (bonds rally as equities fall)",status:"amber",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"sc-baker",name:"Baker",tag:"margin migration",marker:"Value stays at model layer; open-weights fail to commoditize",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"sc-rozencwajg",name:"Rozencwajg",tag:"capex / scarcity",marker:"Oil supply surprises to the upside; backwardation fails to appear",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"sc-warsh",name:"Warsh",tag:"credibility / good-cop",marker:"Committee acts on a real, sustained hawkish hike path",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"}
+    ]},
+
+    {kind:"compliance",title:"Compliance / screening",sub:"continuous · Shariah screens",items:[
+      {id:"c-leverage",name:"Leverage screen",tag:"~33% debt / market-cap",marker:"Any holding crossing the line. BTDR (~50–55%) & IREN = named exceptions.",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"c-screens",name:"Four active screens",tag:"new additions",marker:"riba/leverage · ownership-vs-speculation · military-product · Israel MoD direct-customer",status:"clear",cls:"event",citation:"",as_of:"2026-07-31 (seed)"},
+      {id:"c-wshr",name:"WSHR purification",tag:"corporate account",marker:"Check T3 income character (interest income requiring purification).",status:"watch",cls:"filing",citation:"",as_of:"2026-07-31 (seed)"}
+    ]}
+  ]
+};
+
+const KEY="tripwire-state-v3";
+let mem=null;
+async function saveState(st){try{await window.storage.set(KEY,JSON.stringify(st));persist(true);}catch(e){mem=st;persist(false);}}
+async function loadState(){try{const r=await window.storage.get(KEY);if(r&&r.value)return JSON.parse(r.value);}catch(e){if(mem)return mem;}return null;}
+function persist(cloud){document.getElementById("persistNote").textContent=cloud?"Persisted — this state reloads next time you open the console.":"Session-only storage active — export before closing to keep this state.";}
+
+let STATE=JSON.parse(JSON.stringify(SEED));
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function allItems(){const a=[];STATE.sections.forEach(s=>s.items.forEach(i=>a.push(i)));return a;}
+function findItem(id){for(const s of STATE.sections){const h=s.items.find(x=>x.id===id);if(h)return h;}return null;}
+
+/* Effective status: event red without citation can't render as tripped */
+function effStatus(it){
+  if(it.cls==="event"&&it.status==="red"&&!it.citation) return {s:"amber",unverified:true};
+  return {s:it.status,unverified:false};
+}
+function ageFlag(as_of){
+  if(!as_of||/seed/i.test(as_of)) return {seed:true};
+  const d=Date.parse(as_of);
+  if(isNaN(d)) return {};
+  const days=(Date.now()-d)/864e5;
+  return {stale:days>7,days:Math.floor(days)};
+}
+
+function render(){
+  $("asOf").textContent=STATE.asOf||"—";
+  $("posture").textContent=STATE.posture||"";
+  renderTallies();
+  renderQueue();
+  const host=$("sections");host.innerHTML="";
+  STATE.sections.forEach(sec=>{
+    if(sec.label){const t=document.createElement("div");t.className="tier-label";t.textContent=sec.label;host.appendChild(t);}
+    const s=document.createElement("section");
+    s.innerHTML=`<div class="sec-head"><span class="sec-title">${sec.title}</span><span class="sec-sub">${sec.sub||""}</span></div>`;
+    if(sec.kind==="tier"){const g=document.createElement("div");g.className="grid";sec.items.forEach(it=>g.appendChild(panelEl(it)));s.appendChild(g);}
+    else if(sec.kind==="rates") s.appendChild(ratesEl(sec.items));
+    else if(sec.kind==="ladder") s.appendChild(ladderEl(sec.items[0]));
+    else if(sec.kind==="scorecard"||sec.kind==="compliance") s.appendChild(rowsEl(sec.items));
+    host.appendChild(s);
+  });
+}
+
+function renderTallies(){
+  const c={clear:0,amber:0,red:0,watch:0};
+  allItems().forEach(it=>{const e=effStatus(it).s;if(c[e]!=null)c[e]++;});
+  const order=[["red","Red · trip"],["amber","Amber · warning"],["watch","Watch"],["clear","Clear"]];
+  const col={red:"var(--red)",amber:"var(--amber)",watch:"var(--blue)",clear:"var(--cyan)"};
+  $("tallies").innerHTML=order.map(([k,l])=>`<div class="tally"><div class="n" style="color:${col[k]}">${c[k]}</div><div class="k">${l}</div></div>`).join("");
+}
+
+function renderQueue(){
+  const q=$("queue");
+  const pending=allItems().filter(it=>it.proposed_status&&it.proposed_status!==it.status);
+  if(!pending.length){q.innerHTML=`<div class="queue empty"><h2>Action queue</h2><div class="sub" style="margin:0">Clear — no proposed changes awaiting your confirm.</div></div>`;return;}
+  const box=document.createElement("div");box.className="queue";
+  box.innerHTML=`<h2>Action queue <span class="warn">${pending.length} awaiting confirm</span></h2><div class="sub">The agent proposed these status moves. Accept to own the change, or dismiss it.</div>`;
+  pending.forEach(it=>{
+    const row=document.createElement("div");row.className="qrow";
+    const cite=it.citation?`<div class="qcite"><a href="${esc(it.citation)}" target="_blank" rel="noopener">source ↗</a> · conf ${esc(it.confidence||"medium")}</div>`:`<div class="qcite nocite" style="color:var(--red)">no citation — cannot confirm</div>`;
+    row.innerHTML=`<div class="qbody"><div class="qname">${esc(it.name)}</div>
+      <div class="qmove"><span class="st-${it.status}" style="padding:1px 6px;border-radius:2px">${it.status}</span> → <span class="st-${it.proposed_status}" style="padding:1px 6px;border-radius:2px">${it.proposed_status}</span></div>
+      <div class="qrat">${esc(it.rationale||"—")}</div>${cite}</div>`;
+    const btns=document.createElement("div");btns.className="qbtns";
+    const acc=document.createElement("button");acc.className="accept";acc.textContent="Accept";
+    acc.disabled=!it.citation; if(!it.citation){acc.style.opacity=".4";acc.style.cursor="not-allowed";}
+    acc.addEventListener("click",()=>{it.status=it.proposed_status;it.proposed_status=null;saveState(STATE);render();});
+    const dis=document.createElement("button");dis.textContent="Dismiss";
+    dis.addEventListener("click",()=>{it.proposed_status=null;saveState(STATE);render();});
+    btns.appendChild(acc);btns.appendChild(dis);row.appendChild(btns);box.appendChild(row);
+  });
+  q.innerHTML="";q.appendChild(box);
+}
+
+function chipEl(it){
+  const e=effStatus(it);
+  const c=document.createElement("span");
+  c.className="chip st-"+e.s;c.textContent=e.unverified?e.s+" ·unverified":e.s;c.tabIndex=0;c.setAttribute("role","button");c.title="Click to cycle status";
+  const go=()=>{it.status=CYCLE[(CYCLE.indexOf(it.status)+1)%CYCLE.length];if(it.status==="red"&&it.cls==="event"&&!it.citation){/*allow manual but flagged*/}saveState(STATE);render();};
+  c.addEventListener("click",go);
+  c.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();go();}});
+  return c;
+}
+function badge(cls){const m={live:["b-live","LIVE"],filing:["b-filing","FILING"],event:["b-event","EVENT"]}[cls]||["b-event","—"];return `<span class="badge ${m[0]}">${m[1]}</span>`;}
+function srcLine(it){
+  const af=ageFlag(it.as_of);
+  const asof=af.seed?`<span style="color:var(--faint)">as of ${esc(it.as_of)}</span>`:(af.stale?`<span class="stale">as of ${esc(it.as_of)} · ${af.days}d stale</span>`:`as of ${esc(it.as_of||"—")}`);
+  const parts=[badge(it.cls),esc(it.source||it.series_id||"")];
+  if(it.series_id&&it.source) parts.push(esc(it.series_id));
+  parts.push(asof);
+  if(it.next_release) parts.push(`next: ${esc(it.next_release)}`);
+  if(it.cls!=="live") parts.push(`<span class="conf">conf ${esc(it.confidence||"medium")}</span>`);
+  if(it.citation) parts.push(`<a href="${esc(it.citation)}" target="_blank" rel="noopener">source ↗</a>`);
+  else if(it.cls!=="live") parts.push(`<span class="nocite">no citation</span>`);
+  return `<div class="srcline">${parts.join(" · ")}</div>`;
+}
+function editable(text,onCommit,cls){const s=document.createElement("span");s.className="val"+(cls?" "+cls:"");s.contentEditable="true";s.spellcheck=false;s.textContent=text;s.addEventListener("blur",()=>onCommit(s.textContent.trim()));return s;}
+function condRow(tier,cls,d){const el=document.createElement("div");el.className="cond";el.innerHTML=`<span class="tier ${cls}">${tier}</span><div class="body"><div class="cond-txt">${d.cond}</div>${d.act?`<div class="cond-act">→ ${d.act}</div>`:""}</div>`;return el;}
+
+function panelEl(it){
+  const el=document.createElement("div");el.className="panel"+((it.proposed_status&&it.proposed_status!==it.status)?" flagged":"");
+  const top=document.createElement("div");top.className="top";
+  top.innerHTML=`<div><div class="idx">${it.idx}</div><div class="name">${esc(it.name)}</div><div class="sleeve">${it.sleeve||""}</div></div>`;
+  const cr=document.createElement("div");cr.className="chiprow";cr.appendChild(chipEl(it));
+  if(it.proposed_status&&it.proposed_status!==it.status){const p=document.createElement("span");p.className="prop";p.textContent="→ "+it.proposed_status+"?";cr.appendChild(p);}
+  top.appendChild(cr);el.appendChild(top);
+  if(it.amber)el.appendChild(condRow("Amber","tier-amber",it.amber));
+  if(it.red)el.appendChild(condRow("Red","tier-red",it.red));
+  if(it.guardrail){const g=document.createElement("div");g.className="guardrail";g.innerHTML=it.guardrail;el.appendChild(g);}
+  if(it.ballast){const b=document.createElement("div");b.className="ballast";b.innerHTML=it.ballast;el.appendChild(b);}
+  const ro=document.createElement("div");ro.className="readout";ro.innerHTML=`<span class="rk">Reading</span>`;
+  ro.appendChild(editable(it.value||"—",v=>{it.value=v;saveState(STATE);}));el.appendChild(ro);
+  const pn=document.createElement("div");pn.className="pnote";pn.appendChild(editable(it.note||"",v=>{it.note=v;saveState(STATE);}));el.appendChild(pn);
+  el.insertAdjacentHTML("beforeend",srcLine(it));
+  return el;
+}
+
+function ratesEl(items){
+  const w=document.createElement("div");w.className="rates";
+  const head=document.createElement("div");head.className="rrow";
+  head.innerHTML=`<div class="rhead">Series</div><div class="rhead">Reading</div><div class="rhead">Trigger</div><div class="rhead">Status</div>`;
+  w.appendChild(head);
+  items.forEach(it=>{
+    const r=document.createElement("div");r.className="rrow";
+    r.innerHTML=`<div class="rname">${esc(it.name)}<span>${esc(it.series_id)}</span></div>`;
+    const v=document.createElement("div");v.className="rval";v.appendChild(editable(it.value||"—",x=>{it.value=x;saveState(STATE);}));
+    r.appendChild(v);
+    r.insertAdjacentHTML("beforeend",`<div class="rtrig">${esc(it.trigger)}</div>`);
+    const c=document.createElement("div");c.appendChild(chipEl(it));r.appendChild(c);
+    w.appendChild(r);
+  });
+  return w;
+}
+
+function ladderEl(it){
+  const el=document.createElement("div");el.className="ladder";
+  const cur=document.createElement("div");cur.className="lhead";
+  cur.innerHTML=`<div class="lname">${esc(it.name)} <span style="font-family:'IBM Plex Mono';font-size:10px;color:var(--faint)">${esc(it.series_id||"")}</span></div>`;
+  const lc=document.createElement("div");lc.className="lcur";lc.append("current: ");lc.appendChild(editable(it.value||"—",v=>{it.value=v;saveState(STATE);}));
+  cur.appendChild(lc);el.appendChild(cur);
+  const rw=document.createElement("div");rw.className="rungs";
+  it.rungs.forEach(rg=>{
+    const r=document.createElement("div");r.className="rung";
+    r.innerHTML=`<div class="rpct" style="color:${rg.state==='fired'?'var(--red)':'var(--cyan)'}">${rg.pct}</div>
+      <div><span class="rprice">$${rg.price}</span> <span class="rlabel">— ${esc(rg.label)}</span></div>
+      <div class="rstate ${rg.state==='fired'?'rs-fired':'rs-armed'}">${rg.state}</div>`;
+    rw.appendChild(r);
+  });
+  el.appendChild(rw);
+  el.insertAdjacentHTML("beforeend",srcLine(it));
+  return el;
+}
+
+function rowsEl(items){
+  const w=document.createElement("div");w.className="rows";
+  items.forEach(it=>{
+    const r=document.createElement("div");r.className="lrow";
+    r.innerHTML=`<div class="ln">${esc(it.name)}<span>${esc(it.tag||"")}</span></div><div class="lm">${esc(it.marker)}</div>`;
+    const c=document.createElement("div");c.appendChild(chipEl(it));r.appendChild(c);
+    w.appendChild(r);
+  });
+  return w;
+}
+
+/* ---- Import with citation + red-guardrail enforcement ---- */
+function applyUpdate(p){
+  let n=0,missed=[],rejected=[],diverted=[];
+  if(p.asOf)STATE.asOf=p.asOf;
+  if(p.posture)STATE.posture=p.posture;
+  const rows=p.rows||p.updates||p.items||[];
+  rows.forEach(u=>{
+    const it=findItem(u.id);if(!it){missed.push(u.id);return;}
+    const needsCite=(it.cls==="event"||it.cls==="filing");
+    const willCite=(u.citation!=null?u.citation:it.citation);
+    const statusChange=(u.status||u.proposed_status);
+    if(needsCite&&statusChange&&!willCite){rejected.push(u.id);return;}
+    if(u.citation!=null)it.citation=u.citation;
+    if(u.value!=null)it.value=String(u.value);
+    if(u.rationale!=null)it.rationale=String(u.rationale);
+    if(u.confidence!=null)it.confidence=u.confidence;
+    if(u.source!=null)it.source=u.source;
+    if(u.series_id!=null)it.series_id=u.series_id;
+    if(u.as_of!=null)it.as_of=u.as_of;
+    if(u.next_release!=null)it.next_release=u.next_release;
+    if(u.status&&CYCLE.includes(u.status)){
+      if(it.cls==="event"&&u.status==="red"){it.proposed_status="red";diverted.push(u.id);}
+      else it.status=u.status;
+    }
+    if(u.proposed_status!==undefined)it.proposed_status=(u.proposed_status&&CYCLE.includes(u.proposed_status))?u.proposed_status:null;
+    n++;
+  });
+  saveState(STATE);render();
+  return {n,missed,rejected,diverted};
+}
+function flash(m,ok){const f=$("flash");f.innerHTML=m;f.className="flash "+(ok?"ok":"err");}
+
+$("applyBtn").addEventListener("click",()=>{
+  const raw=$("importBox").value.trim();
+  if(!raw){flash("Nothing to apply — paste a data.json payload first.",false);return;}
+  let p;try{p=JSON.parse(raw);}catch(e){flash("Invalid JSON — "+esc(e.message),false);return;}
+  const {n,missed,rejected,diverted}=applyUpdate(p);
+  let m=`Applied ${n} row${n===1?"":"s"}.`;
+  if(diverted.length)m+=` Red on Event row routed to your queue: ${diverted.join(", ")}.`;
+  if(rejected.length)m+=` Rejected (no citation): ${rejected.join(", ")}.`;
+  if(missed.length)m+=` Unknown ids: ${missed.join(", ")}.`;
+  flash(m,true);$("importBox").value="";
+});
+$("exportBtn").addEventListener("click",async()=>{
+  const out=JSON.stringify(STATE,null,2);
+  try{await navigator.clipboard.writeText(out);flash("Current state copied to clipboard.",true);}
+  catch(e){$("importBox").value=out;flash("Clipboard blocked — state dumped into the box above.",true);}
+});
+$("resetBtn").addEventListener("click",()=>{if(!confirm("Reset the console to seed values? Discards current readings."))return;STATE=JSON.parse(JSON.stringify(SEED));saveState(STATE);render();flash("Reset to seed.",true);});
+
+function tick(){$("now").textContent=new Date().toISOString().slice(0,16).replace("T"," ")+" UTC";}
+tick();setInterval(tick,30000);
+(async()=>{const s=await loadState();if(s&&s.sections)STATE=s;render();})();
+</script>
+</body>
+</html>

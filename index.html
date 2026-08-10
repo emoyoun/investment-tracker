@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="Tripwire Console — early-warning monitoring for the Cautious Barbell & Bottleneck regime." />
+<title>Tripwire Console — Cautious Barbell &amp; Bottleneck Regime</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#sections">Skip to tripwires</a>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-id">
+      <div class="eyebrow">Cautious Barbell · Bottleneck Regime</div>
+      <h1>Tripwire Console</h1>
+      <p class="discipline">DISCIPLINE — <b>a fire means evaluate against the rule, not act.</b> Every reading traces to a source.</p>
+    </div>
+    <div class="clock">
+      <div class="clock-row">SESSION <b id="now">—</b></div>
+      <div class="clock-row">DATA AS OF <b id="asOf">—</b></div>
+      <div class="feed" id="feed"><span class="feed-dot"></span><span id="feedText">loading data.json…</span></div>
+    </div>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <div class="posture">
+    <div class="lbl">Regime posture</div>
+    <div class="txt" id="posture">Loading…</div>
+  </div>
+
+  <div class="tallies" id="tallies"></div>
+
+  <div id="queue"></div>
+
+  <div class="toolbar" role="search">
+    <div class="tb-search">
+      <label class="sr-only" for="search">Filter tripwires</label>
+      <input id="search" type="search" placeholder="Filter by name, series, ticker, reading…  ( / )" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="tb-filters" id="statusFilters" aria-label="Filter by status"></div>
+    <div class="tb-filters" id="classFilters" aria-label="Filter by class"></div>
+    <div class="tb-actions">
+      <button id="flaggedBtn" class="toggle" aria-pressed="false" title="Show only rows needing attention">Needs attention</button>
+      <button id="reloadBtn" title="Re-fetch data.json from disk/server">Reload data</button>
+    </div>
+  </div>
+
+  <div class="filter-note" id="filterNote" hidden></div>
+
+  <main id="sections"></main>
+
+  <p class="empty-state" id="emptyState" hidden>No rows match the current filter. <button class="linkish" id="clearFilters">Clear filters</button></p>
+
+  <section class="console">
+    <div class="console-head">
+      <div>
+        <h2>Morning update</h2>
+        <p>
+          The console reads <b>data.json</b> on load — updating that file and reloading is the normal path.
+          Use this box for an out-of-band payload. Live/Filing rows derive status from their series;
+          Event rows may self-promote to amber with a citation, while any red escalation or de-escalation
+          lands in the action queue for your confirm. A status change on an Event/Filing row without a
+          citation is rejected — no citation, no change.
+        </p>
+      </div>
+    </div>
+    <textarea id="importBox" spellcheck="false" placeholder='{ "asOf": "2026-08-10", "posture": "…", "rows": [ { "id": "r-dgs2", "value": "4.31%", "as_of": "2026-08-10", "citation": "https://fred.stlouisfed.org/series/DGS2" } ] }'></textarea>
+    <div class="btns">
+      <button class="primary" id="applyBtn">Apply update</button>
+      <button id="exportBtn">Copy state as data.json</button>
+      <button id="downloadBtn">Download data.json</button>
+      <button id="clearLocalBtn">Discard local edits</button>
+    </div>
+    <div class="flash" id="flash" role="status" aria-live="polite"></div>
+    <div class="persist-note" id="persistNote"></div>
+  </section>
+
+  <details class="playbook">
+    <summary>Decision rules when a tripwire trips</summary>
+    <div class="playbook-body" id="playbookBody"></div>
+  </details>
+
+  <footer>
+    <p>
+      Status — <b class="c-clear">CLEAR</b> · <b class="c-amber">AMBER</b> early warning ·
+      <b class="c-red">RED</b> trip, re-underwrite · <b class="c-watch">WATCH</b>.
+    </p>
+    <p>
+      Class — <b class="c-live">LIVE</b> API series, status derived deterministically ·
+      <b class="c-filing">FILING</b> published number on a calendar ·
+      <b class="c-event">EVENT</b> agent-researched, needs a citation and your confirm before it trips red.
+    </p>
+    <p>
+      Tripwires 1–8 command a sleeve action; context panels are read to interpret them.
+      Holding-level names live on a separate tab. Monitoring instrument, not investment advice.
+    </p>
+  </footer>
+
+</div>
+
+<noscript>
+  <div class="noscript">This console renders client-side and needs JavaScript enabled.</div>
+</noscript>
+
+<script src="assets/js/definitions.js"></script>
+<script src="assets/js/derive.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

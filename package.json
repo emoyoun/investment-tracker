@@ -1,0 +1,12 @@
+{
+  "name": "investment-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tripwire Console — early-warning monitoring dashboard for the Cautious Barbell & Bottleneck regime.",
+  "scripts": {
+    "start": "npx --yes serve@14 . -l 8080 --no-clipboard",
+    "dev": "python3 -m http.server 8080"
+  },
+  "keywords": ["dashboard", "investing", "monitoring"],
+  "license": "UNLICENSED"
+}
