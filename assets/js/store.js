@@ -167,6 +167,9 @@ window.Store = (function () {
     });
 
     state.items = items;
+    // Publish parsed readings so cross-row derive rules (e.g. IG OAS vs HY OAS)
+    // can see other rows' values.
+    TW.setReadings(items.reduce((m, i) => { m[i.id] = TW.parseNum(i.value); return m; }, {}));
     state.asOf = (state.meta.asOf) || (state.raw && state.raw.asOf) || DEFS.meta.seedAsOf;
     state.posture = (state.meta.posture) || (state.raw && state.raw.posture) || DEFS.meta.seedPosture;
     return state;

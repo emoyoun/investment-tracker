@@ -251,6 +251,90 @@ window.TRIPWIRE_DEFS = {
       ]
     },
 
+    /* ---------------- Credit stress ---------------- */
+    {
+      kind: "rates",
+      label: "Credit & dollar plumbing",
+      title: "Credit stress",
+      sub: "regime &amp; cross-check \u00b7 leads equities, not an exit trigger",
+      items: [
+        {
+          id: "cr-hy-oas", cls: "live", name: "HY OAS", series_id: "BAMLH0A0HYM2", source: "FRED",
+          trigger: "Confirmer \u00b7 \u2265 3.75% risk-off underway \u00b7 \u2265 5% serious stress",
+          derive: n => n >= 5
+            ? { status: "red", why: "HY OAS \u2265 5% \u2014 serious credit stress" }
+            : n >= 3.75
+              ? { status: "amber", why: "HY OAS \u2265 3.75% \u2014 risk-off underway" }
+              : { status: "clear", why: "HY OAS below 3.75% \u2014 spreads complacent" },
+          seed: { status: "clear", value: "~2.80%", citation: "", next_release: "daily" }
+        },
+        {
+          id: "cr-ig-oas", cls: "live", name: "IG OAS", series_id: "BAMLC0A0CM", source: "FRED",
+          trigger: "Core credit \u00b7 \u2265 1.25% amber \u00b7 red if \u2265 1.75% OR (\u2265 1.25% AND HY \u2265 4%) \u2014 stress migrating into quality",
+          derive: (n, r) => {
+            const hy = r && r["cr-hy-oas"];
+            return (n >= 1.75 || (n >= 1.25 && hy >= 4.0))
+              ? { status: "red", why: "IG OAS \u2265 1.75%, or \u2265 1.25% with HY \u2265 4% \u2014 stress migrating from junk into quality" }
+              : n >= 1.25
+                ? { status: "amber", why: "IG OAS \u2265 1.25% \u2014 core credit widening" }
+                : { status: "clear", why: "IG OAS below 1.25% \u2014 core credit calm" };
+          },
+          seed: { status: "clear", value: "~0.80%", citation: "", next_release: "daily" }
+        },
+        {
+          id: "cr-ccc-oas", cls: "live", name: "CCC OAS", series_id: "BAMLH0A3HYC", source: "FRED",
+          trigger: "Riskiest tier, leads \u00b7 primary = BB\u2194CCC compression/reversal (weekly) \u00b7 absolute backstop red \u2265 12%",
+          derive: n => n >= 12
+            ? { status: "red", why: "CCC OAS \u2265 12% \u2014 absolute distress backstop" }
+            : null,
+          seed: { status: "clear", value: "~7%", citation: "", next_release: "daily" }
+        },
+        {
+          id: "cr-divergence", cls: "event", name: "Credit\u2013equity divergence", series_id: null,
+          source: "derived \u00b7 spreads vs equity sleeves",
+          trigger: "Early warning: spreads widening while equity sleeves near highs \u2014 credit seeing what equity hasn't priced",
+          seed: { status: "clear", value: "aligned", citation: "", next_release: "weekly" }
+        },
+        {
+          id: "cr-ai-infra", cls: "event", name: "AI-infra issuer spreads / CDS", series_id: null,
+          source: "credit feed / CDX HY proxy \u00b7 Oracle, CoreWeave, hyperscaler/neocloud",
+          trigger: "Most thesis-relevant: widening &amp; sustained = real deterioration (don't add) \u00b7 calm during a semis selloff = mechanical low to ladder into",
+          seed: { status: "clear", value: "calm", citation: "", next_release: "weekly" }
+        }
+      ]
+    },
+
+    /* ---------------- Dollar & yen plumbing ---------------- */
+    {
+      kind: "rates",
+      title: "Dollar &amp; yen plumbing",
+      sub: "regime confirmation \u00b7 peak-USD / debasement",
+      items: [
+        {
+          id: "fx-usdjpy", cls: "live", name: "USD/JPY", series_id: "DEXJPUS", source: "FRED",
+          trigger: "Disorderly JPY strengthening (USD/JPY falling fast) = yen-carry unwind / deleveraging (Aug-2024). Judge on the move, not the level.",
+          seed: { status: "clear", value: "~157", citation: "", next_release: "daily" }
+        },
+        {
+          id: "fx-broad-usd", cls: "live", name: "Broad USD (DTWEXBGS)", series_id: "DTWEXBGS", source: "FRED",
+          trigger: "Sustained down = peak-USD leg confirmed \u00b7 break higher = Donnelly-USD partially falsified. Judge on direction / rate-of-change, not absolute level.",
+          seed: { status: "clear", value: "\u2014", citation: "", next_release: "daily" }
+        },
+        {
+          id: "fx-intervention", cls: "event", name: "US\u2013Japan FX intervention", series_id: null,
+          source: "news / event",
+          trigger: "Repeat or escalation of FX intervention = peak-USD / debasement confirmed as active policy.",
+          seed: { status: "watch", value: "1st since 2011 done", citation: "", next_release: "event-driven" }
+        },
+        {
+          id: "fx-gold-real", cls: "event", name: "Gold vs real-yield decoupling", series_id: "GC=F + DFII10",
+          source: "Yahoo GC=F \u00b7 FRED DFII10",
+          trigger: "Gold rising while real yields high = debasement priced, gold thesis intact \u00b7 re-coupling down (gold falling with rising real yields) = debasement bid fading.",
+          seed: { status: "clear", value: "decoupled up", citation: "", next_release: "weekly" }
+        }
+      ]
+    },
+
     /* ---------------- Deployment ladder ---------------- */
     {
       kind: "ladder",

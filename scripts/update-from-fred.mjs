@@ -53,6 +53,13 @@ const MAPPINGS = [
   { rowId: "r-dgs10",  seriesId: "DGS10",  format: percent },
   { rowId: "r-dfii10", seriesId: "DFII10", format: percent },
   { rowId: "r-dff",    seriesId: "DFF",    format: percent },
+  // Credit stress (OAS series are already in percent).
+  { rowId: "cr-hy-oas",  seriesId: "BAMLH0A0HYM2", format: percent },
+  { rowId: "cr-ig-oas",  seriesId: "BAMLC0A0CM",   format: percent },
+  { rowId: "cr-ccc-oas", seriesId: "BAMLH0A3HYC",  format: percent },
+  // Dollar / yen plumbing (index/FX levels, not percent).
+  { rowId: "fx-usdjpy",    seriesId: "DEXJPUS",  format: level },
+  { rowId: "fx-broad-usd", seriesId: "DTWEXBGS", format: level },
 ];
 
 /* FRED series that inform the composite tripwires. Published under the
@@ -62,10 +69,15 @@ const CONTEXT = [
   { seriesId: "VIXCLS",   label: "VIX close (tw6)",                        kind: "level" },
   { seriesId: "DEXJPUS",  label: "USD/JPY (tw6)",                          kind: "level" },
   { seriesId: "WALCL",    label: "Fed balance sheet, $millions (tw7)",     kind: "balance" },
+  { seriesId: "BAMLH0A1HYBB", label: "BB OAS (BB<->CCC compression, cr-ccc-oas)", kind: "level" },
 ];
 
 function percent(n) {
   return `${n.toFixed(2)}%`;
+}
+
+function level(n) {
+  return n.toFixed(2);
 }
 
 function todayISO() {

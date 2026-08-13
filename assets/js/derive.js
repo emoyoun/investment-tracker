@@ -12,6 +12,12 @@ window.TW = (function () {
   const CYCLE = ["clear", "amber", "red", "watch"];
   const STALE_DAYS = 7;
 
+  /* Cross-row readings, keyed by row id -> parsed number. Set by the store on
+   * every build so a derive rule can reference OTHER rows (e.g. IG OAS escalating
+   * to red when HY OAS is also wide). Single-argument derive rules ignore it. */
+  let READINGS = {};
+  function setReadings(map) { READINGS = map || {}; }
+
   /* Pull the first number out of a human reading: "~4.20%", "\u2248 \u221225% (seed)",
    * "3.50\u20133.75%" -> 4.2, -25, 3.5. Returns NaN when there is nothing numeric. */
   function parseNum(v) {
@@ -89,7 +95,7 @@ window.TW = (function () {
     if (typeof item.derive !== "function") return null;
     const n = parseNum(item.value);
     if (isNaN(n)) return null;
-    const out = item.derive(n);
+    const out = item.derive(n, READINGS);
     return out && CYCLE.indexOf(out.status) !== -1 ? out : null;
   }
 
@@ -121,5 +127,5 @@ window.TW = (function () {
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
-  return { CYCLE, STALE_DAYS, parseNum, isSeed, ageFlag, ladderRungs, ladderDrawdown, derived, effStatus, safeUrl, esc };
+  return { CYCLE, STALE_DAYS, parseNum, isSeed, ageFlag, ladderRungs, ladderDrawdown, derived, effStatus, safeUrl, esc, setReadings };
 })();
