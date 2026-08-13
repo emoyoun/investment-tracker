@@ -2,7 +2,7 @@
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
   "asOf": "2026-08-13",
-  "posture": "Steady — daily red-flag scan found nothing new (all four hyperscalers still raising 2026 capex YoY, no fresh IREN/miner forced selling — IREN delivered Horizon 1 to Microsoft today, no surprise FOMC/YCC/QE action); rates eased slightly across the curve (2Y 4.22%, 10Y 4.70%) and the weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
+  "posture": "Steady — daily red-flag scan found nothing new (hyperscalers still raising 2026 capex YoY, no fresh IREN/miner forced selling, no surprise FOMC/YCC/QE action); rates held (2Y 4.22%, 10Y 4.70%), and the new credit-spread / dollar-plumbing rows went live for the first time (cr-hy-oas 2.72%, cr-ig-oas 0.79%, cr-ccc-oas 10.23%, fx-usdjpy 157.54, fx-broad-usd 119.06); weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -40,6 +40,12 @@
         "as_of": "2026-08-05",
         "citation": "https://fred.stlouisfed.org/series/WALCL",
         "display": "$6.75T"
+      },
+      "BAMLH0A1HYBB": {
+        "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
+        "value": "1.60",
+        "as_of": "2026-08-11",
+        "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       }
     }
   },
@@ -245,13 +251,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": null,
+      "value": "2.72%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -260,13 +266,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": null,
+      "value": "0.79%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -275,13 +281,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": null,
+      "value": "10.23%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -320,13 +326,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": null,
+      "value": "157.54",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
+      "as_of": "2026-08-07",
       "next_release": "daily"
     },
     {
@@ -335,13 +341,13 @@
       "trigger": "Sustained down = peak-USD confirmed; up = Donnelly-USD partially falsified. Judge on direction.",
       "source": "FRED",
       "series_id": "DTWEXBGS",
-      "value": null,
+      "value": "119.06",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "citation": "https://fred.stlouisfed.org/series/DTWEXBGS",
+      "as_of": "2026-08-07",
       "next_release": "daily"
     },
     {
