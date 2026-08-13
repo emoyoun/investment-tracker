@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-12",
-  "posture": "Steady — daily red-flag scan found nothing new (capex guidance unchanged, no fresh IREN/miner forced selling, no surprise FOMC/YCC/QE action); rates drifted higher across the curve (2Y 4.25%, 10Y 4.72%) and the weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
+  "asOf": "2026-08-13",
+  "posture": "Steady — daily red-flag scan found nothing new (all four hyperscalers still raising 2026 capex YoY, no fresh IREN/miner forced selling — IREN delivered Horizon 1 to Microsoft today, no surprise FOMC/YCC/QE action); rates eased slightly across the curve (2Y 4.22%, 10Y 4.70%) and the weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-12",
+    "as_of": "2026-08-13",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -24,8 +24,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "15.46",
-        "as_of": "2026-08-10",
+        "value": "15.28",
+        "as_of": "2026-08-11",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -170,13 +170,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "4.25%",
+      "value": "4.22%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -185,13 +185,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.25%",
+      "value": "5.24%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -200,13 +200,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.72%",
+      "value": "4.70%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -221,7 +221,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
@@ -236,7 +236,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-11",
       "next_release": "daily"
     },
     {
