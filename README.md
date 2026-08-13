@@ -112,8 +112,10 @@ Scripts load in that order and are plain scripts (not modules) so nothing depend
 
 ## Automated daily update (FRED)
 
-The five FRED daily-rate rows in the *Rates & fiscal-dominance* panel (`DGS2`,
-`DGS30`, `DGS10`, `DFII10`, `DFF`) can be refreshed from the
+The FRED daily rows — the *Rates & fiscal-dominance* panel (`DGS2`, `DGS30`,
+`DGS10`, `DFII10`, `DFF`), the *Credit stress* panel (`BAMLH0A0HYM2` HY OAS,
+`BAMLC0A0CM` IG OAS, `BAMLH0A3HYC` CCC OAS), and the *Dollar & yen plumbing*
+panel (`DEXJPUS` USD/JPY, `DTWEXBGS` Broad USD) — are refreshed from the
 [FRED API](https://fred.stlouisfed.org/docs/api/fred/) with:
 
 ```bash
@@ -128,9 +130,17 @@ the key is missing or every fetch fails, and only touches `data.json`. Extend th
 `MAPPINGS` array at the top of the script to bring more single-series rows under
 the refresh. Get a free key at <https://fredaccount.stlouisfed.org/apikeys>.
 
+Status for the credit rows is derived in the console (`assets/js/derive.js`): HY
+OAS amber ≥3.75% / red ≥5%; IG OAS amber ≥1.25% with a compound red at ≥1.75%
+**or** (≥1.25% **and** HY ≥4%) — the migration-into-quality signal, which uses a
+small cross-row readings map so one row's rule can see another's value; CCC OAS is
+value-only with an absolute red backstop at ≥12% (the BB↔CCC compression primary is
+judged weekly). `DEXJPUS`/`DTWEXBGS` are value-only, judged on direction weekly.
+
 The same run also publishes a top-level **`indicators`** block: the other
-FRED series that feed the composite tripwires — `PCEPILFE` (with a computed
-`yoy_pct`) for `tw3`, `VIXCLS` and `DEXJPUS` for `tw6`, and `WALCL` for `tw7`.
+FRED series that feed the composite/judgment rows — `PCEPILFE` (with a computed
+`yoy_pct`) for `tw3`, `VIXCLS` and `DEXJPUS` for `tw6`, `WALCL` for `tw7`, and
+`BAMLH0A1HYBB` (BB OAS) for the BB↔CCC compression behind `cr-ccc-oas`.
 These rows carry an analytic reading rather than a single number, so the script
 does **not** overwrite their `value`; it just surfaces fresh raw FRED numbers for
 a downstream agent to judge against. The console ignores the block; add a series
