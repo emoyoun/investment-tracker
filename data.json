@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-15",
-  "posture": "Steady — daily red-flag scan found nothing new (hyperscalers still raising 2026 capex YoY, no fresh IREN/miner forced selling since 7/29-30, no surprise FOMC/YCC/QE — the Fed's RMP-to-zero move is a routine taper, not QE); rates eased further (2Y 4.15%, 10Y 4.63%), credit spreads flat (HY 2.71%, IG 0.79%, CCC 10.24%); weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
+  "asOf": "2026-08-16",
+  "posture": "Steady — daily red-flag scan found nothing new (hyperscalers still guiding 2026 capex UP not down; IREN news this week is positive — Horizon 1 delivered to Microsoft, NVIDIA Exemplar Cloud status, no forced selling since 7/29-30; no surprise FOMC/YCC/QE, next meeting is Sept 15-16); rates/credit unchanged since Thu's close (2Y 4.15%, 10Y 4.63%, HY 2.71%, IG 0.79%, CCC 10.24% — no new FRED prints over the weekend); weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-15",
+    "as_of": "2026-08-16",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
