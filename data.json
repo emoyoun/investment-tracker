@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-16",
-  "posture": "Steady — daily red-flag scan found nothing new (hyperscalers still guiding 2026 capex UP not down; IREN news this week is positive — Horizon 1 delivered to Microsoft, NVIDIA Exemplar Cloud status, no forced selling since 7/29-30; no surprise FOMC/YCC/QE, next meeting is Sept 15-16); rates/credit unchanged since Thu's close (2Y 4.15%, 10Y 4.63%, HY 2.71%, IG 0.79%, CCC 10.24% — no new FRED prints over the weekend); weekly-owned proposed ambers on tw7/tw8 still await your confirm.",
+  "asOf": "2026-08-24",
+  "posture": "Ladder re-armed (SOXX 506.18, −22.8% / −20% rung live) while HY/IG stay calm — mechanical low to ladder into unless AI-infra credit stress stays wide; 2Y 4.24% sits 1bp under Donnelly’s line; gold’s debasement bid intact (GC=F 4718 with DFII10 +2.40%); proposed ambers on tw7/tw8 and proposed clear on sc-donnelly still need your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-16",
+    "as_of": "2026-08-24",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -24,27 +24,27 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "14.63",
-        "as_of": "2026-08-13",
+        "value": "15.13",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
         "label": "USD/JPY (tw6)",
-        "value": "157.5400000000",
-        "as_of": "2026-08-07",
+        "value": "158.9100000000",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/DEXJPUS"
       },
       "WALCL": {
         "label": "Fed balance sheet, $millions (tw7)",
-        "value": "6759955.0000000000",
-        "as_of": "2026-08-12",
+        "value": "6745699.0000000000",
+        "as_of": "2026-08-19",
         "citation": "https://fred.stlouisfed.org/series/WALCL",
-        "display": "$6.76T"
+        "display": "$6.75T"
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.6000000000",
-        "as_of": "2026-08-13",
+        "value": "1.5800000000",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       }
     }
@@ -56,14 +56,14 @@
       "trigger": "RED: 2+ of MSFT/GOOGL/AMZN/META guide capex DOWN YoY. AMBER: AI credit stress (CDS/spreads widening) + compute/memory pricing rolling over together.",
       "source": "Hyperscaler earnings; Reuters/BBG/FT",
       "series_id": null,
-      "value": "capex raised again — ~$720–745B combined 2026 guide",
+      "value": "capex still raised — ~$720–745B combined 2026 guide",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "All four raised at Q2 rather than cut: AMZN ~$200B → ~$220B on higher memory cost, GOOGL $180–190B → $195–205B to accelerate capacity, META floor up to $130–145B, MSFT ~$175B purely on a finance→operating lease reclass with the underlying build unchanged — the red test (2+ guiding capex DOWN YoY) is not close. Cloud second derivative is still positive: Azure 40% → 43%, AWS +37% (fastest in 18 quarters), Google Cloud +82%, Microsoft commercial RPO $678B (+84%). Amber needs credit stress AND compute/memory pricing rolling over together: the credit leg is live (NVDA 5y CDS at a record 82bp on 7/27 and 77bp on 8/10, spread over Treasuries doubled since June, CoreWeave loan spreads +125bp, Oracle cut to the bottom investment-grade notch) but the pricing leg is absent — advanced packaging is sold out through 2026 and memory is inflating capex, not deflating it. One leg, not two.",
+      "rationale": "Red test (2+ of MSFT/GOOGL/AMZN/META guiding capex DOWN YoY) is not close — Q2 guides still point higher (AMZN ~$220B, GOOGL $195–205B, META $130–145B floor, MSFT ~$175B). Cloud 2nd derivative remains positive on the last prints (Azure 40%→43%, AWS +37%, Google Cloud +82%). Amber needs AI credit stress AND compute/memory pricing rolling over together: credit leg is still live (Oracle CDS ~215bp ATH / BBB−, CoreWeave CDS ~855bp) but packaging stays sold out through 2026 and memory is inflating hyperscaler guides, not deflating them. One leg, not two. Next catalysts: CRM 8/26, SNOW 9/02.",
       "confidence": "high",
       "citation": "https://www.theregister.com/off-prem/2026/08/04/cloud-giants-pour-nearly-600b-into-capex-as-ai-demand-surges/5282679",
       "as_of": "2026-08-05",
-      "next_release": "Q3 2026 hyperscaler earnings (late Oct)"
+      "next_release": "CRM 8/26 · SNOW 9/02 · Q3 hyperscaler earnings (late Oct)"
     },
     {
       "id": "tw2",
@@ -89,7 +89,7 @@
       "value": "Core PCE YoY 3.3%",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "Core PCE index 130.266 for June = 3.3% YoY, nowhere near the ≤~2% red line, and the Fed's 7/29 statement still calls inflation elevated with energy supply shocks in the mix. Real policy is positive (DFII10 +2.40%) but real yields are RISING, not falling (2.24% on 7/06 → 2.40% on 8/07), so neither half of the red condition — disinflation, and falling real yields alongside positive real policy — is present. Regime assumption under the scarcity leg holds.",
+      "rationale": "Core PCE index 130.266 for June = 3.3% YoY, nowhere near the ≤~2% red line. Real policy is positive (DFII10 +2.40%) and real yields are firm/flat, not falling — so neither half of the red condition (multi-quarter disinflation to ~2% plus falling real yields alongside positive real policy) is present. July CPI (headline 3.4% / core 2.5%) cooled at the margin but is not Core PCE.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/PCEPILFE",
       "as_of": "2026-06-01",
@@ -101,14 +101,14 @@
       "trigger": "RED: sustained organic growth <~10-12% across core compounders OR structural NRR fall.",
       "source": "Company earnings; secondary",
       "series_id": null,
-      "value": "organic growth & NRR holding",
+      "value": "organic growth & NRR holding — CSU Q2 organic 3% (1% FXN)",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "NOW subscription revenue +24.5% YoY with cRPO +21%, 123 net-new-ACV deals over $1M (+40% YoY) and FY26 guidance raised; SHOP revenue +33.7% and accelerating on GMV +31.6%, with merchant retention 92% above $1M GMV and 97% above $10M; SAP cloud +22%. The serial acquirers run low organic by design, not by decay — TOI Q2 organic 4% on +18% total revenue (reported 8/05), CSU Q1 organic 2% FX-neutral inside a 1–4% band that has held for nine quarters — so 'sustained <10–12% ACROSS core compounders' is not met. Gaps to close: CSU's own Q2 is still pending, and neither CRM nor SNOW has disclosed NRR for the quarter.",
+      "rationale": "CSU Q2 (8/11) printed 3% organic / 1% FX-neutral inside its long-run serial-acquirer band (core maintenance/recurring ex-Altera ~4%); that is design, not decay, so it does not trip ‘sustained <10–12% ACROSS core compounders.’ Prior compounder prints still hold: NOW sub +24.5% / cRPO +21%, SHOP +33.7%, SAP cloud +22%, TOI organic 4% on +18% total. Gaps: CRM reports 8/26 and SNOW 9/02 — NRR still undisclosed for both.",
       "confidence": "medium",
-      "citation": "https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-Reports-Second-Quarter-2026-Financial-Results/default.aspx",
-      "as_of": "2026-08-05",
-      "next_release": "CSU Q2, then CRM/SNOW Q2 (Aug–Sep 2026)"
+      "citation": "https://www.csisoftware.com/constellation-software-inc-announces-results-for-the-second-quarter-ended-june-30-2026-and-declares-quarterly-dividend/",
+      "as_of": "2026-08-11",
+      "next_release": "CRM 8/26 · SNOW 9/02"
     },
     {
       "id": "tw5",
@@ -116,14 +116,14 @@
       "trigger": "RED: forced/systemic selling in crypto-treasury/miner complex OR held miner needing serial dilution beyond pace. Watch IREN.",
       "source": "Filings; secondary",
       "series_id": null,
-      "value": "no new forced selling — ~370.8M shares issued, ~610M fully diluted",
+      "value": "Horizon 1 accepted — dilution overhang intact (~370M issued / ~610M FD)",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "Financing mix is deferred, not distressed: $3.0B of 1% converts due 2033 closed in May with $201.3M of capped calls struck at $110.30, and the conversion thresholds ($51.40 / $73.07 / $85.63) plus NVIDIA's 30M-share right at $70 all sit far out of the money near $40 — so the ~610M fully-diluted denominator (+64% over shares issued) is a price-dependent overhang that only bites if the equity works, which is the tolerable direction. The 8/04 424B7 registers 11,981,668 Mirantis consideration shares for resale; it raises no cash. Holding amber rather than de-escalating because share count is still up ~38% YoY (258.1M at 6/30/25 → 357.4M at 4/30/26, plus Nostrum and Mirantis stock), and it is only twelve days since the 7/30 margin-call liquidation that force-sold the AI-infra complex. No new forced selling this week.",
+      "rationale": "8/13: Microsoft accepted Horizon 1 (first 50MW of four under the $9.7B / 5y cloud contract) and NVIDIA granted Exemplar Cloud on GB300 NVL72 — constructive for cash conversion, not a dilution fix. Financing mix remains deferred not distressed ($3.0B 1% 2033 converts + capped calls); 8/04 424B7 still registers 11.98M Mirantis consideration shares for resale and raises no cash. Holding amber rather than de-escalating: share count still ~+38% YoY into a ~610M fully-diluted denominator, and it is only ~3.5 weeks since the 7/30 margin-call liquidation. No new forced selling this week.",
       "confidence": "medium",
-      "citation": "https://www.sec.gov/Archives/edgar/data/1878848/000114036126031053/ny20079234x2_8k.htm",
-      "as_of": "2026-08-04",
-      "next_release": "IREN FY2026 results (Aug–Sep 2026)"
+      "citation": "https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_ex99-1.htm",
+      "as_of": "2026-08-13",
+      "next_release": "IREN FY2026 results (late Aug 2026)"
     },
     {
       "id": "tw6",
@@ -131,13 +131,13 @@
       "trigger": "AMBER: vol uncompressing / dispersion->correlation / cross-sector stress / disorderly USDJPY. Bucket C deploy: correlation event or SOXX -30% ($459.20). Action is inverted: protect ballast.",
       "source": "VIX, DGS10 vs SPX, USDJPY",
       "series_id": "VIXCLS, DGS10, DEXJPUS",
-      "value": "carry unwind — USD/JPY 157.54, VIX back to 14.9",
-      "status": "amber",
+      "value": "regime calm — VIX 15.13, USD/JPY 158.91, DGS10 4.74%",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": "Clustered signals, not one: Japan's largest-ever yen intervention around 7/30 (US participation unconfirmed) took USD/JPY from 163.86 to 157.44 inside five sessions, including a −2.3% day on 8/03 that repriced everything carry-funded at once — EUR/JPY −2.1%, AUD/JPY −2.5%, WTI −6.4%, gold −0.7% — against a VIX spike to 20.66 on 7/29 and a margin-called fund force-selling AI-infra names on 7/30. That is disorderly USDJPY plus cross-asset deleveraging in one window. The acute phase has passed: VIX 14.9, SPX 7753 near highs, DGS10 easing to 4.65%, and stock–bond correlation is not currently broken. So this is alertness, not a Bucket C event — protect the ballast, do not pre-spend it. Watch whether carry funding rotates into CHF/EUR now that the BoJ has drawn a line.",
+      "rationale": "Clustered carry-unwind signals from late July have resolved: VIX recompressed to 15.13 (from 20.66 on 7/29), USD/JPY stabilized ~158.91 after the intervention spike (no fresh disorderly JPY strengthening), and there is no cross-sector stress cascade this week. Stock–bond correlation is not broken in a Bucket-C way — DGS10 at 4.74% with SPY still near highs. Cleared from amber; protect ballast only if a new cluster forms (vol uncompressing + USDJPY disorderly + cross-asset deleveraging together).",
       "confidence": "medium",
-      "citation": "https://www.ig.com/en/news-and-trade-ideas/yen-intervention-implications-for-dxy-eur-260805",
-      "as_of": "2026-08-07",
+      "citation": "https://fred.stlouisfed.org/series/VIXCLS",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -146,14 +146,14 @@
       "trigger": "AMBER Tier1 (any one): explicit YCC / non-crisis QE (WALCL up while core PCE>target) / SLR exemption. Tier2 (need 2+): bill share >~25% marketable debt / stablecoin bill demand scaling. Falsifiers: DFII10 positive, fiscal consolidation, hawk bloc.",
       "source": "FOMC; H.4.1/WALCL; QRA/MSPD; GENIUS disclosures",
       "series_id": "WALCL",
-      "value": "no Tier-1 fire; hawk bloc active — but WALCL +$143B in 26 weeks",
+      "value": "no Tier-1 fire; hawk bloc active — WALCL $6.75T, +$132B / 26w",
       "status": "clear",
       "proposed_status": "amber",
-      "rationale": "Falsifiers are holding hard, which is why status stays clear: the 7/29 FOMC held 3.50–3.75% on a 9–3 vote with Hammack, Kashkari and Logan dissenting FOR a 25bp hike, the statement says flatly 'The Committee will deliver price stability', DFII10 is durably positive at +2.40%, and the 8/05 QRA left coupon and FRN auction sizes unchanged with the bill share at 22.2% — under the ~25% Tier-2 line. What argues the other way, and why I am proposing amber rather than asserting it: WALCL has expanded in every month of 2026, +$13B over four weeks and +$142.7B over 26 weeks to $6.749T, while core PCE runs 3.3% and there is no crisis — the literal Tier-1 'non-crisis QE' reading. The benign explanation is in the statement itself ('continuing its policy of maintaining ample reserves') and in a directive that buys bills for reserve management rather than stimulus. Stablecoin bill demand is scaling ($308.5B, OCC implementing GENIUS via 12 CFR Part 15) but that is one Tier-2 leg and Tier 2 needs two. Your call on which reading governs; accepting this puts gold-weight on the table.",
+      "rationale": "Falsifiers still hold, so status stays clear: 7/29 FOMC held 3.50–3.75% with three dissents FOR a hike, DFII10 +2.40%, 8/05 QRA froze coupons with bill share 22.2% (under ~25% Tier-2). WALCL print for 8/19 is $6.75T — down ~$14B WoW but still +~$132B over 26 weeks with core PCE at 3.3% and no crisis, i.e. the literal Tier-1 ‘non-crisis QE’ reading. Benign read remains ‘maintaining ample reserves.’ Stablecoin bill demand is one Tier-2 leg only. Leaving proposed amber for your confirm; next FOMC Sept 15–16.",
       "confidence": "medium",
-      "citation": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
-      "as_of": "2026-08-11",
-      "next_release": "next FOMC (Sept 2026) · QRA Nov 4, 2026"
+      "citation": "https://fred.stlouisfed.org/series/WALCL",
+      "as_of": "2026-08-24",
+      "next_release": "next FOMC (Sept 15–16, 2026) · QRA Nov 4, 2026 · weekly H.4.1"
     },
     {
       "id": "tw8",
@@ -176,13 +176,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "4.15%",
+      "value": "4.24%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -191,13 +191,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.21%",
+      "value": "5.27%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -206,13 +206,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.63%",
+      "value": "4.74%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -221,13 +221,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.39%",
+      "value": "2.40%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -242,7 +242,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -251,13 +251,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.71%",
+      "value": "2.70%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -266,13 +266,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": "0.79%",
+      "value": "0.81%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -281,13 +281,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.24%",
-      "status": null,
+      "value": "10.37%",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
+      "rationale": "CCC OAS 10.37% vs BB OAS 1.58% → gap ~8.79pp. Gap remains wide (not compressed): this is fringe CCC stress, not late-cycle reach-for-yield BB↔CCC compression, and not a compression-reversal ‘turn.’ Absolute 12% red backstop not close. Week-over-week CCC edged 10.14→10.37 while BB ~flat — mild decompression, not the signal.",
+      "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -296,13 +296,13 @@
       "trigger": "Spreads widening while equity sleeves near highs = early warning.",
       "source": "derived",
       "series_id": null,
-      "value": null,
-      "status": null,
+      "value": "no divergence — HY/IG calm while SPX sleeve near highs",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "rationale": "HY OAS 2.70% and IG OAS 0.81% are flat-to-tight vs mid-August; SPY ~763 remains near recent highs. Semis (SOXX −22.8%) are selling off, but credit is not widening alongside — so the early-warning ‘spreads up / equities up’ divergence is absent. Cross-ref behavioral rule: semis selloff + credit calm = mechanical ladder low, not credit-confirmed deterioration.",
+      "confidence": "medium",
+      "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "as_of": "2026-08-24",
       "next_release": "weekly"
     },
     {
@@ -311,13 +311,13 @@
       "trigger": "AI-infra spreads/CDS widening & sustained = real deterioration; calm during a semis selloff = mechanical low.",
       "source": "credit feed / CDX HY proxy",
       "series_id": null,
-      "value": null,
-      "status": null,
+      "value": "Oracle CDS ~215bp ATH / CoreWeave ~855bp — stress sustained",
+      "status": "amber",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "rationale": "Selective AI-infra credit stress is still live weeks after the late-July blowout: Oracle 5y CDS ~215bp all-time high after S&P cut to BBB− (one notch above junk) on the AI datacenter build; CoreWeave 5y CDS ~855bp with lenders demanding tighter covenants after a ~125bp loan-spread widening. HY index OAS remains calm (~2.70%), so this is name-specific not systemic — but it is widening that has stayed wide. Per the behavioral rule: semis selloff + AI-infra spreads still wide = treat as real deterioration for add decisions, not a purely mechanical ladder low.",
+      "confidence": "medium",
+      "citation": "https://www.channelnewsasia.com/business/analysisoracle-corp-goes-high-stakes-ratings-gamble-in-ai-strategy-6298706",
+      "as_of": "2026-08-24",
       "next_release": "weekly"
     },
     {
@@ -326,13 +326,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "157.54",
-      "status": null,
+      "value": "158.91",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
+      "rationale": "Judge the move, not the level: after the late-July intervention plunge (163.86→~157.5), USD/JPY has drifted back to ~158.9–159.1 — mild JPY weakening / stabilization, not a disorderly JPY strengthening (carry-unwind) impulse this week. No fresh cascade across EUR/JPY, AUD/JPY or vol.",
+      "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-08-07",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -341,13 +341,13 @@
       "trigger": "Sustained down = peak-USD confirmed; up = Donnelly-USD partially falsified. Judge on direction.",
       "source": "FRED",
       "series_id": "DTWEXBGS",
-      "value": "119.06",
-      "status": null,
+      "value": "118.06",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
+      "rationale": "DTWEXBGS trend is sustained down: ~120.6 in late July → 119.2 mid-August → 118.06 on 8/21 (−~2.1% in a month). That is peak-USD confirming, not Donnelly-USD falsifying (falsifier needs the dollar breaking higher). DXY ~99 echoes the same soft-dollar drift.",
+      "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "as_of": "2026-08-07",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -356,14 +356,14 @@
       "trigger": "Repeat/escalation of US-Japan FX intervention = peak-USD/debasement active policy.",
       "source": "news / event",
       "series_id": null,
-      "value": null,
-      "status": null,
+      "value": "joint US–Japan yen buy confirmed 8/01–8/03 — no repeat this week",
+      "status": "amber",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
-      "citation": null,
-      "as_of": null,
-      "next_release": "event-driven"
+      "rationale": "Self-promote clear→amber: first coordinated US–Japan yen-buying intervention since 2011 (MoF + Treasury confirmed; Bessent: will not hesitate to participate further) is an escalation of FX activism / peak-USD-as-policy. Japan leg estimated up to ~$85B over 7/30–7/31. News scan for 8/17–8/24 finds no second operation — amber stands on the confirmed joint action, not a fresh repeat.",
+      "confidence": "high",
+      "citation": "https://www.channelnewsasia.com/east-asia/japan-yen-intervention-us-more-action-6295441",
+      "as_of": "2026-08-03",
+      "next_release": "event-driven · MoF/Treasury statements"
     },
     {
       "id": "fx-gold-real",
@@ -371,13 +371,13 @@
       "trigger": "Gold up while real yields high = debasement bid intact; re-coupling down = bid fading.",
       "source": "Yahoo GC=F / FRED DFII10",
       "series_id": "GC=F + DFII10",
-      "value": null,
-      "status": null,
+      "value": "GC=F 4717.9 · DFII10 +2.40% — debasement bid intact",
+      "status": "clear",
       "proposed_status": null,
-      "rationale": null,
-      "confidence": null,
-      "citation": null,
-      "as_of": null,
+      "rationale": "Gold up hard (GC=F ~4366 on 8/18 → 4717.9 on 8/24) while 10Y real yields remain elevated at +2.40%. Gold rising with high real yields = debasement bid intact, not re-coupling. Re-coupling (amber) would be gold falling as real yields rise.",
+      "confidence": "medium",
+      "citation": "https://finance.yahoo.com/quote/GC%3DF/",
+      "as_of": "2026-08-24",
       "next_release": "weekly"
     },
     {
@@ -386,13 +386,13 @@
       "trigger": "Peak $656. Rungs: -20% $524.80 (fired), -25% $492.00 (fired), -30% $459.20 (Bucket C), -40% $393.60.",
       "source": "index / ETF quote",
       "series_id": "^SOX / SOXX",
-      "value": "529.39",
+      "value": "506.18",
       "status": null,
       "proposed_status": null,
-      "rationale": "SOXX closed 529.39 on 8/10 — a 19.3% drawdown from the $656 peak, back ABOVE the −20% rung at $524.80 after tagging 465.00 on 7/29 (−29.1%, deep enough to fire −25% and within $6 of the −30% Bucket C rung at $459.20). Rung state is derived from the price, so the fired rungs have unwound with the recovery: the ladder is armed, not triggered.",
+      "rationale": "SOXX 506.18 on 8/24 = −22.8% from the $656 peak — back through the −20% rung ($524.80), still above −25% ($492) and −30% Bucket C ($459.20). Prior 8/10 recovery above −20% has reversed. Rung state is derived from price; status left null. Credit calm + semis selloff = mechanical ladder setup; AI-infra spreads still wide (cr-ai-infra) argue against treating it as purely mechanical.",
       "confidence": "high",
       "citation": "https://finance.yahoo.com/quote/SOXX/",
-      "as_of": "2026-08-10",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -401,14 +401,14 @@
       "trigger": "Falsify: 2Y sustained >4.25% + USD breaking higher, not lower.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "2Y 4.19%, DXY 99.75 — falsifier 6bp away",
+      "value": "2Y 4.24% (1bp under line) · DXY ~99 · soft July CPI",
       "status": "amber",
-      "proposed_status": null,
-      "rationale": "Neither leg of the falsifier is complete, but both are close. DGS2 at 4.19% sits 6bp under the sustained-4.25% line. DXY at 99.75 is rangebound 99–101: it printed a 2026 high just over 99.68 and a seven-week low of 99.42 on 8/03 after the yen intervention, so the dollar is resilient rather than breaking either way — held up by Middle East safe-haven demand and a live hike premium. Peak-hawkishness is the harder half of the call to defend: three FOMC members voted for a hike on 7/29 and the market prices at least one 2026 hike, not the cuts this framework needs.",
+      "proposed_status": "clear",
+      "rationale": "De-escalation needs your confirm. July CPI (8/12) printed 3.4% headline / 2.5% core and cut September hike odds — the dollar is not breaking higher (DXY ~99 / DTWEXBGS drifting down), so the USD leg of the falsifier is failing. Caveat that keeps status amber until you accept: DGS2 at 4.24% is only 1bp under the sustained-4.25% line (tagged 4.25% on 8/10). Soft CPI + soft dollar argue the framework still holds; the 2Y is the live risk into Sept FOMC.",
       "confidence": "medium",
-      "citation": "https://www.fxstreet.com/news/united-states-dollar-index-consolidates-below-10000-as-bulls-await-us-cpi-amid-iran-risks-202608110118",
-      "as_of": "2026-08-11",
-      "next_release": "US CPI 8/12, PPI 8/13"
+      "citation": "https://www.bls.gov/news.release/archives/cpi_08122026.htm",
+      "as_of": "2026-08-24",
+      "next_release": "Sept FOMC 15–16 · next CPI 9/11"
     },
     {
       "id": "sc-karsan",
@@ -416,14 +416,14 @@
       "trigger": "Falsify: Fed tightens into disinflation & holds; real yields break out, no repression.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "debasement plumbing intact — no disinflation to tighten into",
+      "value": "debasement plumbing intact — Core PCE 3.3%, WALCL still elevated",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "The falsifier needs the Fed tightening into disinflation while real yields break out with no repression. There is no disinflation to tighten into — core PCE 3.3% with a Hormuz energy shock feeding it — and the plumbing still leans his way: WALCL +$142.7B over 26 weeks, the 8/05 QRA freezing coupon and FRN sizes so incremental funding goes to bills, and a $308.5B stablecoin complex as a structural bill bid. The pressure worth tracking is real yields firming (DFII10 2.24% → 2.40% since early July) with a committee that has three votes for a hike; that is the falsifier's second leg forming without its first.",
+      "rationale": "Falsifier needs Fed tightening into disinflation with real yields breaking out and no repression. Soft July CPI helps at the margin, but Core PCE is still 3.3% — no clean disinflation to tighten into — and plumbing still leans his way: WALCL +~$132B / 26w, QRA bill-heavy funding, structural stablecoin bill bid. DFII10 firm at +2.40% is the second falsifier leg forming without the first.",
       "confidence": "medium",
-      "citation": "https://home.treasury.gov/system/files/221/TreasuryPresentationToTBACQ32026.pdf",
-      "as_of": "2026-08-11",
-      "next_release": "QRA Nov 4, 2026"
+      "citation": "https://fred.stlouisfed.org/series/WALCL",
+      "as_of": "2026-08-24",
+      "next_release": "Sept FOMC · QRA Nov 4, 2026"
     },
     {
       "id": "sc-nemeth",
@@ -431,13 +431,13 @@
       "trigger": "Falsify: diversification holds through a deleveraging (bonds rally as equities fall).",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "diversification failed the 7/29 test",
+      "value": "diversification failed the 7/29 test — no new falsifying episode",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "The falsifier — bonds rally as equities fall — did not happen in the one deleveraging we got. On 7/29 the S&P fell 1.5% to 7316 while DGS10 ROSE to 4.67%, and kept rising to 4.75% by 7/31; gold also fell 0.7% into the 8/03 carry unwind. Treasuries sold with equities, so correlation-to-one held and the framework stands. It cuts the same way on the recovery: the 8/03–8/10 rally lifted stocks and bonds together, which is the same correlation with the sign flipped. Cross-ref tw6.",
+      "rationale": "No fresh deleveraging this week to re-test the falsifier. The standing evidence remains 7/29: SPX −1.5% while DGS10 rose to 4.67% (and 4.75% by 7/31) — bonds sold with equities. This week’s tape (SPY near highs, DGS10 4.74%) is the same correlation with the sign flipped. Framework stands; amber held.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-11",
+      "as_of": "2026-08-24",
       "next_release": "next deleveraging episode"
     },
     {
@@ -449,7 +449,7 @@
       "value": "margin still migrating to the supply chain",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "The falsifier is value staying at the model layer, and it isn't. Hyperscaler capex is up ~80% YoY toward $720–745B, and the scarce links are the ones setting price: Amazon lifted its 2026 guide ~$20B explicitly on higher memory cost, advanced packaging is sold out through 2026, and token economics face upward input-cost pressure rather than the usual silicon deflation. Model-layer output is being funded by the infrastructure layer and increasingly priced by it. Open-weight commoditization is the leg I have no fresh read on this week.",
+      "rationale": "Falsifier (value stays at the model layer / open-weights fail to commoditize) still absent. Hyperscaler capex guides remain ~$720–745B with memory cost explicitly lifting AMZN’s number; advanced packaging sold out through 2026. Oracle/CoreWeave credit stress is the financing scar of the same migration, not evidence value returned to models.",
       "confidence": "medium",
       "citation": "https://www.theregister.com/off-prem/2026/08/04/cloud-giants-pour-nearly-600b-into-capex-as-ai-demand-surges/5282679",
       "as_of": "2026-08-05",
@@ -461,13 +461,13 @@
       "trigger": "Falsify: oil supply surprises to the upside; backwardation fails to appear.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "steep backwardation — supply not surprising higher",
+      "value": "steep backwardation intact — Brent ~$92 / WTI ~$85",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "Falsifier decisively absent. The curve is in pronounced backwardation — Brent Oct-26 $83.6 against Dec-26 $80.0 on 8/07, WTI Sep-26 $78.2 against Dec-26 $74.6, and a late-July WTI M1–M12 spread near $15 — with roughly 8.5 mb/d of Q2 global inventory draw and thin Cushing stocks underneath it. Supply is undershooting, not surprising to the upside: OPEC+ added only ~188 kb/d for September to complete the 3.5 mb/d unwind, and physical Gulf exports run ~40% below pre-war levels behind the partially closed Strait of Hormuz. The live risk to the thesis is demand destruction at these prices, not new barrels.",
+      "rationale": "Falsifier (oil supply surprises higher; backwardation fails) still absent. Front-end backwardation remains pronounced into late August (Brent prompt premium over deferred; Oct-26 vs mid-2027 spreads still double-digit per curve commentary) with Brent ~92 and WTI ~85. US commercial stocks built, but Cushing draws and Hormuz/OPEC+ discipline keep prompt scarce. Live risk is demand destruction at these prices, not a supply surprise.",
       "confidence": "medium",
-      "citation": "https://commodity-board.com/brent-curve-steepens-as-geopolitics-collide-with-tight-near-term-supply",
-      "as_of": "2026-08-07",
+      "citation": "https://commodity-board.com/brent-curve-tightens-above-90-usd-as-geopolitics-and-stocks-support-oil",
+      "as_of": "2026-08-24",
       "next_release": "OPEC+ meeting · monthly IEA/OPEC balances"
     },
     {
@@ -476,14 +476,14 @@
       "trigger": "Falsify: committee acts on a real, sustained hawkish hike path.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "three dissents FOR a hike; median dot 3.8%",
+      "value": "three hike dissents stand; soft CPI cut Sept odds",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "Self-promoting clear → amber: the falsifier is a committee acting on a real, sustained hawkish hike path, and it is now one meeting from acting. The 7/29 hold was 9–3 with Hammack, Kashkari and Logan voting for +25bp; the statement says 'The Committee will deliver price stability'; nine of eighteen June dots had rates higher by year-end with the median up to 3.8% from 3.4%; forward guidance has been abolished and Warsh submits no dot of his own; the market prices a hike as soon as September. Not falsified — no hike has been delivered and DFF is still 3.63% — but the good-cop reading is carrying less of the explanation each meeting.",
+      "rationale": "Holding amber: falsifier is the committee acting on a sustained hawkish hike path. Soft July CPI cut September hike odds and helps the good-cop reading, but does not erase 7/29’s 9–3 vote with three dissents FOR +25bp, the abolished forward guidance, or a June median dot at 3.8%. Not falsified — DFF still 3.63%, no hike delivered — and Sept 15–16 is the next real test.",
       "confidence": "medium",
-      "citation": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
-      "as_of": "2026-07-29",
-      "next_release": "next FOMC (Sept 2026)"
+      "citation": "https://www.bls.gov/news.release/archives/cpi_08122026.htm",
+      "as_of": "2026-08-24",
+      "next_release": "next FOMC (Sept 15–16, 2026)"
     },
     {
       "id": "c-leverage",
@@ -494,10 +494,10 @@
       "value": "no new breach beyond the named exceptions",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "The only new balance-sheet activity in the book this week is IREN's, and IREN is a named exception: the 8/04 424B7 registers 11,981,668 Mirantis consideration shares for resale and raises no cash, on top of May's $3.0B of 1% converts with $201.3M of capped calls. BTDR remains the other standing exception at ~50–55%. No other holding surfaced a crossing in this week's filings — but this screen is filing-driven, so read that as no evidence of a breach rather than proof of none.",
+      "rationale": "No new ~33% debt/market-cap crossing in this week’s filings. IREN remains a named exception (Horizon 1 acceptance is commercial, not a leverage event; Mirantis share issuance already flagged). BTDR remains the other standing exception at ~50–55%. Filing-driven screen: absence of evidence, not proof of none.",
       "confidence": "medium",
-      "citation": "https://www.sec.gov/Archives/edgar/data/1878848/000114036126031055/ny20079234x1_424b7.htm",
-      "as_of": "2026-08-11",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_ex99-1.htm",
+      "as_of": "2026-08-24",
       "next_release": "next 10-Q/8-K cycle"
     },
     {
