@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-17",
-  "posture": "Steady — SOXX recovered to 559 (−14.8%, ladder disarmed), HY OAS 2.67% calm while Oracle/CoreWeave credit stays selectively stressed; Core PCE 3.3%; soft July CPI cut Sept-hike odds; tw7/tw8 proposed ambers still await confirm.",
+  "asOf": "2026-08-25",
+  "posture": "Rates jumped on the week (2Y 4.24%, 10Y 4.74%, 30Y 5.27%, HY 2.70%, IG 0.81%); tw7 self-promoted to amber on Treasury's surprise 8/19 long-bond buyback doubling (Fed-independence watch into Warsh's 8/27–29 Jackson Hole debut) — Treasury action, not FOMC, so red bar not met; no tw1/tw5 triggers (capex still rising, IREN pressure is earnings-eve positioning ahead of 8/27 FY26 results, not forced selling).",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-17",
+    "as_of": "2026-08-25",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -24,27 +24,27 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "14.25",
-        "as_of": "2026-08-14",
+        "value": "15.13",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
         "label": "USD/JPY (tw6)",
-        "value": "157.5400000000",
-        "as_of": "2026-08-07",
+        "value": "158.9100000000",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/DEXJPUS"
       },
       "WALCL": {
         "label": "Fed balance sheet, $millions (tw7)",
-        "value": "6759955.0000000000",
-        "as_of": "2026-08-12",
+        "value": "6745699.0000000000",
+        "as_of": "2026-08-19",
         "citation": "https://fred.stlouisfed.org/series/WALCL",
-        "display": "$6.76T"
+        "display": "$6.75T"
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.5700000000",
-        "as_of": "2026-08-14",
+        "value": "1.5800000000",
+        "as_of": "2026-08-21",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       }
     }
@@ -146,14 +146,14 @@
       "trigger": "AMBER Tier1 (any one): explicit YCC / non-crisis QE (WALCL up while core PCE>target) / SLR exemption. Tier2 (need 2+): bill share >~25% marketable debt / stablecoin bill demand scaling. Falsifiers: DFII10 positive, fiscal consolidation, hawk bloc.",
       "source": "FOMC; H.4.1/WALCL; QRA/MSPD; GENIUS disclosures",
       "series_id": "WALCL",
-      "value": "WALCL $6.760T (8/12) — still expanding at 3.3% core PCE",
-      "status": "clear",
-      "proposed_status": "amber",
-      "rationale": "No new FOMC/QRA this week; the fresh print is WALCL 6,759,955 on 8/12 ($6.760T), up from 6,748,567 on 8/05 and +~$143B over ~26 weeks while core PCE runs 3.3% with no crisis — the literal Tier-1 non-crisis-QE reading, so proposed amber stays. Falsifiers still hold status at clear: 7/29 FOMC held 3.50–3.75% on a 9–3 hike-dissent vote, DFII10 +2.39%, 8/05 QRA froze coupons with bill share 22.2% (<~25% Tier-2 line), and July CPI (3.4%/2.5% core on 8/12) cut near-term hike urgency without delivering a cut cycle. Your confirm still puts gold-weight on the table.",
+      "value": "WALCL $6.745T (8/19, down from $6.760T on 8/12) — Treasury doubled long-bond buybacks 8/19",
+      "status": "amber",
+      "proposed_status": null,
+      "rationale": "Self-promoting clear→amber on the daily thin-scan's YCC/yield-target leg: Treasury Secretary Bessent surprised markets 8/19 by doubling long-bond buyback size ($2B→$4B/operation, 10–30y sector, effective 9/9–11/4) after the 30Y hit a ~19-year high, with commentary (Reuters, Motley Fool) reading it as YCC/QE-adjacent and raising Fed-independence questions ahead of Chair Warsh's 8/27–29 Jackson Hole debut. Holding this at amber, not red: it is Treasury debt-management (self-funded via bill issuance), not an FOMC action — WALCL actually ticked down to $6.745T on 8/19 from $6.760T on 8/12, undercutting last week's 'still expanding' Tier-1 read — and Reuters/RSM both note true YCC needs Fed cooperation, which is absent (Warsh's stated line is the opposite: let the long end rise to do the tightening). Full red bar (actual FOMC/YCC/QE action) not met; flagging for the weekly agent's full falsifier read.",
       "confidence": "medium",
-      "citation": "https://fred.stlouisfed.org/series/WALCL",
-      "as_of": "2026-08-17",
-      "next_release": "next FOMC (Sept 15–16) · QRA Nov 4, 2026"
+      "citation": "https://www.cnbc.com/2026/08/19/treasury-announces-upscaled-buyback-operation-for-longer-term-debt-sending-yields-lower.html",
+      "as_of": "2026-08-25",
+      "next_release": "Jackson Hole (Warsh speech, Aug 27–29) · next FOMC (Sept 15–16) · QRA Nov 4, 2026"
     },
     {
       "id": "tw8",
@@ -176,13 +176,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "4.15%",
+      "value": "4.24%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -191,13 +191,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.21%",
+      "value": "5.27%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -206,13 +206,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.63%",
+      "value": "4.74%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -221,13 +221,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.39%",
+      "value": "2.40%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -242,7 +242,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-13",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -251,13 +251,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.67%",
+      "value": "2.70%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-08-14",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -266,13 +266,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": "0.80%",
+      "value": "0.81%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-08-14",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -281,13 +281,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.12%",
+      "value": "10.37%",
       "status": "clear",
       "proposed_status": null,
       "rationale": "CCC OAS 10.12% vs BB OAS 1.57% (gap 8.55pp on 8/14) — quality bifurcation, not BB↔CCC compression. Gap has been ~8.1–8.6pp since mid-July and is not narrowing into a reach-for-yield squeeze, nor reversing from one; absolute backstop (≥12%) not close. Leave clear; watch the gap for a sudden CCC tightening toward BB (late-cycle) or a sharp CCC blowout (the turn).",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-08-14",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -326,13 +326,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "157.54",
+      "value": "158.91",
       "status": "clear",
       "proposed_status": null,
       "rationale": "Judge the move, not the level: the disorderly JPY-strengthening leg was the 7/30–8/04 window (163.86→157.44). Since then FRED’s last print is 157.54 (8/07) and Yahoo JPY=X has ground back toward ~159.5 — yen weaker, orderly. No fresh disorderly strengthening / carry-unwind impulse this week.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-08-07",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
@@ -341,13 +341,13 @@
       "trigger": "Sustained down = peak-USD confirmed; up = Donnelly-USD partially falsified. Judge on direction.",
       "source": "FRED",
       "series_id": "DTWEXBGS",
-      "value": "119.06",
+      "value": "118.06",
       "status": "clear",
       "proposed_status": null,
       "rationale": "DTWEXBGS 119.06 (8/07) is ~1.4 points below mid-July (~120.5) after the yen intervention — a gentle down-drift that leans toward peak-USD rather than falsifying Donnelly via a dollar break higher. DXY ~99.58 on 8/17 is rangebound 99–100, not a sustained upside break. Direction supports the regime thesis; not yet a decisive multi-month confirmation.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "as_of": "2026-08-07",
+      "as_of": "2026-08-21",
       "next_release": "daily"
     },
     {
