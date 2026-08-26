@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-24",
-  "posture": "Ladder re-armed (SOXX 506.18, −22.8% / −20% rung live) while HY/IG stay calm — mechanical low to ladder into unless AI-infra credit stress stays wide; 2Y 4.24% sits 1bp under Donnelly’s line; gold’s debasement bid intact (GC=F 4718 with DFII10 +2.40%); proposed ambers on tw7/tw8 and proposed clear on sc-donnelly still need your confirm.",
+  "asOf": "2026-08-26",
+  "posture": "Rates eased a touch (2Y 4.24%, 10Y 4.70%, 30Y 5.23%, DFII10 2.38%) with HY/IG/CCC still calm; no new tw1/tw5/tw7 triggers today — watch IREN FY26 earnings (8/27) and Warsh's Jackson Hole debut (8/28) for the next real catalysts; proposed ambers on tw7/tw8 and proposed clear on sc-donnelly still need your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-24",
+    "as_of": "2026-08-26",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -24,8 +24,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "15.13",
-        "as_of": "2026-08-21",
+        "value": "15.85",
+        "as_of": "2026-08-24",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -43,8 +43,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.5800000000",
-        "as_of": "2026-08-21",
+        "value": "1.5700000000",
+        "as_of": "2026-08-24",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       }
     }
@@ -182,7 +182,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -191,13 +191,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.27%",
+      "value": "5.23%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -206,13 +206,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.74%",
+      "value": "4.70%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -221,13 +221,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.40%",
+      "value": "2.38%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -242,7 +242,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -251,13 +251,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.70%",
+      "value": "2.69%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -272,7 +272,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
@@ -281,13 +281,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.37%",
+      "value": "10.36%",
       "status": "clear",
       "proposed_status": null,
       "rationale": "CCC OAS 10.37% vs BB OAS 1.58% → gap ~8.79pp. Gap remains wide (not compressed): this is fringe CCC stress, not late-cycle reach-for-yield BB↔CCC compression, and not a compression-reversal ‘turn.’ Absolute 12% red backstop not close. Week-over-week CCC edged 10.14→10.37 while BB ~flat — mild decompression, not the signal.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-24",
       "next_release": "daily"
     },
     {
