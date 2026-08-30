@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-08-29",
-  "posture": "Rates edged up again (2Y 4.20%, 10Y 4.67%, 30Y 5.19%, DFII10 2.34%) with HY/IG/CCC still calm (2.63%/0.79%/10.31%); no new tw1/tw5/tw7 triggers — Warsh's 8/28 Jackson Hole debut was hawkish on inflation (\"we have work to do\") but avoided any YCC/yield-target/non-crisis-QE signal, so tw7 stays as-is; hyperscaler capex guides remain all-up (no tw1); crypto-miner distress this week (Vulcan/Olenox debt strain, Poolin's old Ch.11) is isolated/small-cap, not systemic or IREN-related (no tw5); proposed ambers on tw7/tw8 and proposed clear on sc-donnelly still need your confirm.",
+  "asOf": "2026-08-30",
+  "posture": "Weekend read: rates/credit unchanged from Friday's close (2Y 4.20%, 10Y 4.67%, 30Y 5.19%, DFII10 2.34%; HY/IG/CCC 2.63%/0.79%/10.31%) — FRED hasn't published new daily observations since 8/27; no new tw1/tw5/tw7 triggers — IREN's 8/27 FY26 filing (81.8% revenue still BTC-mining, $638.8M non-cash impairment) is a known, already-resolved print with no forced-selling angle (no tw5); hyperscaler capex guides remain all-up per Q2 prints (no tw1); no new Fed/Treasury action beyond the known Bessent buyback (8/19) and Warsh's hawkish-but-no-YCC Jackson Hole speech (8/28), so tw7 stays as-is; proposed ambers on tw7/tw8 and proposed clear on sc-donnelly still need your confirm.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -13,7 +13,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-29",
+    "as_of": "2026-08-30",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
