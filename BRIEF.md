@@ -1,62 +1,57 @@
-# Weekly brief — 2026-08-24
+# Weekly brief — 2026-08-31
 
-Posture: ladder re-armed on SOXX (−22.8% / −20% rung live) while HY/IG stay calm;
-2Y is 1bp under Donnelly’s line; gold’s debasement bid is intact. What needs you
-this week is three proposed status moves, the AI-infra credit overlay on the
-ladder, and the 2Y.
+Posture: SOXX still through −20% with HY/IG calm but AI-infra credit still
+wide; 2Y eased to 4.20% (5bp under Donnelly); gold pulled back with real
+yields high → debasement bid fading. What needs you: three proposed status
+moves still queued, the new gold amber, and the ladder overlay.
 
-- **Ladder re-armed at −20%; do not treat it as purely mechanical.** SOXX
-  [506.18](https://finance.yahoo.com/quote/SOXX/) is −22.8% from the $656 peak —
-  back through $524.80 after the 8/10 recovery above the rung, still above −25%
-  ($492). HY OAS 2.70% / IG 0.81% are calm, which normally says “mechanical low
-  to ladder into.” Overlay: **cr-ai-infra is amber** — Oracle CDS ~215bp ATH after
-  the BBB− cut and CoreWeave ~855bp have stayed wide
-  ([CNA / Reuters analysis](https://www.channelnewsasia.com/business/analysisoracle-corp-goes-high-stakes-ratings-gamble-in-ai-strategy-6298706)).
+- **fx-gold-real self-promoted clear→amber.** GC=F
+  [4489.4](https://finance.yahoo.com/quote/GC%3DF/) pulled back from the mid-8/20s
+  spike while DFII10 stays +2.34%
+  ([FRED](https://fred.stlouisfed.org/series/DFII10)). Gold falling with high
+  real yields = re-coupling / debasement bid fading — not the “gold up + high
+  reals” clear signal.
+
+- **sc-donnelly → proposed clear (stronger).** Needs your confirm or dismiss.
+  DGS2 eased to **4.20%** — now 5bp under the sustained-4.25% line
+  ([FRED DGS2](https://fred.stlouisfed.org/series/DGS2)); July Core PCE held
+  3.3% ([BEA 8/26](https://www.bea.gov/news/2026/personal-income-and-outlays-july-2026))
+  and DTWEXBGS is still drifting down. Status stays amber until you accept.
+
+- **tw7 → proposed amber (still).** Needs your confirm or dismiss. WALCL
+  [8/26 print $6.73T](https://fred.stlouisfed.org/series/WALCL) is −$15B WoW but
+  still +~$117B / 26w with Core PCE 3.3% and no crisis — literal Tier-1
+  “non-crisis QE.” Warsh’s hawkish Jackson Hole speech
+  ([CNBC 8/28](https://www.cnbc.com/2026/08/28/kevin-warsh-jackson-hole-federal-reserve-inflation.html))
+  delivered no YCC/QE. Falsifiers hold, so status stays clear.
+
+- **tw8 → proposed amber (still).** Needs your confirm or dismiss. No new
+  confirmed China-tool threshold cross this week — Aishengna immersion DUV
+  ([CNBC 7/28](https://www.cnbc.com/2026/07/28/china-chipmaking-duv-tool-asml-explained.html))
+  remains the trigger. `as_of` left at 7/31 so the row ages.
+
+- **Ladder still live at −20%; do not treat as purely mechanical.** SOXX
+  [508.62](https://finance.yahoo.com/quote/SOXX/) = −22.5% from $656 (through
+  $524.80, above $492). HY OAS 2.63% / IG 0.79% are calm — normally a
+  mechanical low. Overlay: **cr-ai-infra stays amber** (Oracle CDS ~215bp /
+  CoreWeave ~855bp still wide —
+  [CNA](https://www.channelnewsasia.com/business/analysisoracle-corp-goes-high-stakes-ratings-gamble-in-ai-strategy-6298706)).
   Semis selloff + AI-infra spreads still wide = real deterioration for add
   decisions.
 
-- **sc-donnelly → proposed clear. Needs your confirm or dismiss.** July CPI
-  ([BLS 8/12](https://www.bls.gov/news.release/archives/cpi_08122026.htm)) printed
-  3.4% / core 2.5% and cut September hike odds; DXY ~99 and DTWEXBGS 118.06 are
-  drifting down, so the USD leg of the falsifier is failing. Status stays amber
-  until you accept because **DGS2 is 4.24%** — 1bp under the sustained-4.25% line
-  ([FRED DGS2](https://fred.stlouisfed.org/series/DGS2)).
-
-- **tw7 → proposed amber (still). Needs your confirm or dismiss.** WALCL
-  [8/19 print $6.75T](https://fred.stlouisfed.org/series/WALCL) is −$14B WoW but
-  still +~$132B over 26 weeks with Core PCE at 3.3% and no crisis — the literal
-  Tier-1 “non-crisis QE” reading. Falsifiers hold (7/29 hawk bloc, DFII10 +2.40%,
-  bill share 22.2%), which is why status stays clear. Accepting puts gold-weight
-  on the table ahead of the Sept 15–16 FOMC.
-
-- **tw8 → proposed amber (still). Needs your confirm or dismiss.** No new
-  confirmed development this week — Aishengna domestic immersion DUV (~5 units /
-  2026) remains the trigger
-  ([CNBC 7/28](https://www.cnbc.com/2026/07/28/china-chipmaking-duv-tool-asml-explained.html)).
-  EUV untouched, CXMT HBM unqualified, KLA canary quiet. `as_of` left at 7/31 so
-  the row ages honestly.
-
-- **2Y + 30Y need a glance even though they auto-derive.** DGS2 4.24% is the
-  Donnelly tripwire; DGS30 at 5.27% is already through the 5.2% fiscal-dominance
-  amber ([FRED DGS30](https://fred.stlouisfed.org/series/DGS30)). Gold GC=F 4717.9
-  with DFII10 +2.40% keeps the debasement bid intact
-  ([Yahoo GC=F](https://finance.yahoo.com/quote/GC%3DF/)).
-
-- **tw6 cleared; fx-intervention self-promoted to amber.** Carry-unwind cluster
-  resolved (VIX 15.13, USD/JPY stable ~159). The confirmed joint US–Japan yen buy
-  of 8/01–8/03 stays amber with no repeat this week
-  ([CNA](https://www.channelnewsasia.com/east-asia/japan-yen-intervention-us-more-action-6295441)).
-  tw5 stays amber despite Horizon 1 / NVIDIA Exemplar acceptance
-  ([IREN 8/13](https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_ex99-1.htm))
-  — dilution overhang unchanged. CRM 8/26 and SNOW 9/02 are the near catalysts
-  for tw1/tw4.
+- **CRM printed; SNOW 9/02 next.** CRM Q2 FY27
+  ([8/26](https://www.salesforce.com/news/press-releases/2026/08/26/fy27-q2-earnings/))
+  +11% rev / +14% cRPO — tw4 stays clear. IREN FY26
+  ([8/27](https://irisenergy.gcs-web.com/news-releases/news-release-details/iren-reports-fy26-results))
+  was non-cash impairment + more equity/GPU debt; tw5 stays amber on dilution,
+  not forced selling. Next FOMC Sept 15–16.
 
 ---
 
-Notes on this sweep: `npm run update:data` exited 0 (10 rows, 5 indicators, 0
-failures); latest rates/credit/FX prints are Friday 8/21 (WALCL Wednesday 8/19;
-Core PCE still the June print). Dating judgments: tw2 `as_of 2026-07-30`, tw8
-`2026-07-31`, c-wshr `2026-06-15`, fx-intervention `2026-08-03` — publication
-dates of the newest actual disclosures, so the rows age toward Q3 WGC, Aishengna
-qualification, September WSHR ratio, and any repeat intervention. c-screens
-untouched: no new additions to rule on.
+Notes on this sweep: `npm run update:data` exited 0 with **2 FRED failures**
+(DGS2 / DGS10 HTTP 502); values were already current at 4.20% / 4.67% from the
+8/27 prints and a direct retry confirmed them. Other rates/credit/FX +
+indicators refreshed (WALCL 8/26 $6.73T; July Core PCE 3.3%). Dating
+judgments: tw2 `as_of 2026-07-30`, tw8 `2026-07-31`, c-wshr `2026-06-15`,
+fx-intervention `2026-08-03` — publication dates of the newest actual
+disclosures. c-screens untouched.
