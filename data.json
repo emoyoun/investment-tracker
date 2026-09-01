@@ -2,7 +2,8 @@
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
   "asOf": "2026-08-31",
-  "posture": "SOXX still through −20% (508.62 / −22.5%) with HY/IG calm but AI-infra credit still wide; 2Y eased to 4.20% (5bp under Donnelly); gold pulled back with DFII10 +2.34% → debasement bid fading (fx-gold-real → amber); proposed tw7/tw8 ambers + sc-donnelly clear still need confirm.",
+  "posture": "10Y 4.70% (touched 4.76% intraday post-Warsh) AT the 4.75% disorderly line — tw7 disorderly-watch live but unconfirmed, tested vs Sept 9 buyback; Sept hike odds ~57%. Broad credit calm (HY ~280bp/IG ~81bp) but AI-infra credit wide & divergent (Oracle ~215bp, CoreWeave ~855bp) -> new cds row amber. Iran re-escalated (oil up, yields up), VIX lifting off 2026 lows into weakest seasonal month + mid-Sept OpEx. Cash >10% on top, held. Proposed ambers (tw7/tw8/cds) need confirm.",
+  "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
     "rungs": {
@@ -46,6 +47,30 @@
         "value": "1.53",
         "as_of": "2026-08-27",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
+      },
+      "DGS10": {
+        "label": "10Y Treasury — tw7 disorderly line 4.75%",
+        "value": "4.67%",
+        "as_of": "2026-08-27",
+        "citation": "https://fred.stlouisfed.org/series/DGS10"
+      },
+      "DFII10": {
+        "label": "10Y real yield — gold/debasement read",
+        "value": "2.34%",
+        "as_of": "2026-08-27",
+        "citation": "https://fred.stlouisfed.org/series/DFII10"
+      },
+      "BAMLH0A0HYM2": {
+        "label": "HY OAS — cds discriminator ~275-281bp",
+        "value": "2.63%",
+        "as_of": "2026-08-27",
+        "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+      },
+      "BAMLC0A4CBBB": {
+        "label": "BBB OAS — cds discriminator ~100bp",
+        "value": "~1.00%",
+        "as_of": "2026-08-27",
+        "citation": "https://fred.stlouisfed.org/series/BAMLC0A4CBBB"
       }
     }
   },
@@ -134,7 +159,7 @@
       "value": "regime calm — VIX 14.51, USD/JPY ~159.9, DGS10 4.67%",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "No clustered carry-unwind: VIX recompressed to 14.51 (8/27), USD/JPY drifted mildly higher to ~159.9 (JPY weakening, not disorderly strengthening), DGS10 4.67% with SPY ~769 near recent highs. Semis (SOXX −22.5%) are a sleeve selloff, not a cross-sector correlation event. Cleared; protect ballast only if vol uncompresses + USDJPY turns disorderly + cross-asset deleveraging together.",
+      "rationale": "No clustered carry-unwind: VIX recompressed to 14.51 (8/27), USD/JPY drifted mildly higher to ~159.9 (JPY weakening, not disorderly strengthening), DGS10 4.67% with SPY ~769 near recent highs. Semis (SOXX −22.5%) are a sleeve selloff, not a cross-sector correlation event. Cleared; protect ballast only if vol uncompresses + USDJPY turns disorderly + cross-asset deleveraging together. CDS (see cds row) is the discriminator in a correlated/vol event: calm credit = orderly positioning shakeout (buyable, deploy Bucket C into dip); widening credit = disorderly credit-driven unwind (protect ballast, do NOT deploy into a credit event).",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/VIXCLS",
       "as_of": "2026-08-31",
@@ -143,16 +168,16 @@
     {
       "id": "tw7",
       "class": "filing",
-      "trigger": "AMBER Tier1 (any one): explicit YCC / non-crisis QE (WALCL up while core PCE>target) / SLR exemption. Tier2 (need 2+): bill share >~25% marketable debt / stablecoin bill demand scaling. Falsifiers: DFII10 positive, fiscal consolidation, hawk bloc.",
+      "trigger": "AMBER Tier1 (any one): explicit YCC / non-crisis QE (WALCL up while core PCE>target) / SLR exemption. Tier2 (need 2+): bill share >~25% marketable debt / stablecoin bill demand scaling. Falsifiers: DFII10 positive, fiscal consolidation, hawk bloc. | DISORDERLY WATCH: 10Y sustained >4.75% (Donnelly pre-Bessent high) toward 5.02% (2023 high), esp. rising DESPITE Treasury buybacks (began Sept 9) = suppression failing. LEADING INDICATOR: USD/JPY weakening + Japan Treasury selling (El-Erian vicious loop).",
       "source": "FOMC; H.4.1/WALCL; QRA/MSPD; GENIUS disclosures",
-      "series_id": "WALCL",
-      "value": "no Tier-1 fire; hawk bloc active — WALCL $6.73T, +~$117B / 26w",
+      "series_id": "WALCL, DGS10, DEXJPUS",
+      "value": "no Tier-1 fire; hawk bloc active — WALCL $6.73T, +~$117B / 26w · 10Y 4.70% (touched 4.76% intraday post-Warsh, highest since Jan-2025), 30Y 5.26%, USD/JPY ~159.9",
       "status": "clear",
       "proposed_status": "amber",
-      "rationale": "Falsifiers still hold, so status stays clear: 7/29 FOMC held 3.50–3.75% with three dissents FOR a hike, DFII10 +2.34%, 8/05 QRA froze coupons with bill share 22.2% (under ~25% Tier-2). WALCL 8/26 print is $6.73T (−$15B WoW) but still +~$117B over 26 weeks with July Core PCE at 3.3% and no crisis — the literal Tier-1 ‘non-crisis QE’ reading. Warsh’s 8/28 Jackson Hole speech was hawkish on inflation but delivered no YCC/QE. Leaving proposed amber for your confirm; next FOMC Sept 15–16.",
+      "rationale": "Falsifiers still hold, so status stays clear: 7/29 FOMC held 3.50–3.75% with three dissents FOR a hike, DFII10 +2.34%, 8/05 QRA froze coupons with bill share 22.2% (under ~25% Tier-2). WALCL 8/26 print is $6.73T (−$15B WoW) but still +~$117B over 26 weeks with July Core PCE at 3.3% and no crisis — the literal Tier-1 ‘non-crisis QE’ reading. Warsh’s 8/28 Jackson Hole speech was hawkish on inflation but delivered no YCC/QE. Leaving proposed amber for your confirm; next FOMC Sept 15–16. 10Y now AT the 4.75% disorderly line intraday post-Warsh — disorderly-watch live but NOT confirmed (needs sustained break toward 5.02%, tested vs Sept 9 buyback start). Sept hike odds ~57%.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/WALCL",
-      "as_of": "2026-08-31",
+      "as_of": "2026-09-01",
       "next_release": "next FOMC (Sept 15–16, 2026) · QRA Nov 4, 2026 · weekly H.4.1"
     },
     {
@@ -321,6 +346,21 @@
       "next_release": "weekly"
     },
     {
+      "id": "cds",
+      "class": "live",
+      "trigger": "SCENARIO DISCRIMINATOR. Yields-up + spreads CALM = valuation event (buyable dip). Yields-up + spreads WIDENING broadly (esp. bank/IG/HY) = crowding-out biting (protect ballast, do NOT deploy). Yields-up + widening specifically in AI/neocloud names = circularity cracking. Watch the DIVERGENCE: AI-winner spreads tight while everyone-else widens = purest crowding-out signature. Gates cash deployment: deploy on FCF-yield only once credit confirms a valuation (not solvency) event.",
+      "source": "FRED ICE BofA OAS; AI-issuer CDS (Oracle/CoreWeave/neoclouds)",
+      "series_id": "BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLH0A1HYBB",
+      "value": "HY OAS ~275-281bp (richest decile, near tights) / IG ~81bp / BBB ~100bp — broad credit CALM; but AI-infra credit WIDE & divergent (Oracle ~215bp BBB-, CoreWeave ~855bp)",
+      "status": "amber",
+      "proposed_status": null,
+      "rationale": "Discriminator between valuation-event (buyable) and crowding-out/solvency-event (protect ballast). Broad credit near perfection: HY ~275-281bp (Jul-27 close 281bp, richest decile vs ~450bp median), IG ~81bp, BBB ~100bp, HY/IG ~3.5x = market-WIDE tightness not a quality-tier distortion. BUT AI-specific leg wide & divergent — Oracle CDS ~215bp (BBB-), CoreWeave ~855bp — the early crowding-out/circularity signature this row catches. Broad-vs-AI divergence = amber. Watch whether AI-credit widening bleeds into broad HY/IG (->red: protect ballast, do NOT deploy Bucket C into a solvency event) or stays contained (->clear: rising yields are a valuation event, dips buyable on FCF-yield).",
+      "confidence": "medium",
+      "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "as_of": "2026-08-27",
+      "next_release": "FRED HY/IG OAS daily (T+1) · watch AI-issuer CDS"
+    },
+    {
       "id": "fx-usdjpy",
       "class": "live",
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
@@ -484,6 +524,51 @@
       "citation": "https://www.cnbc.com/2026/08/28/kevin-warsh-jackson-hole-federal-reserve-inflation.html",
       "as_of": "2026-08-28",
       "next_release": "next FOMC (Sept 15–16, 2026)"
+    },
+    {
+      "id": "gas2028",
+      "class": "event",
+      "trigger": "WATCH (not yet tripwire): 2028 forward nat-gas curve lifting / utilities hedging 2028 gas = entry signal for gas producers (EXE/TOU) AND re-underwrite trigger for GEV gas-turbine expansion (Matt Smith 2028 US gas-deficit thesis).",
+      "source": "Henry Hub forward curve; utility hedging disclosures",
+      "series_id": null,
+      "value": "no 2028 curve inflection yet — nat gas well-supplied 2026-27, curve flat ~$3.50 into early 2030s",
+      "status": "watch",
+      "proposed_status": null,
+      "rationale": "Matt Smith thesis: US structural gas deficit begins ~2028 as LNG exports 2x (15->35 Bcf/d) + AI datacenter demand outrun ~20 Bcf/d max production growth. Currently dormant (curve complacent, producers shutting in). Entry signal for gas producers (EXE/TOU); re-underwrite trigger for GEV gas-turbine expansion into a potential 2029 gas-cost spike.",
+      "confidence": "low",
+      "citation": "",
+      "as_of": "2026-09-01",
+      "next_release": "monitor 2028 Henry Hub forward / utility hedging"
+    },
+    {
+      "id": "chiptariff",
+      "class": "event",
+      "trigger": "WATCH: broad semiconductor tariffs (servers/laptops/consoles, possibly tied to US-manufacturing commitments) as cost-shock to AI buildout. Ambiguous: hurts import-dependent designers, helps US-committed reshorers (MU/TSMC-Arizona). Net inflationary.",
+      "source": "US trade policy / Commerce Dept",
+      "series_id": null,
+      "value": "policy under review — no broad semi tariff enacted yet",
+      "status": "watch",
+      "proposed_status": null,
+      "rationale": "Potential broad semi tariffs as cost-shock to AI buildout. Ambiguous for sleeve: raises cost for import-dependent designers/datacenters, advantages US-committed names (MU $10B+ US R&D, TSMC Arizona). Net inflationary — mild support for scarcity/inflation regime.",
+      "confidence": "low",
+      "citation": "",
+      "as_of": "2026-09-01",
+      "next_release": "monitor Commerce Dept / trade policy"
+    },
+    {
+      "id": "electionvol",
+      "class": "event",
+      "trigger": "WATCH (Q4 window, AFTER mid-Sept OpEx): underpriced election event-vol — 50/50 Senate, contested-result/recount risk (Karsan). Second distinct risk window beyond September seasonal/OpEx. Ballast posture: don't deploy into event-vol.",
+      "source": "VIX term structure; Karsan commentary",
+      "series_id": "VIXCLS",
+      "value": "Q4 window — Nov midterms; VIX curve flat/elevated into Nov per Karsan",
+      "status": "watch",
+      "proposed_status": null,
+      "rationale": "Karsan flags underpriced election event-vol: 50/50 Senate, contested-result/recount risk. Distinct from and later than the Sept seasonal/OpEx window. Ballast posture (don't deploy cash into event-vol).",
+      "confidence": "low",
+      "citation": "",
+      "as_of": "2026-09-01",
+      "next_release": "US midterms (Nov 2026)"
     },
     {
       "id": "c-leverage",
