@@ -300,6 +300,12 @@ window.TRIPWIRE_DEFS = {
           source: "credit feed / CDX HY proxy \u00b7 Oracle, CoreWeave, hyperscaler/neocloud",
           trigger: "Most thesis-relevant: widening &amp; sustained = real deterioration (don't add) \u00b7 calm during a semis selloff = mechanical low to ladder into",
           seed: { status: "clear", value: "calm", citation: "", next_release: "weekly" }
+        },
+        {
+          id: "cds", cls: "live", name: "CDS scenario discriminator",
+          series_id: "BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLH0A1HYBB", source: "FRED OAS \u00b7 AI-issuer CDS",
+          trigger: "Discriminator: yields-up + spreads calm = valuation event (buyable); yields-up + spreads widening broadly = crowding-out (protect ballast); AI-name divergence = circularity cracking.",
+          seed: { status: "amber", value: "broad credit calm; AI-infra wide & divergent", citation: "", next_release: "daily" }
         }
       ]
     },
@@ -381,6 +387,24 @@ window.TRIPWIRE_DEFS = {
         { id: "sc-warsh",      cls: "event", name: "Warsh",      tag: "credibility / good-cop",
           marker: "Falsify: committee acts on a real, sustained hawkish hike path",
           source: "your read \u00b7 secondary", seed: { status: "clear", citation: "" } }
+      ]
+    },
+
+    /* ---------------- Watchlist ---------------- */
+    {
+      kind: "watchlist",
+      title: "Watchlist",
+      sub: "dormant \u2014 not yet tripwires",
+      items: [
+        { id: "gas2028", cls: "event", name: "2028 gas deficit", tag: "nat-gas curve / GEV / EXE-TOU",
+          marker: "2028 forward nat-gas curve lifting / utilities hedging 2028 gas = entry signal for gas producers (EXE/TOU) and re-underwrite trigger for GEV gas-turbine expansion (Matt Smith 2028 US gas-deficit thesis).",
+          source: "Henry Hub forward curve \u00b7 utility hedging", seed: { status: "watch", citation: "" } },
+        { id: "chiptariff", cls: "event", name: "Semiconductor tariffs", tag: "AI-buildout cost shock",
+          marker: "Broad semiconductor tariffs (servers/laptops/consoles, possibly tied to US-manufacturing commitments) as a cost-shock to the AI buildout \u2014 ambiguous (hurts import-dependent designers, helps US-committed reshorers like MU/TSMC-Arizona), net inflationary.",
+          source: "US trade policy / Commerce Dept", seed: { status: "watch", citation: "" } },
+        { id: "electionvol", cls: "event", name: "Election event-vol", tag: "Q4 window / Karsan",
+          marker: "Underpriced election event-vol (Q4 window, after mid-Sept OpEx): 50/50 Senate, contested-result/recount risk (Karsan). Second distinct risk window beyond September seasonal/OpEx. Ballast posture: don't deploy into event-vol.",
+          source: "VIX term structure \u00b7 Karsan", seed: { status: "watch", citation: "" } }
       ]
     },
 
