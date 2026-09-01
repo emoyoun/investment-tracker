@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-08-31",
+    "as_of": "2026-09-01",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -25,14 +25,14 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "14.51",
-        "as_of": "2026-08-27",
+        "value": "14.43",
+        "as_of": "2026-08-28",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
         "label": "USD/JPY (tw6)",
-        "value": "158.9100000000",
-        "as_of": "2026-08-21",
+        "value": "159.97",
+        "as_of": "2026-08-28",
         "citation": "https://fred.stlouisfed.org/series/DEXJPUS"
       },
       "WALCL": {
@@ -44,8 +44,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.53",
-        "as_of": "2026-08-27",
+        "value": "1.5",
+        "as_of": "2026-08-28",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -201,13 +201,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "4.20%",
+      "value": "4.34%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.19%",
+      "value": "5.22%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.67%",
+      "value": "4.73%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.34%",
+      "value": "2.42%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -267,7 +267,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.63%",
+      "value": "2.60%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -297,7 +297,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.31%",
+      "value": "10.26%",
       "status": "clear",
       "proposed_status": null,
       "rationale": "CCC OAS 10.31% vs BB OAS 1.53% → gap ~8.78pp. Gap remains wide (not compressed): fringe CCC stress, not late-cycle reach-for-yield BB↔CCC compression, and not a compression-reversal ‘turn.’ Absolute 12% red backstop not close. Week: CCC eased 10.37→10.31 while BB tightened 1.58→1.53 — mild decompression, not the signal.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-08-27",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "158.91",
+      "value": "159.97",
       "status": "clear",
       "proposed_status": null,
       "rationale": "Judge the move, not the level: FRED last print 158.91 (8/21); spot ~159.9 into 8/31 — mild JPY weakening / drift higher in USD/JPY, not a disorderly JPY strengthening (carry-unwind) impulse. No fresh cascade across EUR/JPY, AUD/JPY or FX vol.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
@@ -381,13 +381,13 @@
       "trigger": "Sustained down = peak-USD confirmed; up = Donnelly-USD partially falsified. Judge on direction.",
       "source": "FRED",
       "series_id": "DTWEXBGS",
-      "value": "118.06",
+      "value": "118.75",
       "status": "clear",
       "proposed_status": null,
       "rationale": "DTWEXBGS trend remains sustained down: ~120.6 late July → 118.06 on 8/21 (−~2.1% in a month). That is peak-USD confirming, not Donnelly-USD falsifying (falsifier needs the dollar breaking higher). DXY bounced to ~99.6 into month-end but the broad trade-weighted trend is still soft.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "as_of": "2026-08-21",
+      "as_of": "2026-08-28",
       "next_release": "daily"
     },
     {
