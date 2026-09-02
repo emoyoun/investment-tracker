@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-01",
-  "posture": "10Y 4.70% (touched 4.76% intraday post-Warsh) AT the 4.75% disorderly line — tw7 disorderly-watch live but unconfirmed, tested vs Sept 9 buyback; Sept hike odds ~57%. Broad credit calm (HY ~280bp/IG ~81bp) but AI-infra credit wide & divergent (Oracle ~215bp, CoreWeave ~855bp) -> new cds row amber. Iran re-escalated (oil up, yields up), VIX lifting off 2026 lows into weakest seasonal month + mid-Sept OpEx. Cash >10% on top, held. Proposed ambers (tw7/tw8/cds) need confirm.",
+  "asOf": "2026-09-02",
+  "posture": "10Y 4.75% (8/31 FRED read; intraday 4.81% 9/2 per Reuters, 3-yr high) and 30Y 5.25% push further past the 4.75%/5.2% disorderly lines as US-Iran strikes escalate (oil ~$96, second round of US attacks) on top of Warsh's hawkish tone — Sept-hike odds now ~68-70% (up from ~57-60%). DFII10 2.44%, DFF 3.63% unchanged. Credit drifted a touch wider (HY 2.63%, IG 0.80%, CCC 10.42%) but no stress signal. Thin scan clean: tw1 no trigger (capex still all-up), tw5 no trigger (IREN's -4% Tue dip is a rates-driven risk-off move, not forced/systemic selling), tw7 no trigger (hike-odds repricing from hawkish Fed + oil-shock inflation fear is a rate-path move, not a YCC/QE/SLR policy-tool signal — no surprise Fed action). Iran/oil-driven yield surge is outside daily scope (weekly agent's call); DGS2 still above the 4.25% sustained line — sc-donnelly proposed-clear needs a fresh look, not blind confirm. Proposed ambers (tw7/tw8) still need user confirm.",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-01",
+    "as_of": "2026-09-02",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -25,8 +25,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "14.43",
-        "as_of": "2026-08-28",
+        "value": "14.92",
+        "as_of": "2026-08-31",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -44,8 +44,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.5",
-        "as_of": "2026-08-28",
+        "value": "1.52",
+        "as_of": "2026-08-31",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -207,7 +207,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.22%",
+      "value": "5.25%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.73%",
+      "value": "4.75%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.42%",
+      "value": "2.44%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -267,7 +267,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.60%",
+      "value": "2.63%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -291,13 +291,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": "0.79%",
+      "value": "0.80%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.26%",
+      "value": "10.42%",
       "status": "clear",
       "proposed_status": null,
       "rationale": "CCC OAS 10.31% vs BB OAS 1.53% → gap ~8.78pp. Gap remains wide (not compressed): fringe CCC stress, not late-cycle reach-for-yield BB↔CCC compression, and not a compression-reversal ‘turn.’ Absolute 12% red backstop not close. Week: CCC eased 10.37→10.31 while BB tightened 1.58→1.53 — mild decompression, not the signal.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "next_release": "daily"
     },
     {
