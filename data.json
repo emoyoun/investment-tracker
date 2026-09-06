@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-05",
-  "posture": "9/3 FRED: rates ease to 10Y 4.77%/30Y 5.25%/2Y 4.34% (still through disorderly lines); DFII10 2.42%; credit calm/tighter (HY 2.65%/IG 0.81%/CCC 10.51%), VIX 14.32. Spot USD/JPY ~155.7 after ~2.4% weekly yen surge on BOJ-hike bets — tw6 remains amber carry-unwind SETUP only (credit tighter, VIX down, equities not confirming). tw1/tw5/tw7 clean.",
+  "asOf": "2026-09-06",
+  "posture": "Weekend hold: FRED unchanged (9/3) — 10Y 4.77%/30Y 5.25%/2Y 4.34%, DFII10 2.42%, credit calm (HY 2.65%/IG 0.81%), VIX 14.32; spot USD/JPY ~155.9 after Fri pause from weekly ~2.2% yen surge — tw6 amber carry-unwind SETUP only (no credit/VIX/equity confirm); tw1/tw5/tw7 clean.",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-05",
+    "as_of": "2026-09-06",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -156,13 +156,13 @@
       "trigger": "AMBER: vol uncompressing / dispersion->correlation / cross-sector stress / disorderly USDJPY. Bucket C deploy: correlation event or SOXX -30% ($459.20). Action is inverted: protect ballast.",
       "source": "VIX, DGS10 vs SPX, USDJPY",
       "series_id": "VIXCLS, DGS10, DEXJPUS",
-      "value": "USD/JPY ~155.7 after ~2.4% weekly yen surge; VIX 14.32, credit calm",
+      "value": "USD/JPY ~155.9 after Fri pause; weekly yen ~+2.2%; VIX 14.32, credit calm",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "Carry-unwind SETUP still live: yen ~2.4% stronger on the week on BOJ-hike bets (Japan Times/Bloomberg; CNBC ~155.72 Fri), but NOT red — HY/IG calm-to-tighter (2.65%/0.81%), VIX 14.32, no broad equity selloff.",
+      "rationale": "Carry-unwind SETUP still live: Reuters (~2.2% weekly yen on BOJ-hike bets; Fri pause from 155.25 low) / FXStreet spot ~155.85 Fri post-NFP, but NOT red — HY/IG calm (2.65%/0.81%), VIX 14.32, no broad equity selloff.",
       "confidence": "medium",
-      "citation": "https://www.cnbc.com/2026/09/04/yen-headed-for-strongest-week-in-a-month-dollar-flat-ahead-of-payroll-data.html",
-      "as_of": "2026-09-05",
+      "citation": "https://www.kitco.com/news/off-the-wire/2026-09-04/yen-set-strongest-week-month-dollar-steady-ahead-us-jobs-data",
+      "as_of": "2026-09-06",
       "next_release": "daily"
     },
     {
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "155.72",
+      "value": "155.85",
       "status": "clear",
       "proposed_status": null,
       "rationale": "Judge the move, not the level: FRED last print 158.91 (8/21); spot ~159.9 into 8/31 — mild JPY weakening / drift higher in USD/JPY, not a disorderly JPY strengthening (carry-unwind) impulse. No fresh cascade across EUR/JPY, AUD/JPY or FX vol.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-09-05",
+      "as_of": "2026-09-06",
       "next_release": "daily"
     },
     {
