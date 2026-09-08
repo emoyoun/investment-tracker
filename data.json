@@ -156,14 +156,14 @@
       "trigger": "AMBER: vol uncompressing / dispersion->correlation / cross-sector stress / disorderly USDJPY. Bucket C deploy: correlation event or SOXX -30% ($459.20). Action is inverted: protect ballast.",
       "source": "VIX, DGS10 vs SPX, USDJPY",
       "series_id": "VIXCLS, DGS10, DEXJPUS",
-      "value": "USD/JPY 154.5 (6-mo high, past the intervention peak) · VIX 14.5 · HY 2.65% · SPX near highs",
+      "value": "USD/JPY ~153.5; yen through 155 toward 150 on BOJ-hike bets; VIX 14.32, credit calm",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "HOLDING AMBER — neither escalation nor de-escalation is earned. The sharp JPY move did NOT fade, it extended: USD/JPY fell from 160 on 9/02 to 155.30, closed Friday at 156.22, then broke below 155 on Monday for the first time since 2/24, reaching 154.06 — the yen's strongest since February and through the level the coordinated US–Japan intervention itself achieved. The catalyst was BOJ board member Takata's 9/02 'nimbly' speech; a 25bp hike at the 9/17–18 meeting is ~94–97% priced with ~25% odds of a back-to-back October move, and the 10Y JGB hit 3% for the first time since 1996. It is genuinely yen-led, not dollar-led (EUR/JPY −2.18%, GBP/JPY −2.56% on the week), and Bloomberg reported hedge funds unwinding yen shorts with BRL/ZAR/MXN each off more than 1% against the yen on 9/03. So de-escalation to clear is off the table. But cross-asset confirmation is absent on all three legs: no credit widening (HY 2.65% / IG 0.81% at tights, HYG flat at 79.16), no VIX spike (14.53 Friday, near the 13.38 52-week low — and the 16.34 blip on 9/01 was Iran/oil, not yen), and no broad equity selloff (S&P +0.09% on the week at 7,718; the SOX actually rose 1.74% with a 3.37% Friday where all 30 constituents advanced). Clustered signals are the trigger and only one cluster member is firing, so no proposed red either. What makes this a live setup rather than a spent one: CFTC data for the week ended 8/25 had leveraged funds net short 81,619 yen contracts, so most of the short base has yet to cover. BOJ 9/18 resolves it.",
+      "rationale": "Carry-unwind SETUP still live: Reuters (yen to 153.51 Tue Asia, strongest since Feb; BOJ-hike / carry unwind) after FXStreet Mon ~154.42 (>1% day) — sharp move through 155 toward 150, but NOT red — HY/IG calm (2.65%/0.81%), VIX 14.32, no broad equity selloff.",
       "confidence": "medium",
-      "citation": "https://www.japantimes.co.jp/business/2026/09/07/markets/japan-yen-gains-154/",
-      "as_of": "2026-09-07",
-      "next_release": "daily · BOJ Sept 17–18"
+      "citation": "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-08/",
+      "as_of": "2026-09-08",
+      "next_release": "daily"
     },
     {
       "id": "tw7",
