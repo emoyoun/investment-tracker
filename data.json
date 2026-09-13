@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-12",
-  "posture": "FRED: 10Y 4.95%/30Y 5.37%/2Y 4.56% (as_of 9/10); DFII10 2.55%; credit calm (HY 2.70%/IG 0.80%); VIX 17.84 (9/10); spot USD/JPY ~153.61 — tw6 amber SETUP only (no credit/VIX confirm); tw1/tw5/tw7 clean",
+  "asOf": "2026-09-13",
+  "posture": "FRED: 10Y 4.95%/30Y 5.37%/2Y 4.56% (as_of 9/10); DFII10 2.55%; credit calm (HY 2.70%/IG 0.80%); VIX 17.84 (9/10)/Fri ~15.8; spot USD/JPY ~153.61 — tw6 amber SETUP only (no credit/VIX confirm); tw1/tw5/tw7 clean",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-12",
+    "as_of": "2026-09-13",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -156,13 +156,13 @@
       "trigger": "AMBER: vol uncompressing / dispersion->correlation / cross-sector stress / disorderly USDJPY. Bucket C deploy: correlation event or SOXX -30% ($459.20). Action is inverted: protect ballast.",
       "source": "VIX, DGS10 vs SPX, USDJPY",
       "series_id": "VIXCLS, DGS10, DEXJPUS",
-      "value": "USD/JPY ~153.61; yen ~+4% MTD (Tue low 152.89); HY 2.70%/IG 0.80% tighter; VIX ~15.9 Fri",
+      "value": "USD/JPY ~153.61; yen ~+4% MTD (Tue low 152.89); HY 2.70%/IG 0.80% tighter; VIX ~15.8 Fri",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "Carry-unwind SETUP still live: Bloomberg Fri USD/JPY 153.61 (after Tue low 152.89); yen still ~+4% MTD through 155 on BOJ-hike path (Sept 17–18) — NOT red: HY/IG tightened (2.70%/0.80%), VIX fell to ~15.9 Fri with S&P up (Reuters) — no credit/VIX/equity confirm.",
+      "rationale": "Carry-unwind SETUP still live: Bloomberg Fri USD/JPY 153.61 (after Tue low 152.89); yen ~+4% MTD through 155 on BOJ-hike path (Sept 17–18); Reuters 9/13 CFTC shows yen nets flip long — NOT red: HY/IG still tight (2.70%/0.80%), Fri VIX ~15.8 with S&P +0.86% (Reuters) — no credit/VIX/equity confirm.",
       "confidence": "medium",
-      "citation": "https://www.bloomberg.com/markets/currencies",
-      "as_of": "2026-09-12",
+      "citation": "https://www.reuters.com/world/asia-pacific/speculators-turn-net-long-yen-first-time-since-february-2026-09-13/",
+      "as_of": "2026-09-13",
       "next_release": "daily"
     },
     {
