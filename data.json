@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-16",
-  "posture": "FRED: 10Y 4.97%/30Y 5.34%/2Y 4.65% (as_of 9/14); credit calm HY 2.71%/IG 0.80%; VIX 17.1; spot USD/JPY ~155.0 — tw6 amber SETUP only (yen bounce continues, no credit/VIX confirm); tw1/tw5/tw7 clean; FOMC later today / BOJ Fri",
+  "asOf": "2026-09-17",
+  "posture": "FRED: 10Y 5.00%/30Y 5.36%/2Y 4.67% (as_of 9/15); credit calm HY 2.76%/IG 0.80%; VIX 17.2; spot USD/JPY ~156.2 — tw6 amber SETUP only (Fed-driven yen fade, no credit/VIX confirm); tw1/tw5/tw7 clean; FOMC hike delivered / BOJ Fri",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-16",
+    "as_of": "2026-09-17",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -25,8 +25,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "17.1",
-        "as_of": "2026-09-14",
+        "value": "17.2",
+        "as_of": "2026-09-15",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -44,8 +44,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.56",
-        "as_of": "2026-09-14",
+        "value": "1.61",
+        "as_of": "2026-09-15",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -156,14 +156,14 @@
       "trigger": "AMBER: vol uncompressing / dispersion->correlation / cross-sector stress / disorderly USDJPY. Bucket C deploy: correlation event or SOXX -30% ($459.20). Action is inverted: protect ballast.",
       "source": "VIX, DGS10 vs SPX, USDJPY",
       "series_id": "VIXCLS, DGS10, DEXJPUS",
-      "value": "USD/JPY ~155.0 (Reuters 9/16); yen bounce continues from 152.89; still ~5bf vs ~160 peak; HY 2.71%/IG 0.80%; VIX 17.1",
+      "value": "USD/JPY ~156.2 (Reuters 9/17); Fed-driven bounce from 152.89; still ~4bf vs ~160 peak; HY 2.76%/IG 0.80%; VIX 17.2",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "SETUP hold only: USD/JPY bounced further to ~155 (Reuters 9/16) from ~152.89 low — still multi-bf stronger than ~160 early-Sep peak with BOJ 9/17–18 ahead, but NOT a fresh >~2%/≤2-session yen-strength leg (pair rose overnight); HY OAS 2.71% (+6bp)/IG 0.80% calm and VIXCLS 17.1 = no credit/VIX/broad-equity confirm → amber, not proposed red.",
+      "rationale": "SETUP hold only: USD/JPY bounced further to ~156.2 (Reuters 9/17 Asia wrap) after hawkish Fed hike — still multi-bf stronger than ~160 early-Sep peak with BOJ decision Friday ahead, but NOT a fresh >~2%/≤2-session yen-strength leg (pair rose post-FOMC); HY OAS 2.76% (+5bp)/IG 0.80% calm and VIXCLS 17.2 = no credit/VIX/broad-equity confirm → amber, not proposed red.",
       "confidence": "medium",
-      "citation": "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-16/",
-      "as_of": "2026-09-16",
-      "next_release": "BOJ Sept 17–18 · daily cross-asset confirm check"
+      "citation": "https://www.reuters.com/world/asia-pacific/hawkish-fed-lifts-dollar-seven-week-high-focus-turn-boj-2026-09-17/",
+      "as_of": "2026-09-17",
+      "next_release": "BOJ Fri Sept 18–19 · daily cross-asset confirm check"
     },
     {
       "id": "tw7",
@@ -201,13 +201,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "4.65%",
+      "value": "4.67%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.34%",
+      "value": "5.36%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.97%",
+      "value": "5.00%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.60%",
+      "value": "2.62%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -267,7 +267,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.71%",
+      "value": "2.76%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -297,7 +297,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.81%",
+      "value": "10.85%",
       "status": "amber",
       "proposed_status": null,
       "rationale": "Holding amber: the BB↔CCC compression REVERSAL remains intact and has extended. CCC OAS 10.70% (FRED 9/10) — a fresh 2026 wide, up from 10.51% on 9/03 and vs 8.14% a year ago — while BB OAS (BAMLH0A1HYBB) is 1.55%, still near its 2026 tight and inside last year's ~1.86%. Tier decompression is now ~ roughly 280bp y/y with IG OAS flat at 0.80%. Not red: the automatic >=12% backstop is still ~130bp away and IG/HY broad indexes are calm. This is still the late-cycle turn tell in the lowest rung, not a systemic credit event — and it is why cds stays amber even while the valuation-event read allows laddering quality.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-15",
       "next_release": "daily"
     },
     {
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "155.00",
+      "value": "156.20",
       "status": "amber",
       "proposed_status": null,
       "rationale": "RESET after FRED script clobber: value is Yahoo spot JPY=X 154.97 (9/14), NOT the lagging DEXJPUS 156.11 as_of 9/04. Status stays amber on the MOVE (carry unwind), not the level. From ~160 on 9/02 the pair ran to a ~152.89 low then stabilised ~153.5–155 into this week — still a multi-big-figure yen strengthening past the post-intervention floor, with BOJ +25bp ~highly priced for 9/17–18 and Reuters 9/13 reporting leveraged funds net long yen for the first time since February. Why not red: cross-asset legs (credit/VIX/broad equity) have not confirmed the Aug-2024-style deleveraging (see tw6). Why not clear: the move has only partially faded and the BOJ meeting has not yet resolved the path. Washington still prefers BOJ hikes over a repeat joint yen-buying op.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-09-16",
+      "as_of": "2026-09-17",
       "next_release": "BOJ Sept 17–18 · daily"
     },
     {
