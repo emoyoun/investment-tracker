@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-19",
-  "posture": "Post-BOJ yen fade holds ~156.7; 10Y 4.94%/HY 2.70%/IG 0.78%/VIX 15.4 — tw6 SETUP fading further (no credit/VIX confirm); tw1/tw5/tw7 clean",
+  "asOf": "2026-09-20",
+  "posture": "Japan holiday / post-BOJ yen soft ~156.9; 10Y 4.94%/HY 2.70%/IG 0.78%/VIX 15.4 — tw6 SETUP fading further; tw1/tw5/tw7 clean",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-19",
+    "as_of": "2026-09-20",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -366,7 +366,7 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "156.73",
+      "value": "156.88",
       "status": "amber",
       "proposed_status": null,
       "rationale": "RESET after FRED script clobber: value is Yahoo spot JPY=X 155.64 (9/17), NOT the lagging DEXJPUS 153.71 as_of 9/11. Status stays amber on the MOVE (carry unwind), not the level. Carry-unwind read this week: the sharp yen-strengthening leg from ~160 (early Sep) toward ~152.89 has PARTIALLY faded after the hawkish Fed +25bp — pair traded as weak as ~156.4 overnight (Japan Times/Bloomberg 9/17) and sits ~155.6 now — WITHOUT cross-asset confirmation (credit calm, VIX compressing, no Aug-2024-style deleveraging). Why not red: disorderly strengthening is no longer accelerating; clustered confirm absent (see tw6). Why not clear: the multi-big-figure yen strength vs the ~160 peak has not fully faded, and BOJ Fri 9/18 is the unresolved catalyst. Washington still prefers BOJ hikes over a repeat joint yen-buying op.",
