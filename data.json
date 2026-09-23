@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-22",
-  "posture": "Post-holiday yen soft ~157.3; 10Y 5.01%/HY 2.68%/IG 0.77%/VIX 14.8 — tw6 SETUP fading (weekly propose clear); tw1/tw5/tw7 clean",
+  "asOf": "2026-09-23",
+  "posture": "Yen soft ~157.6; 10Y 4.96%/HY 2.66%/IG 0.77%/VIX 14.9 — tw6 SETUP fading (weekly propose clear); tw1/tw5/tw7 clean",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-22",
+    "as_of": "2026-09-23",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -25,8 +25,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "14.81",
-        "as_of": "2026-09-18",
+        "value": "14.87",
+        "as_of": "2026-09-21",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -44,8 +44,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.55",
-        "as_of": "2026-09-18",
+        "value": "1.53",
+        "as_of": "2026-09-21",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -207,7 +207,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.34%",
+      "value": "5.29%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS30",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "5.01%",
+      "value": "4.96%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS10",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "2.68%",
+      "value": "2.62%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -267,7 +267,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "2.68%",
+      "value": "2.66%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -297,7 +297,7 @@
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "10.83%",
+      "value": "10.77%",
       "status": "amber",
       "proposed_status": null,
       "rationale": "Holding amber: BB↔CCC compression REVERSAL still intact, though CCC eased a touch off the 10.85% 9/15 wide to 10.76% (9/17) while BB OAS (BAMLH0A1HYBB) sits at 1.56% near 2026 tights. Gap remains extreme vs BB — late-cycle reach-for-yield turn tell, not yet a healing compression. Not red: automatic >=12% backstop still ~124bp away and broad HY/IG calm. Do not fight the backstop; judgment below 12% stays amber.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-21",
       "next_release": "daily"
     },
     {
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "157.33",
+      "value": "157.55",
       "status": "amber",
       "proposed_status": "clear",
       "rationale": "RESET after FRED script clobber: value is Yahoo spot JPY=X 157.34 (9/21), NOT the lagging DEXJPUS 153.71 as_of 9/11. WEEKLY CARRY-UNWIND READ: the disorderly JPY-*strengthening* move has FADED. Pair went from the ~152.89 low back through ~156 and now ~157.3 after BOJ hiked to 1.25% (7–2) and yen bulls were disappointed (Reuters 9/18). Judge the MOVE not the level — strengthening is no longer accelerating or disorderly; cross-asset confirm never arrived (see tw6). Proposing clear (confirm-only de-escalation); status stays amber until you accept. Watch: Saxo/market commentary still flags MoF line-in-sand well ahead of 160 if the fade overshoots.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-09-22",
+      "as_of": "2026-09-23",
       "next_release": "daily · next MoF monthly · BOJ Oct"
     },
     {
