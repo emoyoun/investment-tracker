@@ -24,6 +24,7 @@ window.TW = (function () {
     if (typeof v === "number") return isFinite(v) ? v : NaN;
     if (v == null) return NaN;
     const s = String(v)
+      .replace(/^\s*\[STALE as-of \d{4}-\d{2}-\d{2}\]\s*/i, "")
       .replace(/[\u2212\u2012\u2013\u2014\u2015]/g, "-")   // unicode minus / dashes
       .replace(/,/g, "");
     const m = s.match(/-?\d+(?:\.\d+)?/);
