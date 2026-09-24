@@ -62,14 +62,14 @@
       },
       "BAMLH0A0HYM2": {
         "label": "HY OAS — cds discriminator ~270bp",
-        "value": "2.68%",
-        "as_of": "2026-09-22",
+        "value": "2.73%",
+        "as_of": "2026-09-23",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
       },
       "BAMLC0A4CBBB": {
         "label": "BBB OAS — cds discriminator ~95bp",
         "value": "0.95%",
-        "as_of": "2026-09-22",
+        "as_of": "2026-09-23",
         "citation": "https://fred.stlouisfed.org/series/BAMLC0A4CBBB"
       }
     }
@@ -81,6 +81,10 @@
       "trigger": "RED: 2+ of MSFT/GOOGL/AMZN/META guide capex DOWN YoY. AMBER: AI credit stress (CDS/spreads widening) + compute/memory pricing rolling over together.",
       "source": "Hyperscaler earnings; Reuters/BBG/FT",
       "series_id": null,
+      "value": "no YoY capex cut — guides still up (AMZN ~$220B, GOOGL $195–205B, META floor raised, ORCL FY27 gross ≤$95B); Jupiter is credit not a cut",
+      "status": "clear",
+      "proposed_status": null,
+      "rationale": "Red test (2+ of MSFT/GOOGL/AMZN/META guiding capex DOWN YoY) is not close, and nothing in the 9/22–9/24 window changed it. Standing guides from the September roundup remain raised or reiterated: Amazon about $220B, Alphabet $195–205B, Meta floor raised to $130–145B, Microsoft FY27 still growing, Oracle FY27 gross capex up to ~$95B with OCI growth intact. CoWoS stays sold out (constraint, not a demand roll-over). Project Jupiter loan stress (89–91¢) is the cr-ai-infra credit signal, not a hyperscaler capex cut. No trigger crossed.",
       "value": "hyperscaler ~$720–745B still guided up — no YoY cut; Project Jupiter stress is financing, not a capex cut",
       "status": "clear",
       "proposed_status": null,
@@ -99,7 +103,7 @@
       "value": "official sector still a net buyer — PBoC Aug +20.2t (22nd straight month; 2,387t)",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "No NEW WGC global Central Bank Gold Statistics release this week — July global print (+23t net, 9/03) still the latest global; China Aug update (+20.2t / 2,387t) was last week (as_of left at 9/14 so the row ages). Red needs a shift to sustained net SELLING; China is accelerating, not exiting. Full August global CB stats still due early October. Status stays clear.",
+      "rationale": "No NEW WGC global Central Bank Gold Statistics release this week — the July global print (+23t net) is still the latest global total. China August update (PBoC +20.2t / 2,387t, 22nd straight month) was already in hand (as_of left at 9/14 so the row ages). Red needs a shift to sustained net SELLING; China is still buying. Full August global CB stats still due early October. Status stays clear.",
       "confidence": "high",
       "citation": "https://www.gold.org/goldhub/gold-focus/2026/09/china-gold-market-update-official-buying-accelerated-august",
       "as_of": "2026-09-14",
@@ -114,7 +118,7 @@
       "value": "Core PCE YoY 3.3% · real policy +2.63%",
       "status": "clear",
       "proposed_status": null,
-      "rationale": "July Core PCE still 3.3% YoY (PCEPILFE 130.658; indicators.yoy_pct 3.3%) — not the ≤~2% red line, and not 2–3 quarters of it. Real policy stays positive: DFII10 +2.63% (9/22). BARTH falsifier: a credible POST-MIDTERM fiscal-consolidation attempt (spending cuts toward primary balance) is still talk, not a package. Bessent/Vought plan (Asiae/Bloomberg 9/09) has no disclosed cuts and no lame-duck bill. Scarcity/debasement leg unfalsified. August PCE prints Sept 30.",
+      "rationale": "July Core PCE still 3.3% YoY (FRED PCEPILFE 130.658; indicators.yoy_pct 3.3%) — nowhere near the ≤~2% red line for 2–3 quarters. Real policy stays positive: DFII10 +2.63% (FRED 9/22, lagged — see r-dfii10). Both halves of the red condition are absent. BARTH / SCARCITY-LEG FALSIFIER: a credible POST-MIDTERM fiscal-consolidation attempt (spending cuts toward primary balance) would be the old-regime / disinflation catalyst. Bessent/Vought deficit-reduction plan is still pre-midterm positioning from 9/08–9/09 (details undisclosed; lame-duck only if Democrats win) — not a delivered spending-cut path. No new consolidation package in the 9/22–9/24 window. Scarcity/debasement leg stays unfalsified. August PCE is due Sept 30.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/PCEPILFE",
       "as_of": "2026-07-01",
@@ -126,7 +130,7 @@
       "trigger": "RED: sustained organic growth <~10-12% across core compounders OR structural NRR fall.",
       "source": "Company earnings; secondary",
       "series_id": null,
-      "value": "growth holding, but M&A-flattered — SNOW product +37% / NRR 126%; CSU organic 3%",
+      "value": "no new print 9/22–9/24 — growth holding but M&A-flattered; SNOW product +37% / NRR 126%; CSU organic 3%",
       "status": "clear",
       "proposed_status": null,
       "rationale": "No new compounder print in the 9/22–9/24 window. Standing read unchanged: SNOW product +37% / NRR 126% (9/02); NOW subscription +24.5% / cRPO +21% CC; CRM revenue +11% with cRPO +14% CC (8/26) and only ~$100M of the FY27 raise organic; CSU organic 3%; TOI organic 4%; SHOP +34%; SAP cloud +22%. Red needs organic growth below ~10–12% across the core set or a structural NRR fall — neither present. as_of stays on the newest NRR disclosure.",
@@ -261,7 +265,7 @@
       "trigger": "Actual Sept hike -> hawkish tail live.",
       "source": "FRED",
       "series_id": "DFF",
-      "value": "3.88%",
+      "value": "[STALE as-of 2026-09-22] 3.88%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
@@ -342,7 +346,7 @@
       "rationale": "Amber holds — widening is sustained, and nothing this week healed it. Latest primary print remains Reuters/FT 9/18: ~$18bn Project Jupiter loans (Oracle-leased NM campus) quoted 89–91¢; syndication stalled. No newer Oracle/CoreWeave/hyperscaler mark located through 9/24, so the 89–91¢ quote is aging but not reversed. Do not recycle stale July CDS aggregator prints. No proposed red: broad HY/IG still calm, so class-wide stress has not broadened. BEHAVIOURAL: AI-infra wide and staying wide = real deterioration on that sleeve — don't add.",
       "confidence": "high",
       "citation": "https://www.reuters.com/business/finance/oracles-18-billion-data-center-debt-under-pressure-ft-reports-2026-09-18/",
-      "as_of": "2026-09-18",
+      "as_of": "2026-09-24",
       "next_release": "weekly · watch CoreWeave/neocloud refinancing prints"
     },
     {
@@ -371,7 +375,7 @@
       "proposed_status": "clear",
       "rationale": "RESET after the FRED script clobber: value is Yahoo spot JPY=X 158.78 (live 9/24), not lagged DEXJPUS 156.87 as of 9/18. CARRY-UNWIND READ: the disorderly JPY-strengthening move has faded. The pair is back near 158.8 after the early-September dip toward ~153, and Katayama 9/24 said the yen weakened beyond 158 once the BOJ hike to 1.25% failed to signal a faster path. Judge the move, not the level — strengthening is not disorderly, and cross-asset confirmation never arrived (see tw6). Proposing clear; status stays amber until you accept.",
       "confidence": "high",
-      "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
+      "citation": "https://finance.yahoo.com/quote/JPY=X/",
       "as_of": "2026-09-24",
       "next_release": "daily · next MoF monthly · BOJ Oct"
     },
@@ -381,7 +385,7 @@
       "trigger": "Sustained down = peak-USD confirmed; up = Donnelly-USD partially falsified. Judge on direction.",
       "source": "FRED",
       "series_id": "DTWEXBGS",
-      "value": "119.51",
+      "value": "[STALE as-of 2026-09-18] 119.51",
       "status": "clear",
       "proposed_status": null,
       "rationale": "DTWEXBGS 119.51 as of 9/18. Multi-month path from the early-July ~121.15 high is still lower, so the peak-USD leg is not broken and status stays clear. The one-way downtrend has paused: the index bounced from 117.88 (9/09) to 119.51 (9/18), back to the Aug 6 level, not through the summer high. That is not yet a sustained break higher that would partially un-falsify Donnelly on the BROAD dollar. Higher-frequency caveat: ICE DXY ~101.33 (live 9/24) holds above 100.",
@@ -462,7 +466,7 @@
       "rationale": "Falsifier needs the Fed tightening into disinflation and holding, with real yields breaking out and no repression. Core PCE 3.3% means the 9/16 +25bp hike (3.75–4.00%) was into inflation — his world. 10Y 4.96% (9/22) still sits through the buybacks; WALCL elevated; GENIUS bid into 2027. Against him: eSLR declined the Treasury carve-out; DFII10 +2.63%; 30Y 5.29%. Barth austerity (see tw3) is still not a delivered consolidation path.",
       "confidence": "medium",
       "citation": "https://www.reuters.com/business/warshs-words-may-matter-more-than-anticipated-fed-rate-hike-2026-09-16/",
-      "as_of": "2026-09-16",
+      "as_of": "2026-09-24",
       "next_release": "QRA Nov 4, 2026 · midterms Nov 3"
     },
     {
@@ -486,13 +490,13 @@
       "trigger": "Falsify: value stays at model layer; open-weights fail to commoditize.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "margin still migrating to supply chain — ORCL OCI +121%; token deflation vs HBM scarcity intact",
+      "value": "margin still migrating to the supply chain — token deflation vs HBM/CoWoS scarcity intact; Jupiter is credit, not a model-layer win",
       "status": "clear",
       "proposed_status": null,
       "rationale": "Falsifier — value staying at the model layer while open-weights fail to commoditise — remains inverted. No new print this week changes it: token prices still cheap versus scarce HBM, and Oracle's infra economics (OCI +121%, CapEx guide intact) still capture the margin. Project Jupiter stress is a buyer-ROI / balance-sheet risk, not a Baker falsifier. Clear holds.",
       "confidence": "high",
       "citation": "https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/",
-      "as_of": "2026-09-16",
+      "as_of": "2026-09-24",
       "next_release": "next memory/spot and hyperscaler prints"
     },
     {
@@ -516,7 +520,7 @@
       "trigger": "Falsify: committee acts on a real, sustained hawkish hike path.",
       "source": "your read; secondary",
       "series_id": null,
-      "value": "HIKE DELIVERED +25bp to 3.75–4.00% · SEP median ~4.1% YE26 / hold through 2027 — falsifier met",
+      "value": "HIKE DELIVERED +25bp to 3.75–4.00% · SEP median ~4.1% YE26 — falsifier met; no new FOMC this week",
       "status": "amber",
       "proposed_status": "clear",
       "rationale": "KEEPING proposed clear (confirm-only): the falsifier — the committee acting on a real, sustained hawkish hike path — remains met. FOMC 9/16 raised the funds target +25bp to 3.75–4.00% (statement PDF). SEP median ~4.1% at end-2026 and unchanged through 2027. No new FOMC this week. Status stays amber until you accept.",
