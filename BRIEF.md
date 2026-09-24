@@ -1,66 +1,15 @@
-# Weekly brief — 2026-09-21
+# Weekly brief — 2026-09-24
 
-Posture: Post-BOJ yen soft ~157.3 fades the tw6 carry-unwind SETUP
-(propose clear) while broad credit stays calm at HY 2.70% / IG 0.78% —
-still a valuation event on cds. Project Jupiter loans at 89–91¢ keep
-AI-infra amber and the ladder overlay on "don't add." What needs you:
-eight queued confirmations (two NEW de-escalations) and the Jupiter print.
+Posture: Live 10Y 5.11% / 30Y 5.41% with HY 2.73% / IG 0.77% is still a valuation event; yen 158.88 fades the tw6 carry-unwind (propose clear); Project Jupiter 89–91¢ keeps the don't-add overlay. ⚠️ 4 rows on lagged FRED data: r-dgs2, r-dfii10, r-dff, fx-broad-usd — verify live before any deploy/protect decision.
 
-- **tw6 / fx-usdjpy: DE-ESCALATE — propose clear (NEW).** The sharp
-  JPY-strengthening leg (~160 → ~152.89) faded without cross-asset
-  confirmation after BOJ hiked +25bp to 1.25% (7–2) and the yen sold off
-  ([Reuters 9/18](https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/)).
-  Spot USD/JPY
-  [~157.34](https://finance.yahoo.com/quote/JPY=X/) (reset after FRED
-  clobbered the row with lagged DEXJPUS). Escalate to red DENIED: HY/IG
-  calm ([2.70%/0.78%](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)),
-  VIX ~14.9 / [VIXCLS 15.4](https://fred.stlouisfed.org/series/VIXCLS),
-  SPX ~7,650 / SOXX 533 bounced. De-escalate is the call.
+- **⚠️ 4 rows on lagged FRED data: r-dgs2, r-dfii10, r-dff, fx-broad-usd — verify live before any deploy/protect decision.** Cash 10Y/30Y were overridden with Yahoo ([^TNX 5.11%](https://finance.yahoo.com/quote/%5ETNX/), [^TYX 5.41%](https://finance.yahoo.com/quote/%5ETYX/)); CNBC Tradeweb cross-check was 5.13% / 5.43% (within about 2bp of Yahoo, so the ×10 trap did not bite — these quotes are already in percent). **r-dgs2 was NOT overridden.** Yahoo `2YY=F` is the Sep-2026 yield future at 4.422 (vol 1, trade date 2026-09-22) and `^UST2YR` 404'd. CNBC cash US2Y was **4.88%** at 2026-09-24T10:46:32.000-0400 versus FRED [4.71% as of 9/22](https://fred.stlouisfed.org/series/DGS2). Real yield stays FRED [2.63% as of 9/22](https://fred.stlouisfed.org/series/DFII10). Fed funds and DTWEXBGS are on the same stale list.
 
-- **cds stays valuation-event; AI-infra stress SUSTAINED — don't add.**
-  10Y [4.94%](https://fred.stlouisfed.org/series/DGS10) / 30Y 5.29% with
-  HY/IG near tights = buyable FCF-yield dips on the broad sleeve. Amber
-  for CCC [10.76%](https://fred.stlouisfed.org/series/BAMLH0A3HYC) vs BB
-  [1.56%](https://fred.stlouisfed.org/series/BAMLH0A1HYBB) and for
-  **Project Jupiter**: ~$18bn Oracle-leased NM loans quoted 89–91¢
-  ([Reuters/FT 9/18](https://www.reuters.com/business/finance/oracles-18-billion-data-center-debt-under-pressure-ft-reports-2026-09-18/)).
-  SOXX [533.07](https://finance.yahoo.com/quote/SOXX/) (−18.7% from $656,
-  recovered above the −20% rung) + AI-infra still wide ≠ mechanical
-  ladder-add.
+- **cds stays a valuation event — don't add AI-infra.** Yields backed up and broad credit did not: HY [2.73%](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) / IG [0.77%](https://fred.stlouisfed.org/series/BAMLC0A0CM) (FRED 9/23) versus live 10Y 5.11%. Live proxy (Yahoo, 2026-09-24): HYG 78.02 -0.1%, LQD 103.64 -0.2% — credit stable intraday. That dip is rate beta, not a spread break, so the lagged OAS still governs (not a protect call). Amber is the divergence: CCC [10.93%](https://fred.stlouisfed.org/series/BAMLH0A3HYC) vs BB 1.59% (gap 9.34pp) and [Project Jupiter loans still 89–91¢](https://www.reuters.com/business/finance/oracles-18-billion-data-center-debt-under-pressure-ft-reports-2026-09-18/) with no fresher print. SOXX [557.34](https://finance.yahoo.com/quote/SOXX/) is −15.0% from $656 (above the −20% rung) — bounce + AI-infra still wide is not a ladder-add.
 
-- **EIGHT CONFIRMATIONS queued (all cited):**
-  [tw6 → clear](https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/)
-  (**NEW**),
-  [fx-usdjpy → clear](https://finance.yahoo.com/quote/JPY=X/)
-  (**NEW**),
-  [sc-warsh → clear](https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf),
-  [fx-gold-real → clear](https://finance.yahoo.com/quote/GC=F/)
-  (GC=F 4,393 with DFII10 +2.61% = debasement bid intact),
-  [tw5 → clear](https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/irenreportsfy26results.htm)
-  (EDGAR quiet 8/28–9/21),
-  [tw7 → amber](https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf)
-  (WALCL [$6.75T](https://fred.stlouisfed.org/series/WALCL) non-crisis QE),
-  [tw8 → amber](https://www.reuters.com/world/asia-pacific/asml-extends-chipmaking-dominance-customers-embrace-high-na-2026-09-14/),
-  [chiptariff → amber](https://internationaltradetoday.com/article/2026/09/03/lutnick-says-upcoming-section-232-chip-tariffs-will-include-onshoring-incentives-2609030051)
-  (Federal Register still empty of a 232 final rule).
+- **tw6 / fx-usdjpy: DE-ESCALATE — propose clear.** Escalate to red denied. Yen strengthening faded: [JPY=X 158.88](https://finance.yahoo.com/quote/JPY=X/) after the ~152.89 low and after the [BOJ hike to 1.25%](https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/). Confirm legs are quiet — HY/IG calm, VIX 15.69 (not a spike; [VIXCLS 14.21](https://fred.stlouisfed.org/series/VIXCLS)), SPX ~7,681 not a broad selloff. [Katayama 9/24](https://www.reuters.com/world/asia-pacific/japans-katayama-says-principles-japan-us-fx-intervention-remain-place-2026-09-24/) kept intervention principles "alive"; Friday's rate checks faded. Not a new MoF operation. Aug 27–Sep window still unpublished.
 
-- **Barth falsifier under tw3: still talk, not consolidation.**
-  Bessent/Vought deficit-reduction plan remains pre-midterm positioning
-  ([Asiae/Bloomberg 9/09](https://www.asiae.co.kr/en/article/2026090910242513944))
-  — not a credible post-midterm spending-cut path toward primary balance.
-  Scarcity/debasement leg unfalsified. Core PCE still
-  [3.3% YoY](https://fred.stlouisfed.org/series/PCEPILFE) with real policy
-  +2.61%.
+- **Eight confirmations still queued (none new), all cited:** [tw6 → clear](https://finance.yahoo.com/quote/JPY=X/), [fx-usdjpy → clear](https://finance.yahoo.com/quote/JPY=X/), [sc-warsh → clear](https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf), [fx-gold-real → clear](https://finance.yahoo.com/quote/GC=F/) (GC=F 4,295.0 with DFII10 +2.63%; reals did not rise into the dip), [tw5 → clear](https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/irenreportsfy26results.htm) (EDGAR still ends 8/27), [tw7 → amber](https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf) (no new H.4.1 on FRED; WALCL still [$6.75T as of 9/16](https://fred.stlouisfed.org/series/WALCL)), [tw8 → amber](https://www.reuters.com/world/asia-pacific/asml-extends-chipmaking-dominance-customers-embrace-high-na-2026-09-14/) (CXMT HBM3E still qualification, not a major-vendor ship), [chiptariff → amber](https://www.federalregister.gov/documents/2026/09/24/2026-19537/measures-to-restrict-stockpiling-of-polysilicon-and-polysilicon-derivatives-under-proclamation-11052) (9/24 Register item is polysilicon stockpiling, not a chip tariff).
 
----
+- **Barth falsifier under tw3: still talk, not consolidation.** No post-midterm spending-cut package toward primary balance. The Bessent/Vought plan remains the [9/09 pre-midterm positioning](https://www.asiae.co.kr/en/article/2026090910242513944). Scarcity leg unfalsified. Core PCE [3.3% YoY](https://fred.stlouisfed.org/series/PCEPILFE); August PCE is Sept 30. Filing calendar had no drop: tw2 global CB stats still July (+23t; China Aug already logged, as_of left 9/14); tw7 as_of left on FOMC 9/16; c-wshr purification table still ends [2026/06/15](https://www.wealthsimple.com/en-ca/quote/neo/wshr).
 
-Sweep notes: `npm run update:data` exited **0** (10 rows + 5 indicators,
-0 failures). FRED rates/OAS through **9/17**; VIXCLS 15.44 as_of 9/17;
-WALCL as_of 9/16; DEXJPUS/DTWEXBGS as_of 9/11. **fx-usdjpy reset to Yahoo
-spot 157.34** after the script wrote lagged DEXJPUS 153.71. Hand-refreshed
-indicators DGS10 / DFII10 / BAMLH0A0HYM2 / BAMLC0A4CBBB. Filing calendar:
-**tw7 no new** (as_of left on FOMC 9/16); **tw2 no** new WGC global (as_of
-left at 9/14); **c-wshr no** — Wealthsimple impure table still ends at
-6/15. gas2028 Cal-28 strip ~$3.73 (not an inflection). electionvol still
-watch post-OpEx into the Q4 window. c-screens untouched. MoF Aug 27–Sep
-intervention window not yet posted.
+- **Gold dipped; the broad dollar bounced — neither flips.** GC=F 4,295.0 is softer but DFII10 eased to +2.63% from 2.68% on 9/18, so this is not gold-down-with-rising-reals. Proposed clear on fx-gold-real stays; withdraw it if reals turn up while gold keeps falling. DTWEXBGS [119.51 as of 9/18](https://fred.stlouisfed.org/series/DTWEXBGS) has bounced off 117.88 (9/09) and is still under the late-June 121.41 high, so peak-USD status stays clear. DXY ~101.27 is the higher-frequency caveat. gas2028 Cal-28 strip ~$3.76 (not an inflection). electionvol still watch (VIX 15.69 / 3M 18.38 / 6M 20.30). No new ~33% leverage breach.
