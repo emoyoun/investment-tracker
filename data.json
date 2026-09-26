@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-09-25",
-  "posture": "Live 10Y 5.16%/30Y 5.46%; USD/JPY 157.60; HYG/LQD stable; no tw1/tw5/tw7/tw6 4d fires. ⚠️ 7 rows on lagged FRED data: r-dgs2, r-dfii10, r-dff, cr-hy-oas, cr-ig-oas, cr-ccc-oas, fx-broad-usd — verify live before any deploy/protect decision.",
+  "asOf": "2026-09-26",
+  "posture": "Live 10Y 5.18%/30Y 5.50%; USD/JPY 157.19; HYG/LQD stable; no tw1/tw5/tw7/tw6 4d fires. ⚠️ 1 rows on lagged FRED data: fx-broad-usd — verify live before any deploy/protect decision.",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 656,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-09-25",
+    "as_of": "2026-09-26",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -44,8 +44,8 @@
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "1.59",
-        "as_of": "2026-09-23",
+        "value": "1.64",
+        "as_of": "2026-09-24",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -201,13 +201,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "[STALE as-of 2026-09-23] 4.85%",
+      "value": "4.87%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.46%",
+      "value": "5.50%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
       "citation": "https://finance.yahoo.com/quote/%5ETYX/",
-      "as_of": "2026-09-25",
+      "as_of": "2026-09-26",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "5.16%",
+      "value": "5.18%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
       "citation": "https://finance.yahoo.com/quote/%5ETNX/",
-      "as_of": "2026-09-25",
+      "as_of": "2026-09-26",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "[STALE as-of 2026-09-23] 2.76%",
+      "value": "2.85%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -261,13 +261,13 @@
       "trigger": "Actual Sept hike -> hawkish tail live.",
       "source": "FRED",
       "series_id": "DFF",
-      "value": "[STALE as-of 2026-09-23] 3.88%",
+      "value": "3.88%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "[STALE as-of 2026-09-23] 2.73%",
+      "value": "2.80%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -291,13 +291,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": "[STALE as-of 2026-09-23] 0.77%",
+      "value": "0.79%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "[STALE as-of 2026-09-23] 10.93%",
+      "value": "11.12%",
       "status": "amber",
       "proposed_status": null,
       "rationale": "Holding amber: BB↔CCC gap is still the turn, not a fresh compression. CCC OAS 10.93% (9/23) vs BB OAS 1.59% (BAMLH0A1HYBB) — gap 9.34pp, wider than 9.19pp on 9/22 (CCC 10.75% / BB 1.56%). BB stays near tights (1.53% on 9/21 → 1.59%) while CCC jumped 10.75% → 10.93%: late-cycle reach-for-yield reversing, not healing. Not red: the automatic ≥12% backstop is ~107bp away and broad HY/IG are calm. Do not fight that backstop.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-09-23",
+      "as_of": "2026-09-24",
       "next_release": "daily"
     },
     {
@@ -351,13 +351,13 @@
       "trigger": "SCENARIO DISCRIMINATOR. Yields-up + spreads CALM = valuation event (buyable dip). Yields-up + spreads WIDENING broadly (esp. bank/IG/HY) = crowding-out biting (protect ballast, do NOT deploy). Yields-up + widening specifically in AI/neocloud names = circularity cracking. Watch the DIVERGENCE: AI-winner spreads tight while everyone-else widens = purest crowding-out signature. Gates cash deployment: deploy on FCF-yield only once credit confirms a valuation (not solvency) event.",
       "source": "FRED ICE BofA OAS; AI-issuer CDS (Oracle/CoreWeave/neoclouds)",
       "series_id": "BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLH0A1HYBB",
-      "value": "yields-up + broad credit CALM = valuation event — live 10Y 5.16%/30Y 5.46%; HY 273bp / IG 77bp / BBB 95bp / BB 159bp; CCC 1093bp + Jupiter <90¢ (force majeure 9/24) = the divergence. Live proxy (Yahoo, 2026-09-25): HYG 77.89 <-0.3%>, LQD 103.15 <-0.7%> — credit stable intraday.",
+      "value": "yields-up + broad credit CALM = valuation event — live 10Y 5.18%/30Y 5.50%; HY 280bp / IG 79bp / BBB 95bp / BB 164bp; CCC 1112bp + Jupiter <90¢ (force majeure 9/24) = the divergence. Live proxy (Yahoo, 2026-09-26): HYG 77.86 <-0.0%>, LQD 103.21 <+0.1%> — credit stable intraday.",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "SCENARIO DISCRIMINATOR — still a VALUATION EVENT on the broad sleeve, not crowding-out/solvency. Yields UP and higher this afternoon: Yahoo 10Y 5.16% / 30Y 5.46% (Tradeweb 5.18% / 5.47%; FRED lagged at 4.96% / 5.29% on 9/22). Broad credit CALM: HY OAS 2.73% (273bp, up 7bp from 2.66% on 9/21), IG 0.77% (77bp), BBB 0.95%, BB 1.59% — well inside the crowding-out lines (HY ~350bp+ / IG ~120bp+). Why amber not clear: AI-infra stays wide while broad credit is tight — Project Jupiter loans still below 90¢, and Oracle's 9/24 force-majeure notice is a fresh wrinkle, not a broad-credit break — plus the CCC tail at 10.93%. The live ETF proxy does not override the calm FRED read: HYG is not down materially. FCF-yield dips on the broad sleeve stay conceptually buyable. BEHAVIOURAL: SOXX 563.96 is above the −20% rung WHILE AI-infra is still wide — do not add levered AI size.\nLive proxy (Yahoo, 2026-09-25): HYG 77.89 <-0.3%>, LQD 103.15 <-0.7%> — credit stable intraday.",
+      "rationale": "SCENARIO DISCRIMINATOR — still a VALUATION EVENT on the broad sleeve, not crowding-out/solvency. Yields UP and higher this afternoon: Yahoo 10Y 5.16% / 30Y 5.46% (Tradeweb 5.18% / 5.47%; FRED lagged at 4.96% / 5.29% on 9/22). Broad credit CALM: HY OAS 2.73% (273bp, up 7bp from 2.66% on 9/21), IG 0.77% (77bp), BBB 0.95%, BB 1.59% — well inside the crowding-out lines (HY ~350bp+ / IG ~120bp+). Why amber not clear: AI-infra stays wide while broad credit is tight — Project Jupiter loans still below 90¢, and Oracle's 9/24 force-majeure notice is a fresh wrinkle, not a broad-credit break — plus the CCC tail at 10.93%. The live ETF proxy does not override the calm FRED read: HYG is not down materially. FCF-yield dips on the broad sleeve stay conceptually buyable. BEHAVIOURAL: SOXX 563.96 is above the −20% rung WHILE AI-infra is still wide — do not add levered AI size.\nLive proxy (Yahoo, 2026-09-26): HYG 77.86 <-0.0%>, LQD 103.21 <+0.1%> — credit stable intraday.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-09-24",
+      "as_of": "2026-09-26",
       "next_release": "FRED HY/IG OAS daily (T+1)"
     },
     {
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "157.60",
+      "value": "157.19",
       "status": "amber",
       "proposed_status": "clear",
       "rationale": "RESET after the FRED script clobber: value is Yahoo spot JPY=X 158.93 (live 9/24), not lagged DEXJPUS 156.87 as of 9/18. CARRY-UNWIND READ: the disorderly JPY-strengthening move has faded. The pair is back near 158.9 after the early-September dip toward ~153, and Katayama 9/24 said the yen weakened beyond 158 once the BOJ hike to 1.25% failed to signal a faster path. Judge the move, not the level — this is further yen softness, not a strengthening unwind, and cross-asset confirmation never arrived (see tw6). Proposing clear; status stays amber until you accept.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-09-25",
+      "as_of": "2026-09-26",
       "next_release": "daily · next MoF monthly · BOJ Oct"
     },
     {
@@ -426,13 +426,13 @@
       "trigger": "Peak $656. Rungs: -20% $524.80 (fired), -25% $492.00 (fired), -30% $459.20 (Bucket C), -40% $393.60.",
       "source": "index / ETF quote",
       "series_id": "^SOX / SOXX",
-      "value": "566.07",
+      "value": "572.68",
       "status": null,
       "proposed_status": null,
       "rationale": "Yahoo SOXX 563.96 live 9/24 (−14.0% from the $656 peak). Above the −20% rung at $524.80. Status left null so the console derives the rungs. BEHAVIOURAL OVERLAY: this is not a semis selloff into a rung (session −0.3%), and AI-infra credit is still wide (Jupiter below 90¢, force-majeure notice today) — don't add. A later selloff only becomes a mechanical ladder add if broad credit and AI-infra stay calm.",
       "confidence": "high",
       "citation": "https://finance.yahoo.com/quote/SOXX/",
-      "as_of": "2026-09-25",
+      "as_of": "2026-09-26",
       "next_release": "daily"
     },
     {
