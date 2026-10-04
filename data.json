@@ -1,7 +1,7 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-10-03",
+  "asOf": "2026-10-04",
   "posture": "Live 10Y 5.28%/30Y 5.63%; USD/JPY 157.83; HYG/LQD stable; no tw fires. ⚠️ 1 rows on lagged FRED data: fx-broad-usd — verify live before any deploy/protect decision.",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-10-03",
+    "as_of": "2026-10-04",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -221,8 +221,8 @@
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
-      "citation": "https://finance.yahoo.com/quote/%5ETYX",
-      "as_of": "2026-10-03",
+      "citation": "https://finance.yahoo.com/quote/%5ETYX/",
+      "as_of": "2026-10-04",
       "next_release": "daily"
     },
     {
@@ -236,8 +236,8 @@
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
-      "citation": "https://finance.yahoo.com/quote/%5ETNX",
-      "as_of": "2026-10-03",
+      "citation": "https://finance.yahoo.com/quote/%5ETNX/",
+      "as_of": "2026-10-04",
       "next_release": "daily"
     },
     {
@@ -351,13 +351,13 @@
       "trigger": "SCENARIO DISCRIMINATOR. Yields-up + spreads CALM = valuation event (buyable dip). Yields-up + spreads WIDENING broadly (esp. bank/IG/HY) = crowding-out biting (protect ballast, do NOT deploy). Yields-up + widening specifically in AI/neocloud names = circularity cracking. Watch the DIVERGENCE: AI-winner spreads tight while everyone-else widens = purest crowding-out signature. Gates cash deployment: deploy on FCF-yield only once credit confirms a valuation (not solvency) event.",
       "source": "FRED ICE BofA OAS; AI-issuer CDS (Oracle/CoreWeave/neoclouds)",
       "series_id": "BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLH0A1HYBB",
-      "value": "yields-up + broad credit CALM = valuation event — live 10Y 5.24%/30Y 5.60%; HY 312bp / IG 84bp; CCC 1179bp + Jupiter <90¢ and Digital Drive 9.25% = the divergence. Live proxy (Yahoo, 2026-10-03): HYG 76.91 (+0.0%), LQD 101.83 (−0.2%) — credit stable intraday.",
+      "value": "yields-up + broad credit CALM = valuation event — live 10Y 5.24%/30Y 5.60%; HY 312bp / IG 84bp; CCC 1179bp + Jupiter <90¢ and Digital Drive 9.25% = the divergence. Live proxy (Yahoo, 2026-10-04): HYG 76.91 (+0.0%), LQD 101.83 (−0.2%) — credit stable intraday.",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "SCENARIO DISCRIMINATOR — still a VALUATION EVENT on the broad sleeve, not crowding-out/solvency. Yields UP: Yahoo 10Y 5.24% / 30Y 5.56% (CNBC Tradeweb 5.219% / 5.533% at 9:09–9:10am ET; Yahoo is ~1bp higher a half-hour later — same market, not a ×10 error; FRED lagged at 5.18% / 5.47% on 9/24). Broad credit CALM: HY OAS 2.80% (280bp, up 14bp from 2.66% on 9/21), IG 0.79% (79bp), BBB 0.97%, BB 1.64% — well inside the crowding-out lines (HY ~350bp+ / IG ~120bp+). Why amber not clear: AI-infra stays wide while broad credit is tight — Project Jupiter loans still quoted below 90¢ after the 9/24 force-majeure notice, and a Blue Owl/CoreWeave Virginia campus priced 9/23 at a 9.25% yield (~+270bp vs similarly rated peers). CCC tail 11.12% is the other stress pocket. The live ETF proxy does not override the calm FRED read: at the cash close HYG is -0.4% and LQD -0.7% on a yields-up tape, a duration slip rather than a material spread break. FCF-yield dips on the broad sleeve stay conceptually buyable. BEHAVIOURAL: SOXX 560.79 is above the -20% rung WHILE AI-infra is still wide — do not add levered AI size. Live proxy (Yahoo, 2026-10-03): HYG 76.91 (+0.0%), LQD 101.83 (−0.2%) — credit stable intraday.",
+      "rationale": "SCENARIO DISCRIMINATOR — still a VALUATION EVENT on the broad sleeve, not crowding-out/solvency. Yields UP: Yahoo 10Y 5.24% / 30Y 5.56% (CNBC Tradeweb 5.219% / 5.533% at 9:09–9:10am ET; Yahoo is ~1bp higher a half-hour later — same market, not a ×10 error; FRED lagged at 5.18% / 5.47% on 9/24). Broad credit CALM: HY OAS 2.80% (280bp, up 14bp from 2.66% on 9/21), IG 0.79% (79bp), BBB 0.97%, BB 1.64% — well inside the crowding-out lines (HY ~350bp+ / IG ~120bp+). Why amber not clear: AI-infra stays wide while broad credit is tight — Project Jupiter loans still quoted below 90¢ after the 9/24 force-majeure notice, and a Blue Owl/CoreWeave Virginia campus priced 9/23 at a 9.25% yield (~+270bp vs similarly rated peers). CCC tail 11.12% is the other stress pocket. The live ETF proxy does not override the calm FRED read: at the cash close HYG is -0.4% and LQD -0.7% on a yields-up tape, a duration slip rather than a material spread break. FCF-yield dips on the broad sleeve stay conceptually buyable. BEHAVIOURAL: SOXX 560.79 is above the -20% rung WHILE AI-infra is still wide — do not add levered AI size. Live proxy (Yahoo, 2026-10-04): HYG 76.91 (+0.0%), LQD 101.83 (−0.2%) — credit stable intraday.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-10-02",
+      "as_of": "2026-10-04",
       "next_release": "FRED HY/IG OAS daily (T+1)"
     },
     {
@@ -372,7 +372,7 @@
       "rationale": "RESET after the FRED script clobber: value is Yahoo spot JPY=X 157.18 (live 2026-09-28), not lagged DEXJPUS 156.87 as of 9/18. CARRY-UNWIND READ: not a disorderly JPY strengthening. The pair firmed from Thursday's ~158.8 close to 157.18, and a Reuters interview with Mimura today knocked it briefly through 157 toward ~156.75 before it bounced. That is jawboning against yen WEAKNESS, the opposite of an Aug-2024-style unwind, and it is not confirmed by credit, a VIX spike, or an equity selloff (see tw6). Proposing clear; status stays amber until you accept.",
       "confidence": "high",
       "citation": "https://fred.stlouisfed.org/series/DEXJPUS",
-      "as_of": "2026-10-03",
+      "as_of": "2026-10-04",
       "next_release": "daily · next MoF monthly · BOJ Oct"
     },
     {
@@ -432,7 +432,7 @@
       "rationale": "Yahoo SOXX 560.79 (live 2026-09-29) is -14.5% from the $656 peak. Above the -20% rung at $524.80. Status left null so the console derives the rungs. BEHAVIOURAL OVERLAY: this is not a semis selloff into a rung, and AI-infra credit is still wide (Jupiter below 90¢; CoreWeave/Digital Drive 9.25% on 9/23) — don't add. A later selloff is a mechanical ladder add only if broad credit and AI-infra stay calm.",
       "confidence": "medium",
       "citation": "https://finance.yahoo.com/quote/SOXX/",
-      "as_of": "2026-10-03",
+      "as_of": "2026-10-04",
       "next_release": "daily"
     },
     {
