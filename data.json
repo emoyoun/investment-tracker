@@ -1,8 +1,8 @@
 {
   "_schema": "Each row: id, class(live|filing|event), value, status(clear|amber|red|watch), proposed_status, rationale, confidence(high|medium|low), series_id, source, citation(URL), as_of(YYYY-MM-DD), next_release. RULES: (1) live/filing status is derived deterministically from value vs trigger. (2) event rows — the agent may self-promote clear->amber WITH a citation; amber->red and any de-escalation go in proposed_status for user confirm, never in status. (3) No citation => no status change on event/filing rows (the console rejects it). (4) confidence defaults to 'medium' if unstated. (5) reputable secondary sources (Reuters/BBG/FT) are acceptable when the primary isn't out yet.",
   "_paste_note": "The agent writes only the mutable fields (value, status, proposed_status, rationale, confidence, citation, as_of, next_release). The console holds the static definitions (names, conditions, guardrails, trigger). Paste this whole object, or just a {\"asOf\":..,\"posture\":..,\"rows\":[..]} with the ids you changed.",
-  "asOf": "2026-11-27",
-  "posture": "Live 10Y 4.85%/30Y 5.24%; 2Y 4.63% FRED (2YY=F stale); USD/JPY 159.39; SOXX 127.98 post 3:1 (−41.5% from $218.67); HYG/LQD tightening (+0.1%/+0.5%); VIX~25.6 / SPY Wed −0.3% with yen soft ~159.4 — no tw fires. ⚠️ 7 rows on lagged FRED data: r-dgs2, r-dfii10, r-dff, cr-hy-oas, cr-ig-oas, cr-ccc-oas, fx-broad-usd — verify live before any deploy/protect decision.",
+  "asOf": "2026-11-28",
+  "posture": "Live 10Y 4.94%/30Y 5.33%; 2Y 4.61% FRED (2YY=F stale); USD/JPY 159.52; SOXX 134.07 post 3:1 (-38.7% from $218.67); HYG/LQD stable (+0.1%/-0.3%); VIX~23.8 / SPY Fri +1.6% with yen soft ~159.5 — no tw fires. ⚠️ 3 rows on lagged FRED data: r-dgs2, r-dfii10, fx-broad-usd — verify live before any deploy/protect decision.",
   "notes": "WSHR (30% core) is ballast vs equity/AI-demand crash but is the MOST rate-shock-exposed sleeve (stable-compounder cohort de-rates on rising real rates — the Patel/Winton/El-Erian crowding-out victims). True hedges for the rate-shock scenario = cash (>10%, on top) + gold, NOT WSHR. In a rate shock, WSHR + growth + rate-sensitive software soften together; cash is the only clean ballast.",
   "anchor": {
     "soxx_peak": 218.67,
@@ -14,7 +14,7 @@
     }
   },
   "indicators": {
-    "as_of": "2026-11-27",
+    "as_of": "2026-11-28",
     "series": {
       "PCEPILFE": {
         "label": "Core PCE price index (YoY drives tw3)",
@@ -25,8 +25,8 @@
       },
       "VIXCLS": {
         "label": "VIX close (tw6)",
-        "value": "26.36",
-        "as_of": "2026-11-24",
+        "value": "26.8",
+        "as_of": "2026-11-26",
         "citation": "https://fred.stlouisfed.org/series/VIXCLS"
       },
       "DEXJPUS": {
@@ -37,15 +37,15 @@
       },
       "WALCL": {
         "label": "Fed balance sheet, $millions (tw7)",
-        "value": "6741452",
-        "as_of": "2026-11-18",
+        "value": "6732044",
+        "as_of": "2026-11-25",
         "citation": "https://fred.stlouisfed.org/series/WALCL",
-        "display": "$6.74T"
+        "display": "$6.73T"
       },
       "BAMLH0A1HYBB": {
         "label": "BB OAS (BB<->CCC compression, cr-ccc-oas)",
-        "value": "2.25",
-        "as_of": "2026-11-24",
+        "value": "2.28",
+        "as_of": "2026-11-26",
         "citation": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB"
       },
       "DGS10": {
@@ -201,13 +201,13 @@
       "trigger": "Sustained >4.25% -> Donnelly falsified.",
       "source": "FRED",
       "series_id": "DGS2",
-      "value": "[STALE as-of 2026-11-24] 4.63%",
+      "value": "[STALE as-of 2026-11-25] 4.61%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/DGS2",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "next_release": "daily"
     },
     {
@@ -216,13 +216,13 @@
       "trigger": ">5.2% confirm (fiscal dominance); >6% disorderly.",
       "source": "FRED",
       "series_id": "DGS30",
-      "value": "5.24%",
+      "value": "5.33%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
-      "citation": "https://finance.yahoo.com/quote/%5ETYX/",
-      "as_of": "2026-11-27",
+      "citation": "https://finance.yahoo.com/quote/%5ETYX",
+      "as_of": "2026-11-28",
       "next_release": "daily"
     },
     {
@@ -231,13 +231,13 @@
       "trigger": "Context / term-premium reference.",
       "source": "FRED",
       "series_id": "DGS10",
-      "value": "4.85%",
+      "value": "4.94%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": "medium",
-      "citation": "https://finance.yahoo.com/quote/%5ETNX/",
-      "as_of": "2026-11-27",
+      "citation": "https://finance.yahoo.com/quote/%5ETNX",
+      "as_of": "2026-11-28",
       "next_release": "daily"
     },
     {
@@ -246,13 +246,13 @@
       "trigger": "Turns negative -> repression live; sharp spike -> gold headwind.",
       "source": "FRED",
       "series_id": "DFII10",
-      "value": "[STALE as-of 2026-11-24] 2.79%",
+      "value": "[STALE as-of 2026-11-25] 2.73%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFII10",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "next_release": "daily"
     },
     {
@@ -261,13 +261,13 @@
       "trigger": "Actual Sept hike -> hawkish tail live.",
       "source": "FRED",
       "series_id": "DFF",
-      "value": "[STALE as-of 2026-11-24] 3.88%",
+      "value": "3.88%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/DFF",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "next_release": "daily"
     },
     {
@@ -276,13 +276,13 @@
       "trigger": ">=3.75% risk-off underway; >=5% serious stress.",
       "source": "FRED",
       "series_id": "BAMLH0A0HYM2",
-      "value": "[STALE as-of 2026-11-24] 3.72%",
+      "value": "3.77%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "next_release": "daily"
     },
     {
@@ -291,13 +291,13 @@
       "trigger": ">=1.25% amber; red if >=1.75% or (>=1.25% and HY>=4%).",
       "source": "FRED",
       "series_id": "BAMLC0A0CM",
-      "value": "[STALE as-of 2026-11-24] 0.98%",
+      "value": "0.99%",
       "status": null,
       "proposed_status": null,
       "rationale": null,
       "confidence": null,
       "citation": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "next_release": "daily"
     },
     {
@@ -306,13 +306,13 @@
       "trigger": "BB<->CCC compression/reversal (weekly); absolute backstop red >=12%.",
       "source": "FRED",
       "series_id": "BAMLH0A3HYC",
-      "value": "[STALE as-of 2026-11-24] 14.05%",
+      "value": "14.17%",
       "status": "amber",
       "proposed_status": null,
       "rationale": "Not BB-CCC compression. CCC OAS 13.61% vs BB OAS 2.10% on Nov 19 — gap 11.51pp, versus 11.31pp on Nov 12 (CCC 13.14% / BB 1.83%). CCC widened 47bp and BB 27bp, so the gap widened again. That is not reach-for-yield, and it is not a violent reversal. The console's >=12% backstop still auto-reds; stored status stays amber.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A3HYC",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "next_release": "daily"
     },
     {
@@ -351,10 +351,10 @@
       "trigger": "SCENARIO DISCRIMINATOR. Yields-up + spreads CALM = valuation event (buyable dip). Yields-up + spreads WIDENING broadly (esp. bank/IG/HY) = crowding-out biting (protect ballast, do NOT deploy). Yields-up + widening specifically in AI/neocloud names = circularity cracking. Watch the DIVERGENCE: AI-winner spreads tight while everyone-else widens = purest crowding-out signature. Gates cash deployment: deploy on FCF-yield only once credit confirms a valuation (not solvency) event.",
       "source": "FRED ICE BofA OAS; AI-issuer CDS (Oracle/CoreWeave/neoclouds)",
       "series_id": "BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLH0A1HYBB",
-      "value": "Yields bounced this morning after Friday's drop. Last week the 10Y was 5.04–5.15% while HY OAS widened from 3.23% (Nov 13) to 3.52% (Nov 19); IG only 0.89% to 0.94%. HY is on the ~350bp line, IG is not near ~120bp, and AI-infra is still the wide leg. Live proxy (Yahoo, 2026-11-27): HYG 76.52 (+0.1%), LQD 104.29 (+0.5%) — credit tightening intraday.",
+      "value": "Yields bounced this morning after Friday's drop. Last week the 10Y was 5.04–5.15% while HY OAS widened from 3.23% (Nov 13) to 3.52% (Nov 19); IG only 0.89% to 0.94%. HY is on the ~350bp line, IG is not near ~120bp, and AI-infra is still the wide leg. Live proxy (Yahoo, 2026-11-28): HYG 76.61 <+0.1%>, LQD 104.00 <-0.3%> — credit stable intraday.",
       "status": "amber",
       "proposed_status": null,
-      "rationale": "SCENARIO DISCRIMINATOR — amber, not a proposed red. From Nov 13 to Nov 19, with the 10Y still above 5%, HY OAS widened 29bp to 3.52% and IG only 5bp to 0.94%. That puts junk on the ~350bp line and leaves investment grade far from ~120bp, so this is not broad crowding-out. The divergence is intact: CNBC Nov 18 has CoreWeave 5y at 1,100–1,200bp and Oracle above 300bp. Live proxy (Yahoo, 2026-11-27): HYG 76.52 (+0.1%), LQD 104.29 (+0.5%) — credit tightening intraday. Yields are up about 6bp from Friday and HYG is up, so the ETF does not override the lagged OAS into a red. Do not deploy off this row; do not call it a solvency event either.",
+      "rationale": "SCENARIO DISCRIMINATOR — amber, not a proposed red. From Nov 13 to Nov 19, with the 10Y still above 5%, HY OAS widened 29bp to 3.52% and IG only 5bp to 0.94%. That puts junk on the ~350bp line and leaves investment grade far from ~120bp, so this is not broad crowding-out. The divergence is intact: CNBC Nov 18 has CoreWeave 5y at 1,100–1,200bp and Oracle above 300bp. Live proxy (Yahoo, 2026-11-28): HYG 76.61 <+0.1%>, LQD 104.00 <-0.3%> — credit stable intraday. Yields are up about 6bp from Friday and HYG is up, so the ETF does not override the lagged OAS into a red. Do not deploy off this row; do not call it a solvency event either.",
       "confidence": "medium",
       "citation": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
       "as_of": "2026-11-23",
@@ -366,13 +366,13 @@
       "trigger": "Disorderly JPY strengthening = yen-carry unwind. Judge on the move, not the level.",
       "source": "FRED",
       "series_id": "DEXJPUS",
-      "value": "159.39",
+      "value": "159.52",
       "status": "amber",
       "proposed_status": "clear",
       "rationale": "CARRY-UNWIND READ: not a disorderly JPY strengthening. Yahoo JPY=X 159.30 on 2026-11-23 (the FRED script had overwritten this with DEXJPUS 159.93 as of Nov 13). The yen tested 160 on Nov 13 and firmed toward about 158.5 in Friday's NY session on the equity crash, then was back at 159.30 by 9:44am ET. That is a modest risk-off bid of about 1–1.5 yen, not an Aug-2024-style unwind. No new MoF operation. Proposed clear stands; status stays amber until you confirm. Judge the move, not the level.",
       "confidence": "medium",
-      "citation": "https://finance.yahoo.com/quote/JPY=X/",
-      "as_of": "2026-11-27",
+      "citation": "https://finance.yahoo.com/quote/JPY=X",
+      "as_of": "2026-11-28",
       "next_release": "daily"
     },
     {
@@ -426,13 +426,13 @@
       "trigger": "Peak $656. Rungs: -20% $524.80 (fired), -25% $492.00 (fired), -30% $459.20 (Bucket C), -40% $393.60.",
       "source": "index / ETF quote",
       "series_id": "^SOX / SOXX",
-      "value": "127.98",
+      "value": "134.07",
       "status": null,
       "proposed_status": null,
       "rationale": "Yahoo SOXX 137.89 at 9:44am ET on 2026-11-23. Opened 142.18 and traded 137.04–142.26, so the print is the cash open, not a bad tick. Friday's close was 123.40. Versus the adjusted $218.67 peak this is −36.9%. Through the −30% Bucket C rung at $153.07. Not through the −40% rung at $131.20, which Friday's close had breached. Status left null so the console derives the rungs. BEHAVIOURAL: do not add. Broad credit is near the line but not breaking (HY 352bp, HYG +0.4% this morning). AI-infra is still wide — CoreWeave 5y still 1,100–1,200bp on Nov 18. Semis sold off and that sleeve's credit stayed wide.",
       "confidence": "high",
-      "citation": "https://finance.yahoo.com/quote/SOXX/",
-      "as_of": "2026-11-27",
+      "citation": "https://finance.yahoo.com/quote/SOXX",
+      "as_of": "2026-11-28",
       "next_release": "daily"
     },
     {
